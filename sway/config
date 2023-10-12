@@ -225,14 +225,15 @@ bindsym $mod+r mode "resize"
 # }
 
 floating_modifier $mod
-gaps inner 15
+gaps inner 8
+# gaps inner 15
 gaps outer 0
 
 # Get rid of window decorations and titlebars
 default_border none
 
 # Window opacity!
-set $opacity 0.93
+set $opacity 0.90
 for_window [class=".*"] opacity $opacity
 for_window [app_id=".*"] opacity $opacity
 
@@ -256,26 +257,49 @@ exec pipewire-pulse
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 
 # Required for Firefox to open links remotely
-exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway MOZ_DBUS_REMOTE
+# XDG_CURRENT_DESKTOP also required by flameshot gui
+exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=Sway MOZ_DBUS_REMOTE
+
+# To handle external displays
+exec kanshi
 
 # Exposes the Flatpak Discord RPC socket to apps that
 # expect the non-Flatpak Discord location.
 # Running this in the terminal once is not permanent,
 # so we do it every time Sway starts.
 # Required for presence.nvim to work.
-exec ln -sf $XDG_RUNTIME_DIR/{app/com.discordapp.Discord,}/discord-ipc-0
+# This doesn't work because opening Discord will overwrite this.
+# exec ln -sf $XDG_RUNTIME_DIR/{app/com.discordapp.Discord,}/discord-ipc-0
 
 # Keyboard bindings for hardware controls
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
-bindsym XF86MonBrightnessUp exec busctl --system call me.xela.blctl /me/xela/blctl me.xela.blctl1 Increase u 10
-bindsym XF86MonBrightnessDown exec busctl --system call me.xela.blctl /me/xela/blctl me.xela.blctl1 Decrease u 10
+bindsym XF86MonBrightnessUp exec busctl --system call me.xela.blctl /me/xela/blctl me.xela.blctl1 Increase d 0.05
+bindsym XF86MonBrightnessDown exec busctl --system call me.xela.blctl /me/xela/blctl me.xela.blctl1 Decrease d 0.05
 
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Screenshot keybind
-bindsym Print exec flameshot gui --path /home/xela/Pictures/Screenshots/ --upload
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
+
+
+# Swayfx-specific config
+blur enable
+blur_passes 2
+blur_radius 5
+
+corner_radius 10
+
+# LayerShell for effects applied to panels, waybar, etc
+layer_effects "waybar" blur enable; corner_radius 10
+
+# Looks good
+# default_dim_inactive 0.33
+
+# Ugly - dimming looks 100x better
+# client.focused "#ffffff" "#ffffff" "#ffffff" "#ffffff" "#ffffff"
+# default_border pixel 2
 
 include /etc/sway/config.d/*
