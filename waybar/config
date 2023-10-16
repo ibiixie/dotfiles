@@ -7,10 +7,33 @@
     // "height": 50, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (px)
+    
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "battery", "battery#bat2", "clock", "custom/shutdown", "tray"],
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+        "sway/scratchpad",
+        "custom/media"
+    ],
+    
+    "modules-center": [
+        "sway/window"
+    ],
+    
+    "modules-right": [
+        "mpd",
+        "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "cpu",
+        "memory",
+        "battery",
+        "battery#bat2",
+        "clock",
+        "custom/shutdown",
+        "tray"
+    ],
+    
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -35,6 +58,7 @@
             "5": []
         }
     },
+
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -44,9 +68,11 @@
             "unlocked": ""
         }
     },
+
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
+
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
@@ -54,6 +80,7 @@
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
+
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
         "format-disconnected": "Disconnected ",
@@ -80,6 +107,7 @@
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)"
     },
+
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -87,10 +115,12 @@
             "deactivated": ""
         }
     },
+
     "tray": {
         // "icon-size": 21,
         "spacing": 10
     },
+
     "clock": {
         "interval": 60,
         "format": "{: %d/%m %H:%M}",
@@ -99,13 +129,16 @@
         // "format-alt": "{:%d/%m-%Y}"
         "tooltip-format": "{:Today is %A, %B %d, %Y%nThe time is %H:%M:%S %Z (%I:%H:%S %p) (UTC %z)}"
     },
+
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
     },
+
     "memory": {
         "format": "{}% "
     },
+
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -114,11 +147,13 @@
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
+
     // "backlight": {
     //     // "device": "acpi_video1",
     //     "format": "{percent}% {icon}",
     //     "format-icons": ["", "", "", "", "", "", "", "", ""]
     // },
+
     "battery": {
         "states": {
             // "good": 95,
@@ -133,9 +168,11 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
+
     "battery#bat2": {
         "bat": "BAT2"
     },
+
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{signalStrength}% ",
@@ -145,6 +182,7 @@
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
+
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
@@ -164,6 +202,7 @@
         },
         "on-click": "pavucontrol"
     },
+
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
@@ -182,15 +221,17 @@
     // -------------------------------------------------------------------------
     "custom/shutdown": {
 	    "format": "", // This icon is provided by the Awesome-fonts collection, not sure how to paste it unfortunately
-
+        "tooltip": false,
 	    // "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Shutdown'  'shutdown -h now' -b 'Restart' 'shutdown -r now' -b 'Logout' 'swaymsg exit' -b 'Hibernate' 'systemctl hibernate' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
         "on-click": "shutdown -h now" 
     },
-    // "custom/restart": {
-    //     "format": "",
-    // 
-    //     "on-click": 
-    // },
+
+    "custom/restart": {
+         "format": "",
+         "tooltip": false, 
+    //     "on-click": "shutdown -r now"
+    },
+    
     "return-type": "json",
     "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
