@@ -189,6 +189,7 @@
     margin-left:5px;
     margin-right:5px;
     font-size:15px;
+    color: @primary_pink;
 }
 
 #custom-launcher {
