@@ -5,14 +5,29 @@ lsp.preset('recommended')
 lsp.ensure_installed({
   'lua_ls',
   'rust_analyzer'
+  -- 'arduino-language-server'
 })
+
+require('lspconfig').arduino_language_server.setup {
+    cmd = {
+        "arduino-language-server",
+        "-cli-config", "/home/xela/.arduino15/arduino-cli.yaml",
+        "-fqbn",
+        "arduino:avr:uno"
+    }
+}
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({select = true}),
+  -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  -- ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<A-Down>'] = cmp.mapping.scroll_docs(1),
+  ['<A-Up>'] = cmp.mapping.scroll_docs(-1),
+  -- ['<Right>'] = cmp.mapping.confirm({select = true}),
+  ['<CR>'] = cmp.mapping.confirm({select = true}),
+  ['<Tab>'] = cmp.mapping.confirm({select = true}),
+  ['<Esc>'] = cmp.mapping.abort(),
   ['<C-Space>'] = cmp.mapping.complete(),
 })
 
