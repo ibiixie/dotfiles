@@ -1,0 +1,112 @@
+@define-color base           #24273a;
+@define-color urgent         #ed8796;
+@define-color primary_orange #f5a97f;
+@define-color primary_yellow #eed49f;
+@define-color primary_pink   #f5bde6;
+@define-color primary_red    #ed8796;
+@define-color primary_blue   #8aadf4;
+@define-color primary_blue_2 #7dc4e4;
+
+* {
+    font-size: 12pt;
+    /*font-family: "Fira Mono";*/
+    font-family: "Overpass Nerd Font";
+    font-weight: bold;
+    margin: 0px;
+    border: none;
+    outline-style: none;
+}
+
+window {
+    margin: 5px;
+    border-radius: 10px;
+    /*border: 2px solid @primary_blue;*/
+    background-color: @base;
+    opacity: 0.9;
+}
+
+#input {
+    margin: 5px;
+    /*border: 2px solid @primary_blue_2;*/
+    border-radius: 0;
+    border-bottom: 2px solid @primary_blue;
+    background-color: @base;
+    color: @primary_yellow;
+
+    /* Remove padding for icons */
+    padding-left: 0;
+    padding-right: 0;
+    outline-style: none;
+    outline: none;
+    box-shadow: none;
+}
+
+#input:focus {
+    outline-style: none;
+    color: @primary_pink;
+    border: none;
+    border-bottom: 2px solid @primary_pink;
+}
+
+#input:selected {
+    outline-style: none;
+    border: none;
+}
+
+/* Remove search icon */
+#input > image.left {
+    -gtk-icon-transform:scaleX(0);
+}
+
+/* Remove clear icon */
+#input > image.right {
+    -gtk-icon-transform:scaleX(0);
+}
+
+#inner-box {
+    margin: 2px;
+    /*border: 2px solid @primary_blue_2;*/
+    background-color: @base;
+    background: none;
+}
+
+#outer-box {
+    margin: 5px;
+    /*border: 2px solid @base;*/
+    background-color: @base;
+    background: none;
+}
+
+#scroll {
+    margin: 5px;
+    /*border: 2px solid @base;*/
+    background-color: @base;
+    background: none;
+}
+
+#text {
+    margin: 5px;
+    /*border: 2px solid cyan;*/
+    /*background-color: @primary_blue;*/
+    background-color: none;
+    color: @primary_blue;
+}
+
+#entry {
+    color: @primary_blue;
+    background-color: @base;
+}
+
+#entry:selected {
+    /*background-color: rgba(0,0,0,0);*/
+    /*background-color: @base;*/
+    /*border-bottom: 1px solid @primary_yellow;*/
+    border: 1px dotted @primary_blue;
+    border-radius: 6px;
+}
+
+#text:selected {
+    /*background-color: @primary_pink;*/
+    /*text-decoration: @primary_pink solid underline;*/
+    color: @primary_pink;
+}
