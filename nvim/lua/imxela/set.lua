@@ -9,8 +9,12 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
+-- Todo: Automatically create backupdir and undodir if they don't exist
+
 vim.opt.swapfile = true
+vim.opt.backupdir = vim.fn.expand('$HOME/.nvim/backupdir/')
 vim.opt.backup = true
+vim.opt.undodir = vim.fn.expand('$HOME/.nvim/undodir/')
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
