@@ -10,10 +10,10 @@
     
     // Choose the order of the modules
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "sway/scratchpad",
-        "custom/media"
+        "sway/workspaces"
+        // "sway/mode",
+        // "sway/scratchpad",
+        // "custom/media"
     ],
     
     "modules-center": [
@@ -21,14 +21,14 @@
     ],
     
     "modules-right": [
-        "mpd",
+        // "mpd",
         "idle_inhibitor",
         "pulseaudio",
         "network",
         "cpu",
         "memory",
         "battery",
-        "battery#bat2",
+        // "battery#bat2",
         "clock",
         "custom/shutdown",
         "tray"
@@ -44,18 +44,20 @@
             "1": "",
             "2": "",
             "3": "",
-            "4": "",
-            "5": "",
+            "4": "",
+            "5": "",
+            "6": "",
             // "urgent": "",
             // "focused": "",
-            "default": ""
+            "default": ""
         },
         "persistent_workspaces": {
             "1": [],
             "2": [],
             "3": [],
             "4": [],
-            "5": []
+            "5": [],
+            "6": []
         }
     },
 
@@ -124,7 +126,7 @@
     "clock": {
         "interval": 60,
         "format": "{: %d/%m %H:%M}",
-        "timezone": "Sweden/Stockholm",
+        "timezone": "Europe/Stockholm",
         // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         // "format-alt": "{:%d/%m-%Y}"
         "tooltip-format": "{:Today is %A, %B %d, %Y%nThe time is %H:%M:%S %Z (%I:%H:%S %p) (UTC %z)}"
