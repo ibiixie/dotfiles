@@ -258,6 +258,9 @@ exec pipewire
 exec wireplumber
 exec pipewire-pulse
 
+# Start EasyEffects to apply effects on startup
+exec easyeffects --gapplication-service
+
 # Start xdg-desktop-portal w/ wlroots backend
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 
