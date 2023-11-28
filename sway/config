@@ -68,6 +68,11 @@ input type:touchpad {
     natural_scroll enabled
 }
 
+input type:pointer {
+    accel_profile flat
+    pointer_accel 0
+}
+
 ### Key bindings
 #
 # Basics:
@@ -79,9 +84,9 @@ input type:touchpad {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
-
-    # Drag floating windows by holding down $mod and left mouse button.
+    # bindsym $mod+d exec $menu
+    bindsym Alt+Space exec $menu
+    
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
     # Change normal to inverse to use left mouse button for resizing and right
@@ -263,6 +268,9 @@ exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY 
 # To handle external displays
 exec kanshi
 
+# As an f.lux alternative
+exec gammastep -l 58:16
+
 # Exposes the Flatpak Discord RPC socket to apps that
 # expect the non-Flatpak Discord location.
 # Running this in the terminal once is not permanent,
@@ -276,8 +284,8 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
-bindsym XF86MonBrightnessUp exec busctl --system call me.xela.blctl /me/xela/blctl me.xela.blctl1 Increase d 0.05
-bindsym XF86MonBrightnessDown exec busctl --system call me.xela.blctl /me/xela/blctl me.xela.blctl1 Decrease d 0.05
+bindsym XF86MonBrightnessUp exec busctl --system call me.xela.blctl /me/xela/blctl me.xela.blctl1 Increase u 5
+bindsym XF86MonBrightnessDown exec busctl --system call me.xela.blctl /me/xela/blctl me.xela.blctl1 Decrease u 5
 
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
