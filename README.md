@@ -1,3 +1,8 @@
+> [!IMPORTANT]  
+> This rice is outdated and unfinished as I switched from Sway to Hyprland! My new rice will likely be uploaded here at some point in the future :D
+
+<br>
+
 ```sh
 
 ~ Ɛ> macchina
