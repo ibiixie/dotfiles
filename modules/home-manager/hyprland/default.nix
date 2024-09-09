@@ -2,12 +2,7 @@
 
 {
   options = {
-    modules.neovim.enable = lib.mkEnableOption "enable neovim";
-    modules.neovim.defaultEditor = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-      description = "set neovim to the default editor using  the EDITOR env var";
-    };
+    modules.hyprland.enable = lib.mkEnableOption "enable hyprland";
   };
 
   config =  lib.mkIf config.modules.hyprland.enable {
@@ -19,12 +14,12 @@
       enable = true;
 
       settings = {
-          "$mod" = "SUPER";
+        "$mod" = "SUPER";
 
-          binde = [
-            ", XF86MonBrightnessUp, exec, echo 'Hello, world!' >> ~/test.txt"
-          ];
-        };
+        binde = [
+          ", XF86MonBrightnessUp, exec, echo 'Hello, world!' >> ~/test.txt"
+        ];
+      };
     };
   };
 }
