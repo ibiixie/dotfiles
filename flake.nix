@@ -35,6 +35,7 @@
 
       overlays = [
         (final: prev: {
+          stable = nixpkgs.legacyPackages.${prev.system};
           unstable = nixpkgs-unstable.legacyPackages.${prev.system};
           upstream = nixpkgs-upstream.legacyPackages.${prev.system};
         })
