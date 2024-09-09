@@ -6,18 +6,18 @@
   home.stateVersion = "24.05";
 
   home.packages = [
-    
+
   ];
 
   home.file = {
-    
+
   };
 
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
 
-  git.enable = true;
-  
+  programs.git.enable = true;
+
   programs.home-manager.enable = true;
 }
