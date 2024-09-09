@@ -24,5 +24,7 @@
     userEmail = "65206220+imxela@users.noreply.github.com";
   };
 
+  modules.zed-editor.enable = true;
+
   programs.home-manager.enable = true;
 }
