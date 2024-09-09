@@ -25,6 +25,7 @@
   };
 
   modules.neovim.enable = true;
+  modules.hyprland.enable = true;
   modules.zed-editor.enable = true;
 
   programs.home-manager.enable = true;
