@@ -6,9 +6,10 @@
   };
 
   config =  lib.mkIf config.modules.hyprland.enable {
-    programs.hyprland = {
-      enable = true;
-    };
+    # The below is required in the nixos config but how do I ensure it is enabled?
+    # programs.hyprland = {
+    #   enable = true;
+    # };
 
     wayland.windowManager.hyprland = {
       enable = true;

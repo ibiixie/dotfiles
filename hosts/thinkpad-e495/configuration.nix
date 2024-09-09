@@ -19,10 +19,11 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  # Packages go here!
-  # packagename.enable = true;
+  # Todo: Turn into module!
+  modules = {
+    hyprland.enable = true;
+  };
 
 
   system.stateVersion = "24.05";
 }
-

@@ -17,16 +17,18 @@
     # EDITOR = "emacs";
   };
 
-  modules.git = {
-    enable = true;
+  modules = {
+    git = {
+      enable = true;
 
-    userName = "imxela";
-    userEmail = "65206220+imxela@users.noreply.github.com";
+      userName = "imxela";
+      userEmail = "65206220+imxela@users.noreply.github.com";
+    };
+
+    neovim.enable = true;
+    hyprland.enable = true;
+    zed-editor.enable = true;
   };
-
-  modules.neovim.enable = true;
-  modules.hyprland.enable = true;
-  modules.zed-editor.enable = true;
 
   programs.home-manager.enable = true;
 }
