@@ -17,32 +17,50 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, nixpkgs-upstream, home-manager, ... }@inputs:
+  outputs = {
+    self, nixpkgs, ...
+  } @ inputs:
   let
     system = "x86_64-linux";
 
     pkgs = nixpkgs.legacyPackages.${system};
-    pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+    pkgs-unstable = nixpkgs-unstablel.legacyPackages.${system};
     pkgs-upstream = nixpkgs-upstream.legacyPackages.${system};
+
+    # How do I hide this?
+    username = "biixie";
+    name = "Biixie";
   in 
   {
     nixosConfigurations = {
-      laptop-e495 = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit system; };
+      thinkpad-e495 = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        specialArgs = {
+	  inherit inputs;
+          inherit pkgs;
+	  inherit pkgs-unstable;
+	  inherit pkgs-upstream;
+        };
 
 	modules = [
-          ./hosts/laptop-e495/configuration.nix
-	  ./modules
+	  ./hosts/thinkpad-e495/configuration.nix
+	  ./modules/nixos
 	];
       };
     };
 
     homeConfigurations."biixie" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
+      extraSpecialArgs = { 
+        inherit inputs;
+	inherit pkgs;
+	inherit pkgs-unstable;
+	inherit pkgs-upstream;
+      };
 
       modules = [
-        ./home.nix
-	./modules/home-manager
+        ./hosts/laptop-e495/home.nix
+        ./modules/home-manager
       ];
     ];
   };

@@ -1,5 +1,5 @@
-# Contains system-wide configuration shared across all hosts
-{ config, pkgs, inputs, ... }:
+# Contains system configuration shared across all hosts
+{ config, pkgs, inputs, outputs, ... }:
 
 {
   boot.loader.systemd-boot.enable = true;
@@ -35,16 +35,22 @@
   environment.defaultPackages = [  ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs-unstable.config.allowUnfree = true;
+  nixpkgs-upstream.config.allowUnfree = true;
 
   nix = {
+    settings.experimental-features = [ "nix-command" "flakes" ];
+
     settings.auto-optimise-store = true;
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
+
     extraOptions = {
       experimental-features = [ "experimental-features" "flakes" ]
     };
   };
 }
+
