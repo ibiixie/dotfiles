@@ -62,17 +62,19 @@
       };
     };
 
-    homeConfigurations."biixie" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
+    homeConfigurations = {
+      "biixie" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-      extraSpecialArgs = {
-        inherit inputs;
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+
+        modules = [
+          ./hosts/thinkpad-e495/home.nix
+          ./modules/home-manager
+        ];
       };
-
-      modules = [
-        ./hosts/laptop-e495/home.nix
-        ./modules/home-manager
-      ];
-    };
+    }
   };
 }
