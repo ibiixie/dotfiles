@@ -24,7 +24,7 @@
     system = "x86_64-linux";
 
     pkgs = nixpkgs.legacyPackages.${system};
-    pkgs-unstable = nixpkgs-unstablel.legacyPackages.${system};
+    pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     pkgs-upstream = nixpkgs-upstream.legacyPackages.${system};
 
     # How do I hide this?
@@ -62,6 +62,6 @@
         ./hosts/laptop-e495/home.nix
         ./modules/home-manager
       ];
-    ];
+    };
   };
 }
