@@ -74,6 +74,6 @@
     #     ./hosts/laptop-e495/home.nix
     #     ./modules/home-manager
     #   ];
-    };
+    # };
   };
 }
