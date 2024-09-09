@@ -19,6 +19,9 @@
 
   modules.git = {
     enable = true;
+
+    userName = "imxela";
+    userEmail = "65206220+imxela@users.noreply.github.com";
   };
 
   programs.home-manager.enable = true;
