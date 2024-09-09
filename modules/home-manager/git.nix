@@ -4,7 +4,7 @@
   options = {
     modules.git.enable = lib.mkEnableOption "enable git";
     modules.git.channel = lib.mkOption {
-      type = types.enum [ "stable" "unstable" "upstream" ];
+      type = lib.types.enum [ "stable" "unstable" "upstream" ];
       description = "allows selecting the channel to install from";
       default = "stable";
     };
