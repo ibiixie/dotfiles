@@ -75,6 +75,6 @@
           ./modules/home-manager
         ];
       };
-    }
+    };
   };
 }
