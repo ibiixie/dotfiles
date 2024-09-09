@@ -7,7 +7,7 @@
 
   config =  lib.mkIf config.modules.git.enable {
     home.packages = [
-      pkgs.git
+      pkgs.upstream.git
     ];
   };
 }
