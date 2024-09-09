@@ -4,7 +4,7 @@
   inputs = {
     # Default to stable for software and system
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    
+
     # But allow unstable software where needed
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
@@ -42,7 +42,7 @@
     # How do I hide this?
     username = "biixie";
     name = "Biixie";
-  in 
+  in
   {
     nixosConfigurations = {
       thinkpad-e495 = nixpkgs.lib.nixosSystem {
@@ -61,9 +61,9 @@
     };
 
     homeConfigurations."biixie" = home-manager.lib.homeManagerConfiguration {
-      extraSpecialArgs = { 
+      extraSpecialArgs = {
         inherit inputs;
-	inherit pkgs;
+	    inherit pkgs;
       };
 
       modules = [
