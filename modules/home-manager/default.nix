@@ -2,6 +2,7 @@
 
 {
   imports = [
-    ./git.nix    
+    ./git.nix
+    ./zed-editor.nix
   ];
 }
