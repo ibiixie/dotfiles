@@ -17,9 +17,9 @@
   };
 
   config =  lib.mkIf config.modules.git.enable {
-    # home.packages = [
-    #   pkgs.${config.modules.git.channel}.git
-    # ];
+    home.packages = [
+
+    ];
 
     programs.git = {
       enable = true;
