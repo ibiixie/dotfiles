@@ -7,7 +7,7 @@
       type = types.enum [ "stable" "unstable" "upstream" ];
       description = "allows selecting the channel to install from";
       default = "stable";
-    }
+    };
   };
 
   config =  lib.mkIf config.modules.git.enable {
