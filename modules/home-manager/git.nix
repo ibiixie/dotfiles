@@ -21,7 +21,7 @@
     #   pkgs.${config.modules.git.channel}.git
     # ];
 
-    programs.upstream.git = {
+    programs.git = {
       enable = true;
       userName = config.modules.git.userName;
       userEmail = config.modules.git.userEmail;
