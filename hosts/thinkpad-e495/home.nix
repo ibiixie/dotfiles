@@ -17,7 +17,9 @@
     # EDITOR = "emacs";
   };
 
-  modules.git.enable = true;
+  modules.git = {
+    enable = true;
+  };
 
   programs.home-manager.enable = true;
 }
