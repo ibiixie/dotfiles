@@ -2,10 +2,10 @@
 
 {
   options = {
-    programs.git.enable = lib.mkEnableOption "enable git";
+    modules.git.enable = lib.mkEnableOption "enable git";
   };
 
-  config =  lib.mkIf config.programs.git.enable {
+  config =  lib.mkIf config.modules.git.enable {
     home.packages = [
       pkgs.git
     ];
