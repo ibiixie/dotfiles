@@ -17,7 +17,7 @@
 
     programs.neovim = {
       enable = true;
-      defaultEditor = modules.neovim.defaultEditor;
+      defaultEditor = config.modules.neovim.defaultEditor;
     };
   };
 }
