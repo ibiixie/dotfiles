@@ -9,7 +9,7 @@
 
   config =  mkIf config.git.enable {
    programs.git = {
-     enable = true;
-   };
+      enable = true;
+    };
   };
 }

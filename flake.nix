@@ -30,12 +30,14 @@
 
     pkgs = import nixpkgs {
       inherit system;
+
       config.allowUnfree = true;
+
       overlays = [
         (final: prev: {
           unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-	  upstream = nixpkgs-upstream.legacyPackages.${prev.system};
-	})
+	      upstream = nixpkgs-upstream.legacyPackages.${prev.system};
+	    })
       ];
     };
 
@@ -61,9 +63,10 @@
     };
 
     homeConfigurations."biixie" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+
       extraSpecialArgs = {
         inherit inputs;
-	    inherit pkgs;
       };
 
       modules = [
