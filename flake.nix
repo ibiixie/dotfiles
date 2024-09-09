@@ -18,14 +18,26 @@
   };
 
   outputs = {
-    self, nixpkgs, ...
+    self,
+    nixpkgs,
+    nixpkgs-unstable,
+    nixpkgs-upstream,
+    home-manager,
+    ...
   } @ inputs:
   let
     system = "x86_64-linux";
 
-    pkgs = nixpkgs.legacyPackages.${system};
-    pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
-    pkgs-upstream = nixpkgs-upstream.legacyPackages.${system};
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+      overlays = [
+        (final: prev: {
+          unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+	  upstream = nixpkgs-upstream.legacyPackages.${prev.system};
+	})
+      ];
+    };
 
     # How do I hide this?
     username = "biixie";
@@ -39,8 +51,6 @@
         specialArgs = {
 	  inherit inputs;
           inherit pkgs;
-	  inherit pkgs-unstable;
-	  inherit pkgs-upstream;
         };
 
 	modules = [
@@ -54,8 +64,6 @@
       extraSpecialArgs = { 
         inherit inputs;
 	inherit pkgs;
-	inherit pkgs-unstable;
-	inherit pkgs-upstream;
       };
 
       modules = [

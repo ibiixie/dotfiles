@@ -1,5 +1,9 @@
-# Contains system configuration shared across all hosts
-{ config, pkgs, inputs, outputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   boot.loader.systemd-boot.enable = true;
@@ -8,11 +12,22 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
+  # Todo: Move user stuff to separate module?
+  users.users.biixie = {
+    isNormalUser = true;
+    description = "Biixie";
+    password = "136192";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [];
+  };
+
+  users.mutableUsers = false;
+
   # Todo: Move locale stuff to separate module?
   time.timeZone = "Europe/Stockholm";
 
   i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocalteSettings = {
+  i18n.extraLocaleSettings = {
     LC_ADDRESS = "sv_SE.UTF8";
     LC_IDENTIFICATION = "sv_SE.UTF8";
     LC_MEASUREMENT = "sv_SE.UTF8";
@@ -26,17 +41,13 @@
 
   console.keyMap = "sv-latin1";
 
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "se";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Remove preinstalled packages
   environment.defaultPackages = [  ];
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs-unstable.config.allowUnfree = true;
-  nixpkgs-upstream.config.allowUnfree = true;
 
   nix = {
     settings.experimental-features = [ "nix-command" "flakes" ];
@@ -46,10 +57,6 @@
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
-    };
-
-    extraOptions = {
-      experimental-features = [ "experimental-features" "flakes" ]
     };
   };
 }
