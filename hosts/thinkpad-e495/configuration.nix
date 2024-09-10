@@ -19,9 +19,9 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  # Todo: Turn into module!
   modules = {
     hyprland.enable = true;
+    firefox.enable = true;
   };
 
 

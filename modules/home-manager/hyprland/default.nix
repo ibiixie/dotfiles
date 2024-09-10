@@ -17,9 +17,26 @@
       settings = {
         "$mod" = "SUPER";
 
+        "$terminal" = "foot";
+
+        input = {
+          kb_layout="se";
+	};
+
+        env = [
+          "XCURSOR_SIZE,24"
+	  "HYPRCURSOR_SIZE,24"
+	];
+
         binde = [
           ", XF86MonBrightnessUp, exec, echo 'Hello, world!' >> ~/test.txt"
         ];
+
+	bind = [
+          "$mod, Q, exec, $terminal"
+	  "$mod, C, killactive"
+	  "$mod, M, exit,"
+	];
       };
     };
   };

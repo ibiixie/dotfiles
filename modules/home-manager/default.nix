@@ -6,5 +6,7 @@
     ./neovim
     ./hyprland
     ./zed-editor.nix
+    ./firefox
+    ./foot
   ];
 }

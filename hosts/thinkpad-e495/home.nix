@@ -1,6 +1,13 @@
 { config, pkgs, inputs, outputs, ... }:
 
 {
+  nixpkgs = {
+    overlays = [
+      inputs.nur.overlay
+    ];
+    config.allowUnfree = true;
+  };
+
   home.username = "biixie";
   home.homeDirectory = "/home/biixie";
   home.stateVersion = "24.05";
@@ -14,7 +21,7 @@
   };
 
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   modules = {
@@ -28,6 +35,7 @@
     neovim.enable = true;
     hyprland.enable = true;
     zed-editor.enable = true;
+    foot.enable = true;
   };
 
   programs.home-manager.enable = true;
