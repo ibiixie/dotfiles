@@ -20,6 +20,7 @@
   modules = {
     hyprland.enable = true;
     firefox.enable = true;
+    pipewire.enable = true;
   };
 
   system.stateVersion = "24.05";
