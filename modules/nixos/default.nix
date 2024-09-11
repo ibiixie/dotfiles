@@ -1,6 +1,10 @@
-{ pkgs, lib, inputs, outputs, ... }:
-
 {
+  pkgs,
+  lib,
+  inputs,
+  outputs,
+  ...
+}: {
   imports = [
     ./hyprland
     ./firefox

@@ -1,24 +1,21 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
-    modules.git.enable = lib.mkEnableOption "enable git";
+    modules.git.enable = lib.mkEnableOption "enables and configures git through home-manager";
     modules.git.userName = lib.mkOption {
       description = "git username";
     };
     modules.git.userEmail = lib.mkOption {
       description = "git email";
     };
-    # modules.git.channel = lib.mkOption {
-    #   type = lib.types.enum [ "stable" "unstable" "upstream" ];
-    #   description = "specifies the channel to install from: (stable [default], unstable, upstream)";
-    #   default = "stable";
-    # };
   };
 
-  config =  lib.mkIf config.modules.git.enable {
+  config = lib.mkIf config.modules.git.enable {
     home.packages = [
-
     ];
 
     programs.git = {

@@ -1,17 +1,19 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     modules.zed-editor.enable = lib.mkEnableOption "enable zed";
   };
 
-  config =  lib.mkIf config.modules.git.enable {
+  config = lib.mkIf config.modules.git.enable {
     home.packages = [
       pkgs.unstable.zed-editor
     ];
   };
 }
-
 # Notes
 #
 # Settings
@@ -21,3 +23,4 @@
 # Extensions
 #  - Installed in `$XDF_DATA_HOME/zed/extensions` (if in path) or `~/.local/share/zed/extensions`
 #  - In the above path, the `installed` directory and the `index.json` files need to be created by nix
+

@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     modules.neovim.enable = lib.mkEnableOption "enable neovim";
     modules.neovim.defaultEditor = lib.mkOption {
@@ -10,9 +13,8 @@
     };
   };
 
-  config =  lib.mkIf config.modules.git.enable {
+  config = lib.mkIf config.modules.git.enable {
     home.packages = [
-
     ];
 
     programs.neovim = {

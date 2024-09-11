@@ -1,6 +1,10 @@
-{ config, pkgs, inputs, outputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  outputs,
+  ...
+}: {
   nixpkgs = {
     overlays = [
       inputs.nur.overlay
@@ -13,11 +17,9 @@
   home.stateVersion = "24.05";
 
   home.packages = [
-
   ];
 
   home.file = {
-
   };
 
   home.sessionVariables = {

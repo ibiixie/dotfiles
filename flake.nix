@@ -28,8 +28,7 @@
     nixpkgs-upstream,
     home-manager,
     ...
-  } @ inputs:
-  let
+  } @ inputs: let
     system = "x86_64-linux";
 
     pkgs = import nixpkgs {
@@ -49,8 +48,7 @@
     # How do I hide this?
     username = "biixie";
     name = "Biixie";
-  in
-  {
+  in {
     nixosConfigurations = {
       thinkpad-e495 = nixpkgs.lib.nixosSystem {
         inherit system;

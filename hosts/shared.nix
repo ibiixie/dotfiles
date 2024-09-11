@@ -3,9 +3,7 @@
   pkgs,
   inputs,
   ...
-}:
-
-{
+}: {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -17,7 +15,7 @@
     isNormalUser = true;
     description = "Biixie";
     password = "136192";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [];
   };
 
@@ -47,10 +45,10 @@
   };
 
   # Remove preinstalled packages
-  environment.defaultPackages = [  ];
+  environment.defaultPackages = [];
 
   nix = {
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = ["nix-command" "flakes"];
 
     settings.auto-optimise-store = true;
     gc = {
