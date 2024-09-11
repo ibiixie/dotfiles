@@ -21,6 +21,11 @@
       type = lib.types.bool;
       description = "wether to enable acceleration (libinput/synaptics profile) or not (flat profile)";
     };
+    modules.hyprland.monitors = lib.mkOption {
+      default = [ "auto, preferred, auto, 1" ];
+      type = lib.types.listOf lib.types.string;
+      description = "allows for overriding monitor configuration";
+    };
   };
 
   config = lib.mkIf config.modules.hyprland.enable {
@@ -39,6 +44,12 @@
         "$mod" = "SUPER";
 
         "$terminal" = "foot";
+
+        # monitor = [
+        #   "eDP-1, preferred, auto, 1"
+	# ];
+
+	monitor = config.modules.hyprland.monitors;
 
         general = {
           gaps_in = 7;

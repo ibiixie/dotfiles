@@ -41,6 +41,10 @@
 
       input.sensitivity = -0.20;
       input.acceleration = true;
+    
+      monitors = [
+        "eDP-1, preferred, auto, 1"
+      ];
     };
     
     zed-editor.enable = true;
