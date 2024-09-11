@@ -6,6 +6,21 @@
 }: {
   options = {
     modules.hyprland.enable = lib.mkEnableOption "enables and configures hyprland through home-manager - note: you should enable the global module for hyprland too!";
+    modules.hyprland.input.sensitivity = lib.mkOption {
+      default = -0.75;
+      type = lib.types.float;
+      description = "sets the mouse/touchpad sensitivity";
+    };
+    modules.hyprland.input.keyboard.layout = lib.mkOption {
+      default = "se";
+      type = lib.types.string;
+      description = "allows for overriding the keyboard layout";
+    };
+    modules.hyprland.input.acceleration = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+      description = "wether to enable acceleration (libinput/synaptics profile) or not (flat profile)";
+    };
   };
 
   config = lib.mkIf config.modules.hyprland.enable {
@@ -92,7 +107,7 @@
         };
 
         input = {
-          kb_layout = "se";
+          kb_layout = config.modules.hyprland.input.keyboard.layout; # se
           kb_variant = "";
           kb_model = "";
           kb_options = "";
@@ -100,7 +115,8 @@
 
           follow_mouse = 1;
 
-          sensitivity = -0.75;
+          sensitivity = config.modules.hyprland.input.sensitivity; # -0.75
+          accel_profile = lib.optionalAttrs (!config.modules.hyprland.input.acceleration) "flat";
 
           touchpad = {
             natural_scroll = true;

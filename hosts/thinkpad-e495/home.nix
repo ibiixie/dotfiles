@@ -35,7 +35,14 @@
     };
 
     neovim.enable = true;
-    hyprland.enable = true;
+    
+    hyprland = {
+      enable = true;
+
+      input.sensitivity = -0.20;
+      input.acceleration = true;
+    };
+    
     zed-editor.enable = true;
     foot.enable = true;
   };
