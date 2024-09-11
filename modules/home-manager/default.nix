@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ./git.nix
+    ./git
     ./neovim
     ./hyprland
-    ./zed-editor.nix
+    ./zed-editor
     ./firefox
     ./foot
   ];
