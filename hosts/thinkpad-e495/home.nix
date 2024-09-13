@@ -27,6 +27,9 @@
   };
 
   modules = {
+    fish.enable = true;
+    neovim.enable = true;
+
     git = {
       enable = true;
 
@@ -34,8 +37,6 @@
       userEmail = "65206220+imxela@users.noreply.github.com";
     };
 
-    neovim.enable = true;
-    
     hyprland = {
       enable = true;
 
@@ -46,9 +47,25 @@
         "eDP-1, preferred, auto, 1"
       ];
     };
+
+    fonts = {
+      enable = true;
+
+      iosevka.enable = true;
+
+      defaults = {
+        monospace = [ "iosevka" ];
+      };
+    };
     
     zed-editor.enable = true;
-    foot.enable = true;
+    
+    foot = {
+      enable = true;
+
+      font = "iosevka";
+      fontSize = 8;
+    };
   };
 
   programs.home-manager.enable = true;

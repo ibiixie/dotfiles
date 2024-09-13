@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    modules.zed-editor.enable = lib.mkEnableOption "enable zed";
+    modules.fish.enable = lib.mkEnableOption "enable fish-shell";
   };
 
-  config = lib.mkIf config.modules.git.enable {
+  config = lib.mkIf config.modules.fish.enable {
     programs.fish = {
       enable = true;
 

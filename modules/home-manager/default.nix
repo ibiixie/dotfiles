@@ -13,5 +13,7 @@
     ./firefox
     ./foot
     ./fish
+
+    ./fonts
   ];
 }
