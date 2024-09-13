@@ -13,11 +13,7 @@
     ./firefox
     ./foot
     ./fish
-<<<<<<< Updated upstream
-
     ./fonts
-=======
     ./vscode
->>>>>>> Stashed changes
   ];
 }

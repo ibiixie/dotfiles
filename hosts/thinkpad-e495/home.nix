@@ -71,6 +71,8 @@
 	y = 10;
       };
     };
+
+    vscode.enable = true;
   };
 
   programs.home-manager.enable = true;
