@@ -65,6 +65,11 @@
 
       font = "iosevka";
       fontSize = 8;
+      
+      pad = {
+        x = 10;
+	y = 10;
+      };
     };
   };
 
