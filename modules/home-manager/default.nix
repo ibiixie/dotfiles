@@ -12,5 +12,6 @@
     ./zed-editor
     ./firefox
     ./foot
+    ./fish
   ];
 }

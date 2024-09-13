@@ -21,6 +21,11 @@
     hyprland.enable = true;
     firefox.enable = true;
     pipewire.enable = true;
+    
+    fish = {
+      enable = true;
+      makeDefault = true;
+    };
   };
 
   system.stateVersion = "24.05";

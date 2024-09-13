@@ -9,5 +9,6 @@
     ./hyprland
     ./firefox
     ./pipewire
+    ./fish
   ];
 }
