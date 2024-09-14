@@ -51,6 +51,9 @@
         ms-python.python
         ms-python.debugpy
 
+        # Nix
+        jnoortheen.nix-ide
+
         # Misc
         editorconfig.editorconfig
         usernamehw.errorlens
