@@ -47,6 +47,10 @@
   # Remove preinstalled packages
   environment.defaultPackages = [];
 
+  environment.systemPackages = with pkgs; [
+    wget
+  ];
+
   nix = {
     settings.experimental-features = ["nix-command" "flakes"];
 
