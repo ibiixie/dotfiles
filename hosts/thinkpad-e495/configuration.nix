@@ -23,6 +23,7 @@
     pipewire.enable = true;
     openssh.enable = true;
     nix-ld.enable = true;
+    vscode-server.enable = true;
 
     fish = {
       enable = true;

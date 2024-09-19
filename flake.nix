@@ -19,6 +19,10 @@
     nur = {
       url = "github:nix-community/nur";
     };
+
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+    };
   };
 
   outputs = {
@@ -27,6 +31,7 @@
     nixpkgs-unstable,
     nixpkgs-upstream,
     home-manager,
+    vscode-server,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -59,6 +64,8 @@
         };
 
         modules = [
+          vscode-server.nixosModules.default
+
           ./hosts/thinkpad-e495/configuration.nix
           ./modules/nixos
         ];

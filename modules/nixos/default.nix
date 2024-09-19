@@ -12,5 +12,6 @@
     ./fish
     ./openssh
     ./nix-ld
+    ./nixos-vscode-server
   ];
 }
