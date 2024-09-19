@@ -11,5 +11,6 @@
     ./pipewire
     ./fish
     ./openssh
+    ./nix-ld
   ];
 }

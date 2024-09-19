@@ -22,6 +22,7 @@
     firefox.enable = true;
     pipewire.enable = true;
     openssh.enable = true;
+    nix-ld.enable = true;
 
     fish = {
       enable = true;

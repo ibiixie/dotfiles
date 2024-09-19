@@ -11,7 +11,7 @@ in {
   };
 
   config = lib.mkIf config.modules.openssh.enable {
-    services.pipewire = {
+    services.openssh = {
       enable = true;
       ports = [ 22 ];
     };
