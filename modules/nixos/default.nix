@@ -10,5 +10,6 @@
     ./firefox
     ./pipewire
     ./fish
+    ./openssh
   ];
 }

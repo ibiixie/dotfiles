@@ -29,16 +29,32 @@
   };
 
   config = lib.mkIf config.modules.hyprland.enable {
-    # Note:
-    #       How do I ensure the system-wide hyprland module is enabled from here?
-    #       Would that be possible if i use home-manager as a module rather than stndalone?
+    # Theming stuff, not sure if it should be a separate module?
+    home.pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      package = pkgs.numix-cursor-theme;
+      name = "Numix-Cursor";
+    };
 
-    # programs.hyprland = {
-    #   enable = true;
-    # };
+    gtk = {
+      enable = true;
+
+      theme = {
+        package = pkgs.gnome.gnome-themes-extra;
+	name = "Adwaita-dark";
+      };
+    };
 
     wayland.windowManager.hyprland = {
       enable = true;
+      package = pkgs.hyprland;
+
+      xwayland.enable = true;
+      systemd.enable = true;
+
+      # Fixes systemd not importing environment variables by default
+      systemd.variables = [ "--all" ];
 
       settings = {
         "$mod" = "SUPER";

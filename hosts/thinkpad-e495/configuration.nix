@@ -21,7 +21,8 @@
     hyprland.enable = true;
     firefox.enable = true;
     pipewire.enable = true;
-    
+    openssh.enable = true;
+
     fish = {
       enable = true;
       makeDefault = true;
