@@ -77,6 +77,47 @@
         # jeff-hykin.better-cpp-syntax
         # geequlim.godot-tools
       ];
+
+      userSettings = {
+        "telemetry.telemetryLevel" = "off";
+	"editor.fontLigatures" = false;
+	"editor.fontFamily" = "Iosevka";
+	"editor.fontSize" = 16;
+	"editor.minimap.enabled" = false;
+	"editor.rulers" = [ 80 90 120 ];
+
+	"workbench.colorTheme" = "Catppuccin Mocha";
+	"workbench.reduceMotion" = "on";
+	"workbench.startupEditor" = "none";
+
+	# Gruvbox Dark Hard, Gruvbox Dark Medium, Gruvbox Dark Soft
+        "workbench.preferredDarkColorTheme" = "Catppuccin Mocha";
+
+	"window.menuBarVisibility" = "toggle";
+	"window.titleBarStyle" = "custom";
+	"window.zoomLevel" = 1; # 1 = 120%, -1 = 80%
+	"files.enableTrash" = true;
+
+	"files.eol" = "\r\n";
+
+        "update.mode" = "none";
+	"debug.console.fontFamily" = "Iosevka";
+	"debug.console.fontSize" = 16;
+
+	"extensions.autoCheckUpdates" = false;
+	"extensions.autoUpdate" = false;
+          
+	"terminal.external.linuxExec" = "foot";
+	"terminal.integrated.fontFamily" = "Iosevka";
+	"terminal.integrated.fontSize" = 16;
+
+	"window.systemColorTheme" = "dark";
+        "chat.editor.fontFamily" = "Iosevka";
+        "chat.editor.fontSize" = 16;
+
+        # it's annoying >:c
+	"security.workspace.trust.enabled" = false;
+      };
     };
   };
 }
