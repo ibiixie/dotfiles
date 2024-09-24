@@ -17,6 +17,10 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  environment.systemPackages = [
+    
+  ];
+
   modules = {
     hyprland.enable = true;
     firefox.enable = true;
