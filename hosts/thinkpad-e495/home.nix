@@ -57,6 +57,9 @@
         monospace = [ "iosevka" ];
       };
     };
+
+    # Does not work on Hyprland qwq
+    # flameshot.enable = true;
     
     zed-editor.enable = true;
     

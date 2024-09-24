@@ -15,5 +15,6 @@
     ./fish
     ./fonts
     ./vscode
+    ./flameshot
   ];
 }
