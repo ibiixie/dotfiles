@@ -32,6 +32,8 @@
     grim.enable = true;
     slurp.enable = true;
 
+    vesktop.enable = true;
+
     vscode-server.enable = true;
 
     fish = {

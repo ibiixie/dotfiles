@@ -17,5 +17,7 @@
     ./wl-clipboard
     ./grim
     ./slurp
+
+    ./vesktop
   ];
 }
