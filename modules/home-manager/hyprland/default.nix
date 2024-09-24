@@ -26,6 +26,11 @@
       type = lib.types.listOf lib.types.string;
       description = "allows for overriding monitor configuration";
     };
+    modules.hyprland.printScreenCommand = lib.mkOption {
+      default = "grim -g \"$(slurp)\" - | wl-copy";
+      type = lib.types.str;
+      description = "the command to execute when the printscreen key is pressed - the default one requires grim, slurp and wl-clipboard to be installed";
+    };
   };
 
   config = lib.mkIf config.modules.hyprland.enable {
@@ -176,7 +181,7 @@
           "$mod, C, killactive"
           "$mod, M, exit,"
 
-          ", Print, exec, grim -g \"$(slurp -d)\" - | wl-copy" # should only be added if screenshot option enabled (should it install them all if so too?)
+          ", Print, exec, ${config.modules.hyprland.printScreenCommand}" # should only be added if screenshot option enabled (should it install them all if so too?)
 
           "$mod, Space, exec, ags -t applauncher" # should only be added if option "ags.applauncher.enable" is true (or maybe we can specify the applauncher exec args in a variable/option and feed it into here? or maybe extraConfig in home.nix? idk.
 

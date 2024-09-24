@@ -13,5 +13,9 @@
     ./openssh
     ./nix-ld
     ./nixos-vscode-server
+
+    ./wl-clipboard
+    ./grim
+    ./slurp
   ];
 }
