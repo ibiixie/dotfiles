@@ -17,8 +17,19 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  networking.wireless.iwd = {
+    enable = true;
+
+    settings.Settings = {
+      AutoConnect = true;
+    };
+  };
+
+  networking.networkmanager.wifi.backend = "iwd";
+
   environment.systemPackages = [
-    
+    inputs.blctl
+    pkgs.pwvucontrol
   ];
 
   modules = {
