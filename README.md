@@ -1,5 +1,7 @@
-> [!IMPORTANT]  
-> This rice is outdated and unfinished as I switched from Sway to Hyprland! My new rice will likely be uploaded here at some point in the future :D
+> [!WARNING]  
+> These dotfiles are outdated and incomplete, and they might not function as a result!
+> 
+> I distro-hopped to NixOS/Hyprland and I'm actively working on rewriting them :3
 
 <br>
 
@@ -39,3 +41,4 @@ notes:
 <br><br>
 
 ![screenshot](https://i.imgur.com/NQ6HWt9.png)
+
