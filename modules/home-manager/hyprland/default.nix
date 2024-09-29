@@ -31,6 +31,16 @@
       type = lib.types.str;
       description = "the command to execute when the printscreen key is pressed - the default one requires grim, slurp and wl-clipboard to be installed";
     };
+    modules.hyprland.screenBrightnessUpCommand = lib.mkOption {
+      default = "blctl increase 10";
+      type = lib.types.str;
+      description = "the command to execute when the screen brightness up key is pressed - executes `blctl increase 10` by default";
+    };
+    modules.hyprland.screenBrightnessDownCommand = lib.mkOption {
+      default = "blctl decrease 10";
+      type = lib.types.str;
+      description = "the command to execute whe the screen brightness down key is pressed - executes `blctl decrease 10` by default";
+    };
   };
 
   config = lib.mkIf config.modules.hyprland.enable {
@@ -173,7 +183,8 @@
         ];
 
         binde = [
-          ", XF86MonBrightnessUp, exec, echo 'Hello, world!' >> ~/test.txt"
+          ", XF86MonBrightnessUp, exec, ${config.modules.hyprland.screenBrightnessUpCommand}"
+	  ", XF86MonBrightnessDown, exec, ${config.modules.hyprland.screenBrightnessDownCommand}"
         ];
 
         bind = [

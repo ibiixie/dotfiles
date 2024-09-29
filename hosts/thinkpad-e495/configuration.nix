@@ -4,7 +4,10 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+let
+  
+in {
   imports = [
     ./hardware-configuration.nix
     ../shared.nix
@@ -28,7 +31,7 @@
   networking.networkmanager.wifi.backend = "iwd";
 
   environment.systemPackages = [
-    inputs.blctl
+    # pkgs.blctl
     pkgs.pwvucontrol
   ];
 
@@ -45,13 +48,13 @@
 
     vesktop.enable = true;
 
-    vscode-server.enable = true;
-
     fish = {
       enable = true;
       makeDefault = true;
     };
   };
+
+  services.blctl.enable = true;
 
   system.stateVersion = "24.05";
 }

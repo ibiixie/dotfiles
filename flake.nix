@@ -23,6 +23,10 @@
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
     };
+
+    blctl = {
+      url = "github:imxela/blctl/rework";
+    };
   };
 
   outputs = {
@@ -32,6 +36,7 @@
     nixpkgs-upstream,
     home-manager,
     vscode-server,
+    blctl,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -46,6 +51,8 @@
           stable = nixpkgs.legacyPackages.${prev.system};
           unstable = nixpkgs-unstable.legacyPackages.${prev.system};
           upstream = nixpkgs-upstream.legacyPackages.${prev.system};
+          
+          blctl = inputs.blctl.packages.${prev.system}.default;
         })
       ];
     };
@@ -65,6 +72,7 @@
 
         modules = [
           vscode-server.nixosModules.default
+          blctl.nixosModules.default
 
           ./hosts/thinkpad-e495/configuration.nix
           ./modules/nixos
