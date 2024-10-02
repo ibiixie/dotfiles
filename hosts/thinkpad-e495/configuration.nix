@@ -48,6 +48,8 @@ in {
 
     vesktop.enable = true;
 
+    obsidian.enable = true;
+
     fish = {
       enable = true;
       makeDefault = true;

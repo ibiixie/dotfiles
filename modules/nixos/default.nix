@@ -19,5 +19,7 @@
     ./slurp
 
     ./vesktop
+
+    ./obsidian
   ];
 }
