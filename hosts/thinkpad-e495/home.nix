@@ -48,6 +48,10 @@
       ];
     };
 
+    ags = {
+      enable = true;
+    };
+
     fonts = {
       enable = true;
 

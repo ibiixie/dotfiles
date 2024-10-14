@@ -27,6 +27,8 @@
     blctl = {
       url = "github:imxela/blctl/refs/tags/v1.0.0";
     };
+
+    ags.url = "github:Aylur/ags";
   };
 
   outputs = {

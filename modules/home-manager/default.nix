@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [
+    ./ags
     ./git
     ./neovim
     ./hyprland
