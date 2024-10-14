@@ -9,6 +9,7 @@
     ./hyprland
     ./firefox
     ./pipewire
+    ./tlp
     ./fish
     ./openssh
     ./nix-ld

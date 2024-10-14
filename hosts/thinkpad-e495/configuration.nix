@@ -31,7 +31,6 @@ in {
   networking.networkmanager.wifi.backend = "iwd";
 
   environment.systemPackages = [
-    # pkgs.blctl
     pkgs.pwvucontrol
   ];
 
@@ -39,6 +38,7 @@ in {
     hyprland.enable = true;
     firefox.enable = true;
     pipewire.enable = true;
+    tlp.enable = true;
     openssh.enable = true;
     nix-ld.enable = true;
 

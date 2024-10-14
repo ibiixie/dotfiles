@@ -25,7 +25,7 @@
     };
 
     blctl = {
-      url = "github:imxela/blctl/rework";
+      url = "github:imxela/blctl/refs/tags/v1.0.0";
     };
   };
 
