@@ -34,9 +34,6 @@
   };
 
   config = lib.mkIf config.modules.foot.enable {
-    home.packages = [
-    ];
-
     programs.foot = {
       enable = true;
 

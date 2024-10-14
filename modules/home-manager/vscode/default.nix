@@ -9,9 +9,6 @@
   };
 
   config = lib.mkIf config.modules.git.enable {
-    home.packages = [
-    ];
-
     programs.vscode = {
       enable = true;
 

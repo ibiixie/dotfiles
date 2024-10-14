@@ -10,9 +10,6 @@
   };
 
   config = lib.mkIf config.modules.firefox.enable {
-    home.packages = [
-    ];
-
     programs.firefox = {
       enable = true;
 

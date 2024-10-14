@@ -14,9 +14,6 @@
   };
 
   config = lib.mkIf config.modules.git.enable {
-    home.packages = [
-    ];
-
     programs.neovim = {
       enable = true;
       defaultEditor = config.modules.neovim.defaultEditor;

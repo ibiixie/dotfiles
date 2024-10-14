@@ -21,9 +21,7 @@
 	  showHelp = false;
 
 	  # I have no notification daemon, might have to disable?
-	  showDesktopNotification = false;
-
-	  
+	  showDesktopNotification = false;	  
 	};
       };
     };

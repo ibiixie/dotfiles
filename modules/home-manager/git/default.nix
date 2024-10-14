@@ -15,9 +15,6 @@
   };
 
   config = lib.mkIf config.modules.git.enable {
-    home.packages = [
-    ];
-
     programs.git = {
       enable = true;
       userName = config.modules.git.userName;

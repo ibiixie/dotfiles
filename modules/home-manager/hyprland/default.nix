@@ -13,7 +13,7 @@
     };
     modules.hyprland.input.keyboard.layout = lib.mkOption {
       default = "se";
-      type = lib.types.string;
+      type = lib.types.str;
       description = "allows for overriding the keyboard layout";
     };
     modules.hyprland.input.acceleration = lib.mkOption {
