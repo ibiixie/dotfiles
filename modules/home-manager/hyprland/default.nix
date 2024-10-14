@@ -41,6 +41,21 @@
       type = lib.types.str;
       description = "the command to execute whe the screen brightness down key is pressed - executes `blctl decrease 10` by default";
     };
+    modules.hyprland.audioVolumeUpCommand = lib.mkOption {
+      default = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+";
+      type = lib.types.str;
+      description = "the command to execute whe the volume up key is pressed - uses wpctl by default";
+    };
+    modules.hyprland.audioVolumeDownCommand = lib.mkOption {
+      default = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-";
+      type = lib.types.str;
+      description = "the command to execute when the volume down key is pressed - uses wpctl by default";
+    };
+    modules.hyprland.toggleAudioMuteCommand = lib.mkOption {
+      default = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+      type = lib.types.str;
+      description = "the command to execute when the audio mute key is pressed - uses wpctl by default";
+    };
   };
 
   config = lib.mkIf config.modules.hyprland.enable {
@@ -185,6 +200,8 @@
         binde = [
           ", XF86MonBrightnessUp, exec, ${config.modules.hyprland.screenBrightnessUpCommand}"
 	  ", XF86MonBrightnessDown, exec, ${config.modules.hyprland.screenBrightnessDownCommand}"
+	  ", XF86AudioRaiseVolume, exec, ${config.modules.hyprland.audioVolumeUpCommand}"
+	  ", XF86AudioLowerVolume, exec, ${config.modules.hyprland.audioVolumeDownCommand}"
         ];
 
         bind = [
@@ -195,6 +212,8 @@
           ", Print, exec, ${config.modules.hyprland.printScreenCommand}" # should only be added if screenshot option enabled (should it install them all if so too?)
 
           "$mod, Space, exec, ags -t applauncher" # should only be added if option "ags.applauncher.enable" is true (or maybe we can specify the applauncher exec args in a variable/option and feed it into here? or maybe extraConfig in home.nix? idk.
+
+          ", XF86AudioMute, exec, ${config.modules.hyprland.toggleAudioMuteCommand}"
 
           "$mod, left, movefocus, l"
           "$mod, right, movefocus, r"
