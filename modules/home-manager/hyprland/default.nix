@@ -193,7 +193,9 @@
           "swww-daemon" # should only be added if an swww option is enabled
           "gammastep -l 59:16" # should only be added if a gammastep option is enabled, and the coords should be an option too
           "otd-daemon" # should only be added if opentabletdriver option is enabled
-          "ags -c ~/.config/ags/config.js" # should only be added if ags option is enabled
+          "ags -c ~/.config/ags/bar/config.js" # should only be added if ags option is enabled
+	  "ags -c ~/.config/ags/notifications/config.js"
+	  "ags -c ~/.config/ags/applauncher/config.js"
           ""
         ];
 
