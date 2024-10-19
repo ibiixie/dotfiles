@@ -205,6 +205,7 @@ function Bar(monitor = 0) {
     })
 }
 
+/*
 App.config({
     style: "./style.css",
     windows: [
@@ -215,5 +216,6 @@ App.config({
         // Bar(1)
     ],
 })
+*/
 
-export { }
+export default Bar;
