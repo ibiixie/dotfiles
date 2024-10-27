@@ -22,5 +22,7 @@
     ./vesktop
 
     ./obsidian
+
+    ./rust
   ];
 }

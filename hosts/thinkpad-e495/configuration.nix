@@ -54,6 +54,8 @@ in {
       enable = true;
       makeDefault = true;
     };
+
+    rust.enable = true;
   };
 
   services.blctl.enable = true;
