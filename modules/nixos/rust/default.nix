@@ -12,11 +12,11 @@ in {
 
   config = lib.mkIf config.modules.slurp.enable {
     environment.systemPackages = with pkgs; [
-      cargo
-      rustc
-      rust-analyzer
-      rustfmt
-      clippy
+      unstable.cargo
+      unstable.rustc
+      unstable.rust-analyzer
+      unstable.rustfmt
+      unstable.clippy
     ];
   };
 }
