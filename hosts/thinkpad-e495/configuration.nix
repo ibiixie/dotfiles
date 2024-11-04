@@ -56,6 +56,8 @@ in {
     };
 
     rust.enable = true;
+
+    steam.enable = true;
   };
 
   services.blctl.enable = true;

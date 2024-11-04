@@ -24,5 +24,7 @@
     ./obsidian
 
     ./rust
+
+    ./steam
   ];
 }
