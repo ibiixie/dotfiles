@@ -10,7 +10,7 @@
     ./git
     ./neovim
     ./hyprland
-    ./zed-editor
+#    ./zed-editor
     ./firefox
     ./foot
     ./fish

@@ -48,10 +48,6 @@
       ];
     };
 
-    ags = {
-      enable = true;
-    };
-
     fonts = {
       enable = true;
 
@@ -65,7 +61,8 @@
     # Does not work on Hyprland qwq
     # flameshot.enable = true;
     
-    zed-editor.enable = true;
+    # Cannot compile it because the build process results pagefiling :c
+    # zed-editor.enable = true;
     
     foot = {
       enable = true;
@@ -80,6 +77,8 @@
     };
 
     vscode.enable = true;
+
+    ags.enable = true;
   };
 
   programs.home-manager.enable = true;

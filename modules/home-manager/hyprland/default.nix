@@ -193,7 +193,7 @@
           "swww-daemon" # should only be added if an swww option is enabled
           "gammastep -l 59:16" # should only be added if a gammastep option is enabled, and the coords should be an option too
           "otd-daemon" # should only be added if opentabletdriver option is enabled
-          "ags" # should only be added if ags option is enabled
+          "ags run" # should only be added if ags option is enabled
         ];
 
         binde = [
