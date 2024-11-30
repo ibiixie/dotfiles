@@ -116,8 +116,8 @@
         decoration = {
           rounding = 6;
 
-          active_opacity = 1; # 0.8
-          inactive_opacity = 1; # 0.8
+          active_opacity = 0.9; # 0.8
+          inactive_opacity = 0.9; # 0.8vibrancy = 0.4; # 
 
           drop_shadow = false;
           shadow_range = 4;
@@ -125,16 +125,16 @@
           "col.shadow" = "rgba(1a1a1aee)";
 
           blur = {
-            enabled = false; # true
-            size = 7;
-            passes = 4;
+            enabled = true; # true
+            size = 4; # size = 7;
+            passes = 1; # passes = 4;
 
             vibrancy = 0.24; # 0.1696
           };
         };
 
         animations = {
-          enabled = false; # true
+          enabled = true; # true
 
           bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
 
