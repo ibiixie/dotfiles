@@ -1,5 +1,7 @@
 import { App, Astal, Gdk } from "astal/gtk3"
-import { Variable, GLib } from "astal"
+import { Variable, GLib, bind } from "astal"
+
+import Battery from "gi://AstalBattery"
 
 function Time({ format = "%H:%M"}) {
     const time = Variable<string>("").poll(1000, () =>
@@ -10,6 +12,18 @@ function Time({ format = "%H:%M"}) {
         onDestroy = { () => time.drop() }
         label = { time() }
     />
+}
+
+function BatteryLevel() {
+    const bat = Battery.get_default();
+
+    print(bat.percentage)
+
+    return <box className="Battery">
+        <label label={bind(bat, "percentage").as(p =>
+            `${Math.floor(p * 100)} %`
+        )} />
+    </box>
 }
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
@@ -28,6 +42,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         }
         application = {App}>
         <box vertical = {true}>
+            <BatteryLevel/>
             <Time/>
         </box>
     </window>

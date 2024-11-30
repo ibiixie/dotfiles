@@ -19,8 +19,11 @@
 
       extraPackages = with pkgs; [
         gtksourceview
-	webkitgtk
-	accountsservice
+	      webkitgtk
+	      accountsservice
+
+        # Astal libs
+        inputs.ags.packages.${pkgs.system}.battery
       ];
     };
   };

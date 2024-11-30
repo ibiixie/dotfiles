@@ -14,6 +14,7 @@
     ./openssh
     ./nix-ld
     ./nixos-vscode-server
+    ./upower
 
     ./swww
 

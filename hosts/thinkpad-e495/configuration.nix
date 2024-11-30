@@ -41,6 +41,7 @@ in {
     tlp.enable = true;
     openssh.enable = true;
     nix-ld.enable = true;
+    upower.enable = true;
 
     swww.enable = true;
 
