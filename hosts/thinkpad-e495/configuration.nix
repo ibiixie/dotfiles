@@ -42,6 +42,8 @@ in {
     openssh.enable = true;
     nix-ld.enable = true;
 
+    swww.enable = true;
+
     wl-clipboard.enable = true;
     grim.enable = true;
     slurp.enable = true;

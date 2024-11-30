@@ -1,29 +1,34 @@
-import { App, Astal, Gtk, Gdk } from "astal/gtk3"
-import { Variable } from "astal"
+import { App, Astal, Gdk } from "astal/gtk3"
+import { Variable, GLib } from "astal"
 
-const time = Variable("").poll(1000, "date")
+function Time({ format = "%H:%M"}) {
+    const time = Variable<string>("").poll(1000, () =>
+        GLib.DateTime.new_now_local().format(format)!)
+
+    return <label
+        className = "Time"
+        onDestroy = { () => time.drop() }
+        label = { time() }
+    />
+}
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
     return <window
         className="Bar"
-        gdkmonitor={gdkmonitor}
-        exclusivity={Astal.Exclusivity.EXCLUSIVE}
-        anchor={Astal.WindowAnchor.TOP
-            | Astal.WindowAnchor.LEFT
-            | Astal.WindowAnchor.RIGHT}
-        application={App}>
-        <centerbox>
-            <button
-                onClicked="echo hello"
-                halign={Gtk.Align.CENTER} >
-                Welcome to AGS!
-            </button>
-            <box />
-            <button
-                onClick={() => print("hello")}
-                halign={Gtk.Align.CENTER} >
-                <label label={time()} />
-            </button>
-        </centerbox>
+        marginLeft = {16}
+        marginTop = {16}
+        marginBottom = {16}
+        borderWidth = { 0 }
+        gdkmonitor = {gdkmonitor}
+        exclusivity = {Astal.Exclusivity.EXCLUSIVE}
+        anchor = {
+            Astal.WindowAnchor.LEFT
+            | Astal.WindowAnchor.TOP
+            | Astal.WindowAnchor.BOTTOM
+        }
+        application = {App}>
+        <box vertical = {true}>
+            <Time/>
+        </box>
     </window>
 }

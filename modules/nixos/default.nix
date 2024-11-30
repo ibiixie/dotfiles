@@ -15,6 +15,8 @@
     ./nix-ld
     ./nixos-vscode-server
 
+    ./swww
+
     ./wl-clipboard
     ./grim
     ./slurp
