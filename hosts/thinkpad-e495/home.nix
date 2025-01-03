@@ -37,8 +37,10 @@
       userEmail = "65206220+imxela@users.noreply.github.com";
     };
 
+    niri.enable = true;
+
     hyprland = {
-      enable = true;
+      enable = false;
 
       input.sensitivity = -0.20;
       input.acceleration = true;
@@ -79,6 +81,7 @@
     vscode.enable = true;
 
     ags.enable = true;
+    fuzzel.enable = true;
   };
 
   programs.home-manager.enable = true;

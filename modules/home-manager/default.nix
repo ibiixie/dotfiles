@@ -10,6 +10,7 @@
     ./git
     ./neovim
     ./hyprland
+    ./niri
 #    ./zed-editor
     ./firefox
     ./foot
@@ -17,5 +18,6 @@
     ./fonts
     ./vscode
     ./flameshot
+    ./fuzzel
   ];
 }

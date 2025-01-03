@@ -35,7 +35,7 @@ in {
   ];
 
   modules = {
-    hyprland.enable = true;
+    # hyprland.enable = true;
     firefox.enable = true;
     pipewire.enable = true;
     tlp.enable = true;

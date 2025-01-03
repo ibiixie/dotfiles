@@ -31,6 +31,10 @@
     ags = {
       url = "github:aylur/ags";
     };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+    };
   };
 
   outputs = {
@@ -41,6 +45,7 @@
     home-manager,
     vscode-server,
     blctl,
+    niri,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -93,6 +98,8 @@
         };
 
         modules = [
+          niri.homeModules.niri
+
           ./hosts/thinkpad-e495/home.nix
           ./modules/home-manager
         ];

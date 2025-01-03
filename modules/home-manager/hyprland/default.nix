@@ -210,7 +210,8 @@
 
           ", Print, exec, ${config.modules.hyprland.printScreenCommand}" # should only be added if screenshot option enabled (should it install them all if so too?)
 
-          "$mod, Space, exec, ags -t applauncher" # should only be added if option "ags.applauncher.enable" is true (or maybe we can specify the applauncher exec args in a variable/option and feed it into here? or maybe extraConfig in home.nix? idk.
+          "$mod, Space, exec, fuzzel"
+          # "$mod, Space, exec, ags -t applauncher" # should only be added if option "ags.applauncher.enable" is true (or maybe we can specify the applauncher exec args in a variable/option and feed it into here? or maybe extraConfig in home.nix? idk.
 
           ", XF86AudioMute, exec, ${config.modules.hyprland.toggleAudioMuteCommand}"
 
