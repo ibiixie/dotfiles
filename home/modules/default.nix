@@ -4,6 +4,10 @@
 {
   imports = [
     ./stylix.nix
+    ./fish.nix
     ./nixvim.nix
+    ./hyprland.nix
+    ./git.nix
+    ./sops.nix
   ];
 }

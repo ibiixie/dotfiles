@@ -52,9 +52,6 @@
     hyprland.enable = true;
     
     git.enable = true;
-
-    # Why did I put this here? :D
-    # dconf.enable = true;
   };
 
   # Used by various software for system authentication.
