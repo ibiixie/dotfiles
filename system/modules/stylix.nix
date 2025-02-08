@@ -31,7 +31,9 @@
     base16Scheme = {
       base00 = "1E1E2E";
       base01 = "181825";
-      base02 = "313244";
+      # base02 = "313244";
+      # base02 = "585B70";
+      base02 = "45475A"; # ...with higher contrast!
       base03 = "45475A";
       base04 = "585B70";
       base05 = "CDD6F4";
@@ -42,7 +44,7 @@
       base0A = "F9E2AF";
       base0B = "A6E3A1";
       base0C = "94E2D5";
-      base0D = "CBA6F7"; # ...with more purple :3
+      base0D = "CBA6F7"; # ...and more purple :3
       base0E = "CBA6F7";
       base0F = "F2CDCD";
     };
