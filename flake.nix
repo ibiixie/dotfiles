@@ -1,109 +1,71 @@
 {
-  description = "NixOS configuration";
+  description = "Biixie's NixOS system flake! (v3.0.0)";
 
   inputs = {
-    # Default to stable for software and system
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-
-    # But allow unstable software where needed
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-
-    # And directly from upstream too
-    nixpkgs-upstream.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur = {
-      url = "github:nix-community/nur";
+    stylix.url = "github:danth/stylix";
+    
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    vscode-server = {
-      url = "github:nix-community/nixos-vscode-server";
-    };
-
-    blctl = {
-      url = "github:imxela/blctl/refs/tags/v1.0.0";
-    };
-
-    ags = {
-      url = "github:aylur/ags";
-    };
-
-    niri = {
-      url = "github:sodiboo/niri-flake";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    nixpkgs-upstream,
-    home-manager,
-    vscode-server,
-    blctl,
-    niri,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
+  outputs = inputs @ { self, nixpkgs, ... }:
+    let
+      inherit (self) outputs;
 
-    pkgs = import nixpkgs {
-      inherit system;
-
-      config.allowUnfree = true;
-
-      overlays = [
-        (final: prev: {
-          stable = nixpkgs.legacyPackages.${prev.system};
-          unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-          upstream = nixpkgs-upstream.legacyPackages.${prev.system};
-          
-          blctl = inputs.blctl.packages.${prev.system}.default;
-        })
+      systems = [
+        "x86_64-linux"
       ];
-    };
 
-    # How do I hide this?
-    username = "biixie";
-    name = "Biixie";
-  in {
-    nixosConfigurations = {
-      thinkpad-e495 = nixpkgs.lib.nixosSystem {
-        inherit system;
+      pkgsFor = nixpkgs.lib.genAttrs systems (system: 
+        import nixpkgs {
+          inherit system;
 
-        specialArgs = {
-          inherit inputs;
-          inherit pkgs;
+          config.allowUnfree = true;
+        });
+    in {
+      nixosConfigurations = {
+        e495 = nixpkgs.lib.nixosSystem {
+          pkgs = pkgsFor.x86_64-linux;
+          specialArgs = { inherit inputs outputs; };
+
+          modules = [
+            inputs.stylix.nixosModules.stylix
+
+            ./system
+            ./system/hosts/e495/configuration.nix
+          ];
         };
+      };
 
-        modules = [
-          vscode-server.nixosModules.default
-          blctl.nixosModules.default
+      homeConfigurations = {
+        biixie = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor.x86_64-linux;
 
-          ./hosts/thinkpad-e495/configuration.nix
-          ./modules/nixos
-        ];
+          modules = [
+            inputs.stylix.homeManagerModules.stylix
+            inputs.nixvim.homeManagerModules.nixvim
+            inputs.sops-nix.homeManagerModules.sops
+
+            ./home
+            ./home/users/biixie/home.nix
+          ];
+
+          extraSpecialArgs = { inherit inputs outputs; };
+        };
       };
     };
-
-    homeConfigurations = {
-      "biixie" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-
-        modules = [
-          niri.homeModules.niri
-
-          ./hosts/thinkpad-e495/home.nix
-          ./modules/home-manager
-        ];
-      };
-    };
-  };
 }
