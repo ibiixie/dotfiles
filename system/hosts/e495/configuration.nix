@@ -21,6 +21,16 @@
     enable32Bit = true;
   };
 
+  services = {
+    tlp = {
+      enable = true;
+
+      # settings = {
+      #   STOP_CHARGE_THRESH_BAT0 = 80;
+      # };
+    };
+  };
+
   hardware.enableAllFirmware = true;
 
   # networking.hostName = "nixos"; # Define your hostname.
