@@ -66,7 +66,7 @@
         "SUPER, f4, exec, hyprctl kill"
 
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioMicMute, exec, wpctl, set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       ];
 
       binde = [
