@@ -1,10 +1,15 @@
 # Contains system-wide packages that should be installed on all of my hosts.
 
-{ config, lib, pkgs, ...}:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
-    ./stylix.nix 
+    ./stylix.nix
   ];
 
   environment.systemPackages = [
@@ -12,4 +17,3 @@
     pkgs.wl-clipboard-rs
   ];
 }
-

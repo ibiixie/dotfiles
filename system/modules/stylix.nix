@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   stylix = {
@@ -50,4 +55,3 @@
     };
   };
 }
-
