@@ -23,6 +23,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    blctl = {
+      url = "github:ibiixie/blctl";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -51,6 +56,7 @@
 
           modules = [
             inputs.stylix.nixosModules.stylix
+            inputs.blctl.nixosModules.default
 
             ./system
             ./system/hosts/e495/configuration.nix

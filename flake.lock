@@ -67,6 +67,26 @@
         "type": "github"
       }
     },
+    "blctl": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735731469,
+        "narHash": "sha256-FV39yQII25eLymE16IQt1WTMfmQNmYeKwfYHpYc0wPs=",
+        "owner": "ibiixie",
+        "repo": "blctl",
+        "rev": "ebe4deb8f6dfb9856798fc59a4a671b3aae53230",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ibiixie",
+        "repo": "blctl",
+        "type": "github"
+      }
+    },
     "devshell": {
       "inputs": {
         "nixpkgs": [
@@ -503,6 +523,7 @@
     },
     "root": {
       "inputs": {
+        "blctl": "blctl",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",

@@ -77,9 +77,9 @@
       ];
 
       binde = [
-        # Todo: blctl!
-        # ", XF86MonBrightnessUp, exec, blctl increase 10"
-        # ", XF86MonBrightnessDown, exec, blctl decrease 10"
+        ", XF86MonBrightnessUp, exec, blctl increase 10"
+        ", XF86MonBrightnessDown, exec, blctl decrease 10"
+
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-"
       ];
