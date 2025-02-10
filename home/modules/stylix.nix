@@ -19,7 +19,7 @@
     fonts = {
       monospace = {
         package = pkgs.nerd-fonts.agave;
-        name = "Agave Nerd Font";
+        name = "Agave Nerd Font Mono";
       };
 
       sizes = {
