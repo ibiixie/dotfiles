@@ -9,6 +9,7 @@
 {
   imports = [
     ./stylix.nix
+    ./foot.nix
     ./fish.nix
     ./helix.nix
     ./nixvim.nix
