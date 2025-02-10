@@ -55,6 +55,7 @@
         "SUPER, 8, workspace, 8"
         "SUPER, 9, workspace, 9"
         "SUPER, 0, workspace, 10"
+        "SUPER, dead_acute, togglespecialworkspace"
 
         "SUPERSHIFT, 1, movetoworkspace, 1"
         "SUPERSHIFT, 2, movetoworkspace, 2"
@@ -66,6 +67,7 @@
         "SUPERSHIFT, 8, movetoworkspace, 8"
         "SUPERSHIFT, 9, movetoworkspace, 9"
         "SUPERSHIFT, 0, movetoworkspace, 10"
+        "SUPERSHIFT, dead_acute, movetoworkspace, special"
 
         "SUPERSHIFT, f4, exit"
         "SUPER, f4, exec, hyprctl kill"
