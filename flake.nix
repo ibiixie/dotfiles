@@ -62,6 +62,18 @@
             ./system/hosts/e495/configuration.nix
           ];
         };
+
+        desktop = nixpkgs.lib.nixosSystem {
+          pkgs = pkgsFor.x86_64-linux;
+          specialArgs = { inherit inputs outputs; };
+
+          modules = [
+            inputs.stylix.nixosModules.stylix
+
+            ./system
+            ./system/hosts/desktop/configuration.nix
+          ];
+        };
       };
 
       homeConfigurations = {

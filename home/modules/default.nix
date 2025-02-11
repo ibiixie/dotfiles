@@ -15,6 +15,7 @@
     ./nixvim.nix
     ./hyprland.nix
     ./git.nix
+    ./ssh.nix
     ./sops.nix
   ];
 }
