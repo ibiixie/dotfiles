@@ -31,6 +31,12 @@
   # Tty keyboard layout.
   console.keyMap = "sv-latin1";
 
+  # Graphics acceleration.
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   services = {
     # Keyboard layout.
     xserver.xkb.layout = "se";
