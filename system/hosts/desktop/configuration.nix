@@ -18,6 +18,7 @@
   hardware.enableAllHardware = true;
 
   hardware.graphics.extraPackages = [
+    pkgs.intel-media-driver
     pkgs.vpl-gpu-rt
     pkgs.intel-compute-runtime
   ];
