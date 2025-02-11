@@ -17,6 +17,11 @@
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
 
+  hardware.graphics.extraPackages = [
+    pkgs.intel-media-driver
+    pkgs.intel-compute-runtime
+  ];
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
