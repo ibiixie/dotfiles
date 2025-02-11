@@ -15,6 +15,7 @@
     settings = {
       monitor = [
         "eDP-1, 1920x1080@60.00800, 0x0, 1"
+        "DP-4, 2560x1440@164.84, 0x0, 1"
       ];
 
       decoration = {
