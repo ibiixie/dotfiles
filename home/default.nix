@@ -25,11 +25,10 @@
   # Enable Wayland for Electron applications.
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = _: true;
+
   programs = {
-    foot.enable = true;
-
-    firefox.enable = true;
-
     hyfetch.enable = true;
     fastfetch.enable = true;
 

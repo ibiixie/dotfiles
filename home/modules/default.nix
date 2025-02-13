@@ -17,5 +17,6 @@
     ./git.nix
     ./ssh.nix
     ./sops.nix
+    ./firefox.nix
   ];
 }
