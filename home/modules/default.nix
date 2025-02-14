@@ -18,5 +18,6 @@
     ./ssh.nix
     ./sops.nix
     ./firefox.nix
+    ./gammastep.nix
   ];
 }
