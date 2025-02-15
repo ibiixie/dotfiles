@@ -47,11 +47,21 @@
     udisks2.enable = true;
   };
 
-  # Enable support for Nix flakes.
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+
+      auto-optimise-store = true;
+    };
+
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 3d";
+    };
+  };
 
   users.users.biixie = {
     shell = pkgs.fish;
