@@ -10,6 +10,7 @@
 {
   imports = [
     ./stylix.nix
+    ./greetd.nix
   ];
 
   environment.systemPackages = [
