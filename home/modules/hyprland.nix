@@ -13,10 +13,18 @@
     systemd.enable = true;
 
     settings = {
+      general = {
+        resize_on_border = true;
+      };
+
       monitor = [
         "eDP-1, 1920x1080@60.00800, 0x0, 1"
         "DP-4, 2560x1440@164.84, 0x0, 1"
       ];
+
+      dwindle = {
+        preserve_split = true;
+      };
 
       decoration = {
         rounding = 10;
@@ -123,6 +131,11 @@
 
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+      ];
+
+      bindm = [
+        "SUPER, mouse:272, movewindow"
+        "SUPER, mouse:273, resizewindow 0"
       ];
 
       binde = [
