@@ -82,6 +82,10 @@
     git.enable = true;
   };
 
+  environment.systemPackages = [
+    pkgs.ripgrep
+  ];
+
   # Used by various software for system authentication.
   security.polkit.enable = true;
 }
