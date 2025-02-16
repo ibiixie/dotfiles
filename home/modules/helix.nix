@@ -9,6 +9,8 @@
   programs.helix = {
     enable = true;
 
+    defaultEditor = true;
+
     settings = {
       editor = {
         scrolloff = 10;
