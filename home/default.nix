@@ -29,9 +29,6 @@
   nixpkgs.config.allowUnfreePredicate = _: true;
 
   programs = {
-    hyfetch.enable = true;
-    fastfetch.enable = true;
-
     btop.enable = true;
   };
 }

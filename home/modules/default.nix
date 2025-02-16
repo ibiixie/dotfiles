@@ -14,6 +14,7 @@
     ./helix.nix
     ./nixvim.nix
     ./hyprland.nix
+    ./hyfetch.nix
     ./git.nix
     ./ssh.nix
     ./sops.nix
