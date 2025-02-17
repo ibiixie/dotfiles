@@ -126,6 +126,8 @@
         "SUPERSHIFT, 0, movetoworkspace, 10"
         "SUPERSHIFT, dead_acute, movetoworkspace, special"
 
+        "SUPER, F, fullscreen"
+
         "SUPERSHIFT, f4, exit"
         "SUPER, f4, exec, hyprctl kill"
 
