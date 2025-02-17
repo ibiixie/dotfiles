@@ -38,7 +38,7 @@
           size = 6;
           passes = 2;
           ignore_opacity = true;
-          xray = true;
+          xray = false;
         };
 
         shadow = {
