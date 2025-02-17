@@ -80,7 +80,7 @@
         kb_layout = "se";
 
         accel_profile = "flat";
-        
+
         sensitivity = -0.25;
 
         touchpad = {
@@ -98,7 +98,7 @@
 
       misc = {
         vrr = 1;
-        
+
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
       };
@@ -140,6 +140,9 @@
 
         "SUPERSHIFT, f4, exit"
         "SUPER, f4, exec, hyprctl kill"
+
+        # TODO: Display notification!
+        ", Print, exec, grim -g \"$(slurp)\" - | wl-copy -t image/png"
 
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"

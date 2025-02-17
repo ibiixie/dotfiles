@@ -28,6 +28,11 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
 
+  home.packages = [
+    pkgs.grim
+    pkgs.slurp
+  ];
+
   programs = {
     btop.enable = true;
   };
