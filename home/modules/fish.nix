@@ -31,7 +31,18 @@
 
     functions = {
       fish_greeting = ''
-        # Keep it empty for now! 
+        # hyfetch 
+      '';
+
+      fish_prompt = ''
+        string join -- \
+          (set_color cyan) '[ ' \
+          (set_color brmagenta) (whoami) '@' (hostname) \
+          ' ' \
+          (set_color normal) (prompt_pwd) \
+          (set_color cyan) ' ]' \
+          (set_color cyan) (fish_git_prompt) \
+          (set_color brmagenta) ' Ɛ> '
       '';
     };
   };

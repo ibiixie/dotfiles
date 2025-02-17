@@ -20,5 +20,6 @@
     ./sops.nix
     ./firefox.nix
     ./gammastep.nix
+    ./vesktop.nix
   ];
 }
