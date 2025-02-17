@@ -35,14 +35,21 @@
       '';
 
       fish_prompt = ''
-        string join -- \
-          (set_color cyan) '[ ' \
-          (set_color brmagenta) (whoami) '@' (hostname) \
-          ' ' \
-          (set_color normal) (prompt_pwd) \
-          (set_color cyan) ' ]' \
-          (set_color cyan) (fish_git_prompt) \
-          (set_color brmagenta) ' Ɛ> '
+        set_color cyan
+        printf '[ '
+        set_color brmagenta
+        printf (whoami)
+        printf '@'
+        printf (hostname)
+        printf ' '
+        set_color normal
+        printf (prompt_pwd)
+        set_color cyan
+        printf ' ]'
+        set_color cyan
+        printf (fish_git_prompt)
+        set_color brmagenta
+        printf ' Ɛ> '
       '';
     };
   };
