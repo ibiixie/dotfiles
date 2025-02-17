@@ -37,18 +37,25 @@
       fish_prompt = ''
         set_color cyan
         printf '[ '
-        set_color brmagenta
+        
+        set_color brmagenta -o
         printf (whoami)
         printf '@'
         printf (hostname)
+
         printf ' '
+
         set_color normal
         printf (prompt_pwd)
+
         set_color cyan
         printf ' ]'
-        set_color cyan
+
+        set_color green -i
         printf (fish_git_prompt)
-        set_color brmagenta
+
+        set_color normal # clear italics
+        set_color brmagenta -o
         printf ' Ɛ> '
       '';
     };
