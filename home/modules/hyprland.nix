@@ -14,6 +14,7 @@
 
     settings = {
       general = {
+        allow_tearing = true;
         resize_on_border = true;
       };
 
@@ -24,6 +25,7 @@
 
       dwindle = {
         preserve_split = true;
+        pseudotile = true;
       };
 
       decoration = {
@@ -77,6 +79,8 @@
       input = {
         kb_layout = "se";
 
+        accel_profile = "flat";
+        
         sensitivity = -0.25;
 
         touchpad = {
@@ -88,7 +92,13 @@
         workspace_swipe = true;
       };
 
+      render = {
+        direct_scanout = 1;
+      };
+
       misc = {
+        vrr = 1;
+        
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
       };
