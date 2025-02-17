@@ -1,10 +1,7 @@
 # Contains user-level configuration shared across all of my devices and users.
 
 {
-  config,
-  lib,
   pkgs,
-  inputs,
   ...
 }:
 

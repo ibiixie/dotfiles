@@ -1,4 +1,7 @@
-{ config, pkgs, ... }:
+{
+  config,
+  ...
+}:
 
 {
   programs.ssh = {

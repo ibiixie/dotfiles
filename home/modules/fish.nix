@@ -1,7 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
   ...
 }:
 
@@ -37,7 +34,7 @@
       fish_prompt = ''
         set_color cyan
         printf '[ '
-        
+
         set_color brmagenta -o
         printf (whoami)
         printf '@'

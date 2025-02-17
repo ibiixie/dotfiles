@@ -1,8 +1,6 @@
 # Contains system-level configuration shared across all of my devices.
 
 {
-  config,
-  lib,
   pkgs,
   ...
 }:
