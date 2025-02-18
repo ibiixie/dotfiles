@@ -32,6 +32,8 @@
       '';
 
       fish_prompt = ''
+        set -l last_status $status
+
         set_color cyan
         printf '[ '
 
@@ -51,9 +53,26 @@
         set_color green -i
         printf (fish_git_prompt)
 
+        printf ' '
+
+        # Display code if previous command returned non-zero
+        if test $last_status -ne 0
+          set_color red -i
+          printf '('
+          printf $last_status
+          printf ') '
+        end
+
         set_color normal # clear italics
-        set_color brmagenta -o
-        printf ' Ɛ> '
+
+        # Broken heart if status code is non-zero qwq
+        if test $last_status -ne 0
+          set_color red -o
+          printf 'Ɛ/> '
+        else
+          set_color brmagenta -o
+          printf 'Ɛ> '
+        end
       '';
     };
   };
