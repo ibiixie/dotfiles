@@ -17,6 +17,7 @@
           "browser.search.order.1" = "DuckDuckGo";
 
           "browser.newtabpage.activity-stream.showWeather" = true;
+          "browser.newtabpage.activity-stream.system.showWeather" = true;
 
           "sidebar.revamp" = true;
           "sidebar.verticalTabs" = true;
