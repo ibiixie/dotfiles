@@ -26,8 +26,18 @@
     hardwareClockInLocalTime = true;
   };
 
-  # Tty keyboard layout.
-  console.keyMap = "sv-latin1";
+  console = {
+    # Tty keyboard layout.
+    keyMap = "sv-latin1";
+  };
+
+  i18n = {
+    defaultLocale = "sv_SE.UTF-8";
+    extraLocaleSettings = {
+      LANGUAGE = "en_US";
+      LANG = "en_US.UTF-8";
+    };
+  };
 
   # Graphics acceleration.
   hardware.graphics = {
