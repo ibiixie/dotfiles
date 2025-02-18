@@ -32,10 +32,13 @@
   };
 
   i18n = {
-    defaultLocale = "sv_SE.UTF-8";
     extraLocaleSettings = {
-      LANGUAGE = "en_US";
-      LANG = "en_US.UTF-8";
+      LC_TIME = "sv_SE.UTF-8";
+      LC_NAME = "sv_SE.UTF-8";
+      LC_ADDRESS = "sv_SE.UTF-8";
+      LC_TELEPHONE = "sv_SE.UTF-8";
+      LC_MEASUREMENT = "sv_SE.UTF-8";
+      LC_IDENTIFICATION = "sv_SE.UTF-8";
     };
   };
 
