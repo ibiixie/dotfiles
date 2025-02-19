@@ -24,6 +24,9 @@
 
           "PasswordManagerEnabled" = false;
 
+          # Enable scrolling using the middle-mouse button
+          "general.autoScroll" = true;
+
           # Improve smooth scroll (Smoothfox.js)
           "apz.overscroll.enabled" = true;
           "general.smoothScroll" = true;
