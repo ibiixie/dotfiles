@@ -119,7 +119,7 @@
         "SUPER, 8, workspace, 8"
         "SUPER, 9, workspace, 9"
         "SUPER, 0, workspace, 10"
-        "SUPER, dead_acute, togglespecialworkspace"
+        "SUPER, tab, togglespecialworkspace"
 
         "SUPERSHIFT, 1, movetoworkspace, 1"
         "SUPERSHIFT, 2, movetoworkspace, 2"
