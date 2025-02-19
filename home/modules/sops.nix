@@ -12,6 +12,9 @@
     secrets = {
       "ssh/personal.pub" = { };
       "ssh/personal" = { };
+
+      "ssh/oracle-vps.pub" = { };
+      "ssh/oracle-vps" = { };
     };
   };
 }
