@@ -131,7 +131,7 @@
         "SUPERSHIFT, 8, movetoworkspace, 8"
         "SUPERSHIFT, 9, movetoworkspace, 9"
         "SUPERSHIFT, 0, movetoworkspace, 10"
-        "SUPERSHIFT, dead_acute, movetoworkspace, special"
+        "SUPERSHIFT, tab, movetoworkspace, special"
 
         "SUPER, F, fullscreen"
 
