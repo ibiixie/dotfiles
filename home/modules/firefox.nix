@@ -18,6 +18,7 @@
 
           "browser.newtabpage.activity-stream.showWeather" = true;
           "browser.newtabpage.activity-stream.system.showWeather" = true;
+          "browser.newtabpage.activity-stream.weather.temperatureUnits" = "c";
 
           "sidebar.revamp" = true;
           "sidebar.verticalTabs" = true;
