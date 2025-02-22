@@ -18,5 +18,6 @@
     ./firefox.nix
     ./gammastep.nix
     ./vesktop.nix
+    ./obsidian.nix
   ];
 }
