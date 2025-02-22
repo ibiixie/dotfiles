@@ -40,15 +40,29 @@
       };
     };
 
-    languages.language = [
-      {
-        name = "nix";
-        auto-format = true;
-        formatter = {
-          command = "nixfmt";
-          args = [ ];
-        };
-      }
-    ];
+    languages = {
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter = {
+            command = "nixfmt";
+            args = [ ];
+          };
+        }
+
+        {
+          name = "yaml";
+          auto-format = true;
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "yaml"
+            ];
+          };
+        }
+      ];
+    };
   };
 }
