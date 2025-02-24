@@ -13,6 +13,8 @@
       general = {
         allow_tearing = true;
         resize_on_border = true;
+
+        border_size = 2;
       };
 
       monitor = [
@@ -27,8 +29,8 @@
 
       decoration = {
         rounding = 10;
-        active_opacity = 0.8; # 0.9
-        inactive_opacity = 0.7; # 0.8
+        active_opacity = 0.8;
+        inactive_opacity = 0.75;
         fullscreen_opacity = 1.0;
 
         blur = {
