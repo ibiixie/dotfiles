@@ -19,5 +19,6 @@
     ./gammastep.nix
     ./vesktop.nix
     ./obsidian.nix
+    ./anyrun.nix
   ];
 }

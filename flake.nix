@@ -33,6 +33,11 @@
       url = "github:ibiixie/blctl";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -93,6 +98,7 @@
             inputs.stylix.homeManagerModules.stylix
             inputs.nixvim.homeManagerModules.nixvim
             inputs.sops-nix.homeManagerModules.sops
+            inputs.anyrun.homeManagerModules.anyrun
 
             ./home
             ./home/users/biixie/home.nix
@@ -110,6 +116,7 @@
           buildInputs = [
             pkgs.nil
             pkgs.nixfmt-rfc-style
+            pkgs.vscode-langservers-extracted
           ];
         };
 
