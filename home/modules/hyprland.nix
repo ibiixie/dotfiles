@@ -45,9 +45,6 @@
 
           range = 30;
           render_power = 3;
-
-          # Color is managed by stylix!
-          # color = "0x66000000";
         };
       };
 
