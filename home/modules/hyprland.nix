@@ -105,8 +105,9 @@
       ];
 
       bind = [
-        "SUPER, Q, exec, foot"
-        "SUPER, C, killactive"
+        "SUPER, return, exec, foot"
+        "SUPER, space, exec, anyrun"
+        "SUPER, Q, killactive"
 
         "SUPER, h, movefocus, l"
         "SUPER, l, movefocus, r"
@@ -136,8 +137,6 @@
         "SUPERSHIFT, 9, movetoworkspace, 9"
         "SUPERSHIFT, 0, movetoworkspace, 10"
         "SUPERSHIFT, tab, movetoworkspace, special"
-
-        "SUPER, space, exec, anyrun"
 
         "SUPER, F, fullscreen"
 
