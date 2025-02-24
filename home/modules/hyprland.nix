@@ -100,6 +100,11 @@
         disable_hyprland_logo = true;
       };
 
+      layerrule = [
+        # Forces blur on anyrun despite it being in the overlay layer
+        "blur, (anyrun)"
+      ];
+
       bind = [
         "SUPER, Q, exec, foot"
         "SUPER, C, killactive"
@@ -132,6 +137,8 @@
         "SUPERSHIFT, 9, movetoworkspace, 9"
         "SUPERSHIFT, 0, movetoworkspace, 10"
         "SUPERSHIFT, tab, movetoworkspace, special"
+
+        "SUPER, space, exec, anyrun"
 
         "SUPER, F, fullscreen"
 
