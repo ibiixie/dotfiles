@@ -23,6 +23,16 @@
     pkgs.intel-compute-runtime
   ];
 
+  fileSystems."/Storage" = {
+    device = "/dev/disk/by-uuid/B2783C05783BC6BF";
+    fsType = "ntfs-3g";
+    options = [
+      "nofail"
+      "rw"
+      "uid=1000"
+    ];
+  };
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
