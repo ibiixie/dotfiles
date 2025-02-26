@@ -14,6 +14,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Fixes an issue with Plymouth's logo being resized and
+  # repositioned in the middle of the boot sequence.
+  boot.loader.systemd-boot.consoleMode = "0";
+
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
 
