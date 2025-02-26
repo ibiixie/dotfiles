@@ -62,6 +62,7 @@
           background = base00;
           accent = base0E;
           text = base05;
+          hover = base02;
         };
       in
       # css
@@ -101,6 +102,11 @@
         #match:selected {
           background-color: #${colorScheme.accent};
           color: #${colorScheme.background};
+          border-radius: 8px;
+        }
+
+        #match:hover {
+          background-color: #${colorScheme.hover};
           border-radius: 8px;
         }
 
