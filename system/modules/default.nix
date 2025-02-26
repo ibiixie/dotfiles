@@ -9,6 +9,7 @@
   imports = [
     ./stylix.nix
     ./greetd.nix
+    ./plymouth.nix
   ];
 
   environment.systemPackages = [
