@@ -52,6 +52,16 @@
     enable32Bit = true;
   };
 
+  # TODO: Move to fonts.nix submodule?
+  fonts.fontconfig = {
+    enable = true;
+    antialias = true;
+    hinting.enable = true;
+    hinting.style = "full";
+    # subpixel.lcdfilter = "none";
+    subpixel.rgba = "rgb";
+  };
+
   services = {
     # Keyboard layout.
     xserver.xkb.layout = "se";
@@ -101,6 +111,8 @@
 
   environment.systemPackages = [
     pkgs.ripgrep
+
+    pkgs.corefonts # TODO: Move to fonts.nix submodule?
   ];
 
   # Used by various software for system authentication.
