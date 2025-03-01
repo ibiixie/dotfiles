@@ -19,8 +19,6 @@
       };
 
       monitor = with osConfig.settings.display; [
-        # "eDP-1, 1920x1080@60.00800, 0x0, 1"
-        # "DP-3, 2560x1440@164.84, 0x0, 1"
         "${toString source}, ${toString resolution.width}x${toString resolution.height}@${toString refreshRate}, ${toString position.x}x${toString position.y}, ${toString scale}"
       ];
 
