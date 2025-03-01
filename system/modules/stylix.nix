@@ -1,9 +1,14 @@
 {
+  inputs,
   pkgs,
   ...
 }:
 
 {
+  imports = [
+    inputs.stylix.nixosModules.stylix
+  ];
+
   stylix = {
     enable = true;
 
@@ -17,7 +22,7 @@
     fonts = {
       monospace = {
         package = pkgs.nerd-fonts.agave;
-        name = "Agave Nerd Font Font";
+        name = "Agave Nerd Font Mono";
       };
 
       sizes = {
@@ -28,9 +33,10 @@
     cursor = {
       package = pkgs.rose-pine-cursor;
       name = "BreezeX-RosePine-Linux";
+      size = 32;
     };
 
-    # Slightly modified Catppuccin Mocha
+    # Slightly modified Cappuccin Mocha
     base16Scheme = {
       base00 = "1E1E2E";
       base01 = "181825";

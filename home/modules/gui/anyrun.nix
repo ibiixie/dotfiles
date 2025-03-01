@@ -6,6 +6,10 @@
 }:
 
 {
+  imports = [
+    inputs.anyrun.homeManagerModules.anyrun
+  ];
+
   programs.anyrun = {
     enable = true;
 
