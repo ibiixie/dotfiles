@@ -69,6 +69,15 @@
           modules = [
             ./system
             ./system/hosts/e495/configuration.nix
+
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.biixie = ./home/users/biixie/home.nix;
+
+              home-manager.extraSpecialArgs = { inherit inputs outputs; };
+            }
           ];
         };
 
