@@ -5,20 +5,10 @@
 
 {
   imports = [
-    ./stylix.nix
-    ./foot.nix
-    ./fish.nix
-    ./helix.nix
-    ./nixvim.nix
-    ./hyprland.nix
-    ./hyfetch.nix
-    ./git.nix
-    ./ssh.nix
+    ./cli
+    ./de
+    ./gui
+
     ./sops.nix
-    ./firefox.nix
-    ./gammastep.nix
-    ./vesktop.nix
-    ./obsidian.nix
-    ./anyrun.nix
   ];
 }

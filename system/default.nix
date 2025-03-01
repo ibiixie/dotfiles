@@ -7,6 +7,7 @@
 
 {
   imports = [
+    ./settings.nix
     ./modules
   ];
 
@@ -112,7 +113,7 @@
   environment.systemPackages = [
     pkgs.ripgrep
 
-    pkgs.corefonts # TODO: Move to fonts.nix submodule?
+    pkgs.corefonts
   ];
 
   # Used by various software for system authentication.

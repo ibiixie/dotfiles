@@ -1,4 +1,5 @@
 {
+  osConfig,
   ...
 }:
 
@@ -17,9 +18,10 @@
         border_size = 2;
       };
 
-      monitor = [
-        "eDP-1, 1920x1080@60.00800, 0x0, 1"
-        "DP-3, 2560x1440@164.84, 0x0, 1"
+      monitor = with osConfig.settings.display; [
+        # "eDP-1, 1920x1080@60.00800, 0x0, 1"
+        # "DP-3, 2560x1440@164.84, 0x0, 1"
+        "${toString source}, ${toString resolution.width}x${toString resolution.height}@${toString refreshRate}, ${toString position.x}x${toString position.y}, ${toString scale}"
       ];
 
       dwindle = {
@@ -29,8 +31,12 @@
 
       decoration = {
         rounding = 10;
-        active_opacity = 0.8;
-        inactive_opacity = 0.75;
+        # active_opacity = 0.8;
+        # inactive_opacity = 0.75;
+        # fullscreen_opacity = 1.0;
+
+        active_opacity = 1.0;
+        inactive_opacity = 1.0;
         fullscreen_opacity = 1.0;
 
         blur = {

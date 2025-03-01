@@ -20,8 +20,6 @@
       #   STOP_CHARGE_THRESH_BAT0 = 80;
       # };
     };
-
-    blctl.enable = true;
   };
 
   hardware.enableAllFirmware = true;
