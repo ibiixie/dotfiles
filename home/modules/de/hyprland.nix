@@ -120,7 +120,8 @@ in
       ];
 
       bind = [
-        "${superKey}, return, exec, foot"
+        "${superKey}, T, exec, foot"
+
         "${superKey}, space, exec, anyrun"
         "${superKey}, Q, killactive"
 
@@ -141,17 +142,17 @@ in
         "${superKey}, 0, workspace, 10"
         "${superKey}, tab, togglespecialworkspace"
 
-        # "${superKey}, shift_L, 1, movetoworkspace, 1"
-        # "${superKey}, shift_L, 2, movetoworkspace, 2"
-        # "${superKey}, shift_L, 3, movetoworkspace, 3"
-        # "${superKey}, shift_L, 4, movetoworkspace, 4"
-        # "${superKey}, shift_L, 5, movetoworkspace, 5"
-        # "${superKey}, shift_L, 6, movetoworkspace, 6"
-        # "${superKey}, shift_L, 7, movetoworkspace, 7"
-        # "${superKey}, shift_L, 8, movetoworkspace, 8"
-        # "${superKey}, shift_L, 9, movetoworkspace, 9"
-        # "${superKey}, shift_L, 0, movetoworkspace, 10"
-        # "${superKey}, shift_L, tab, movetoworkspace, special"
+        "${superKey}, shift_L, 1, movetoworkspace, 1"
+        "${superKey}, shift_L, 2, movetoworkspace, 2"
+        "${superKey}, shift_L, 3, movetoworkspace, 3"
+        "${superKey}, shift_L, 4, movetoworkspace, 4"
+        "${superKey}, shift_L, 5, movetoworkspace, 5"
+        "${superKey}, shift_L, 6, movetoworkspace, 6"
+        "${superKey}, shift_L, 7, movetoworkspace, 7"
+        "${superKey}, shift_L, 8, movetoworkspace, 8"
+        "${superKey}, shift_L, 9, movetoworkspace, 9"
+        "${superKey}, shift_L, 0, movetoworkspace, 10"
+        "${superKey}, shift_L, tab, movetoworkspace, special"
 
         "${superKey}, F, fullscreen"
 
