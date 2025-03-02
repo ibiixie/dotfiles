@@ -1,5 +1,6 @@
 {
   osConfig,
+  pkgs,
   ...
 }:
 
@@ -8,6 +9,10 @@ let
 in
 
 {
+  home.packages = [
+    pkgs.wl-clipboard-rs
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
 
