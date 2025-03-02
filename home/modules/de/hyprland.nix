@@ -4,7 +4,7 @@
 }:
 
 let
-  superKey = "Control_L";
+  superKey = "SUPER";
 in
 
 {
@@ -88,7 +88,7 @@ in
         # use the CTRL key as my super-key. In case I need to
         # use the caps-lock function, I rebind double-shift
         # (Left Shift + Right Shift) to act as the caps-lock key.
-        kb_options = "shift:both_capslock, caps:ctrl_modifier";
+        kb_options = "shift:both_capslock, caps:super";
 
         accel_profile = "flat";
 
@@ -120,44 +120,26 @@ in
       ];
 
       bind = [
-        "${superKey}, T, exec, foot"
+        # Submap triggers
+        "${superKey}, m, submap, move"
+        "${superKey}, r, submap, resize"
+        "${superKey}, w, submap, workspace"
 
+        # Global binds
+        "${superKey}, t, exec, foot"
         "${superKey}, space, exec, anyrun"
         "${superKey}, Q, killactive"
+        "${superKey} & Alt, F, fullscreen"
+        "${superKey}, f4, exec, hyprctl kill"
 
         "${superKey}, h, movefocus, l"
+        "${superKey}, j, movefocus, d"
+        "${superKey}, k, movefocus, u"
         "${superKey}, l, movefocus, r"
-        "${superKey}, j, movefocus, u"
-        "${superKey}, k, movefocus, d"
 
-        "${superKey}, 1, workspace, 1"
-        "${superKey}, 2, workspace, 2"
-        "${superKey}, 3, workspace, 3"
-        "${superKey}, 4, workspace, 4"
-        "${superKey}, 5, workspace, 5"
-        "${superKey}, 6, workspace, 6"
-        "${superKey}, 7, workspace, 7"
-        "${superKey}, 8, workspace, 8"
-        "${superKey}, 9, workspace, 9"
-        "${superKey}, 0, workspace, 10"
+        # All other special workspace binds are in the workspace
+        # submap in the extraConfig section at the bottom!
         "${superKey}, tab, togglespecialworkspace"
-
-        "${superKey}, shift_L, 1, movetoworkspace, 1"
-        "${superKey}, shift_L, 2, movetoworkspace, 2"
-        "${superKey}, shift_L, 3, movetoworkspace, 3"
-        "${superKey}, shift_L, 4, movetoworkspace, 4"
-        "${superKey}, shift_L, 5, movetoworkspace, 5"
-        "${superKey}, shift_L, 6, movetoworkspace, 6"
-        "${superKey}, shift_L, 7, movetoworkspace, 7"
-        "${superKey}, shift_L, 8, movetoworkspace, 8"
-        "${superKey}, shift_L, 9, movetoworkspace, 9"
-        "${superKey}, shift_L, 0, movetoworkspace, 10"
-        "${superKey}, shift_L, tab, movetoworkspace, special"
-
-        "${superKey}, F, fullscreen"
-
-        # "${superKey}, shift_L, f4, exit"
-        "${superKey}, f4, exec, hyprctl kill"
 
         # TODO: Display notification!
         ", Print, exec, grim -g \"$(slurp)\" - | wl-copy -t image/png"
@@ -179,5 +161,52 @@ in
         ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-"
       ];
     };
+
+    extraConfig = ''
+      submap = move
+        binde = , h, movewindow, l
+        binde = , j, movewindow, d
+        binde = , k, movewindow, u
+        binde = , l, movewindow, r
+
+        bind = , escape, submap, reset
+      submap = reset
+
+      submap = resize
+        binde = , h, resizeactive, -20   0
+        binde = , j, resizeactive,   0  20
+        binde = , k, resizeactive,   0 -20
+        binde = , l, resizeactive,  20   0
+
+        bind = , escape, submap, reset
+      submap = reset
+
+      submap = workspace
+        bind = , 1, workspace, 1
+        bind = , 2, workspace, 2
+        bind = , 3, workspace, 3
+        bind = , 4, workspace, 4
+        bind = , 5, workspace, 5
+        bind = , 6, workspace, 6
+        bind = , 7, workspace, 7
+        bind = , 8, workspace, 8
+        bind = , 9, workspace, 9
+        bind = , 0, workspace, 10
+
+        bind = Alt, tab, movetoworkspace, special
+        bind = Alt, 1, movetoworkspace, 1
+        bind = Alt, 2, movetoworkspace, 2
+        bind = Alt, 3, movetoworkspace, 3
+        bind = Alt, 4, movetoworkspace, 4
+        bind = Alt, 5, movetoworkspace, 5
+        bind = Alt, 6, movetoworkspace, 6
+        bind = Alt, 7, movetoworkspace, 7
+        bind = Alt, 8, movetoworkspace, 8
+        bind = Alt, 9, movetoworkspace, 9
+        bind = Alt, 9, movetoworkspace, 10
+
+        bind = , escape, submap, reset
+      submap = reset
+    '';
   };
 }
