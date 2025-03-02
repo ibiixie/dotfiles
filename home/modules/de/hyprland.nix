@@ -3,6 +3,10 @@
   ...
 }:
 
+let
+  superKey = "Control_L";
+in
+
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -79,6 +83,13 @@
       input = {
         kb_layout = "se";
 
+        # I prefer using the caps-lock key as my super key
+        # so I rebind it to act as a CTRL modifier, and then
+        # use the CTRL key as my super-key. In case I need to
+        # use the caps-lock function, I rebind double-shift
+        # (Left Shift + Right Shift) to act as the caps-lock key.
+        kb_options = "shift:both_capslock, caps:ctrl_modifier";
+
         accel_profile = "flat";
 
         sensitivity = -0.25;
@@ -109,43 +120,43 @@
       ];
 
       bind = [
-        "SUPER, return, exec, foot"
-        "SUPER, space, exec, anyrun"
-        "SUPER, Q, killactive"
+        "${superKey}, return, exec, foot"
+        "${superKey}, space, exec, anyrun"
+        "${superKey}, Q, killactive"
 
-        "SUPER, h, movefocus, l"
-        "SUPER, l, movefocus, r"
-        "SUPER, j, movefocus, u"
-        "SUPER, k, movefocus, d"
+        "${superKey}, h, movefocus, l"
+        "${superKey}, l, movefocus, r"
+        "${superKey}, j, movefocus, u"
+        "${superKey}, k, movefocus, d"
 
-        "SUPER, 1, workspace, 1"
-        "SUPER, 2, workspace, 2"
-        "SUPER, 3, workspace, 3"
-        "SUPER, 4, workspace, 4"
-        "SUPER, 5, workspace, 5"
-        "SUPER, 6, workspace, 6"
-        "SUPER, 7, workspace, 7"
-        "SUPER, 8, workspace, 8"
-        "SUPER, 9, workspace, 9"
-        "SUPER, 0, workspace, 10"
-        "SUPER, tab, togglespecialworkspace"
+        "${superKey}, 1, workspace, 1"
+        "${superKey}, 2, workspace, 2"
+        "${superKey}, 3, workspace, 3"
+        "${superKey}, 4, workspace, 4"
+        "${superKey}, 5, workspace, 5"
+        "${superKey}, 6, workspace, 6"
+        "${superKey}, 7, workspace, 7"
+        "${superKey}, 8, workspace, 8"
+        "${superKey}, 9, workspace, 9"
+        "${superKey}, 0, workspace, 10"
+        "${superKey}, tab, togglespecialworkspace"
 
-        "SUPERSHIFT, 1, movetoworkspace, 1"
-        "SUPERSHIFT, 2, movetoworkspace, 2"
-        "SUPERSHIFT, 3, movetoworkspace, 3"
-        "SUPERSHIFT, 4, movetoworkspace, 4"
-        "SUPERSHIFT, 5, movetoworkspace, 5"
-        "SUPERSHIFT, 6, movetoworkspace, 6"
-        "SUPERSHIFT, 7, movetoworkspace, 7"
-        "SUPERSHIFT, 8, movetoworkspace, 8"
-        "SUPERSHIFT, 9, movetoworkspace, 9"
-        "SUPERSHIFT, 0, movetoworkspace, 10"
-        "SUPERSHIFT, tab, movetoworkspace, special"
+        # "${superKey}, shift_L, 1, movetoworkspace, 1"
+        # "${superKey}, shift_L, 2, movetoworkspace, 2"
+        # "${superKey}, shift_L, 3, movetoworkspace, 3"
+        # "${superKey}, shift_L, 4, movetoworkspace, 4"
+        # "${superKey}, shift_L, 5, movetoworkspace, 5"
+        # "${superKey}, shift_L, 6, movetoworkspace, 6"
+        # "${superKey}, shift_L, 7, movetoworkspace, 7"
+        # "${superKey}, shift_L, 8, movetoworkspace, 8"
+        # "${superKey}, shift_L, 9, movetoworkspace, 9"
+        # "${superKey}, shift_L, 0, movetoworkspace, 10"
+        # "${superKey}, shift_L, tab, movetoworkspace, special"
 
-        "SUPER, F, fullscreen"
+        "${superKey}, F, fullscreen"
 
-        "SUPERSHIFT, f4, exit"
-        "SUPER, f4, exec, hyprctl kill"
+        # "${superKey}, shift_L, f4, exit"
+        "${superKey}, f4, exec, hyprctl kill"
 
         # TODO: Display notification!
         ", Print, exec, grim -g \"$(slurp)\" - | wl-copy -t image/png"
@@ -155,8 +166,8 @@
       ];
 
       bindm = [
-        "SUPER, mouse:272, movewindow"
-        "SUPER, mouse:273, resizewindow 0"
+        "${superKey}, mouse:272, movewindow"
+        "${superKey}, mouse:273, resizewindow 0"
       ];
 
       binde = [
