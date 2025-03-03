@@ -6,5 +6,6 @@
     ./firefox.nix
     ./obsidian.nix
     ./vesktop.nix
+    ./waybar.nix
   ];
 }
