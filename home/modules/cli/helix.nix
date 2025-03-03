@@ -23,7 +23,7 @@ in
 
         inline-diagnostics = {
           cursor-line = "hint";
-          other-lines = "hint";
+          other-lines = "disable";
         };
 
         end-of-line-diagnostics = "hint";
