@@ -1,9 +1,37 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }:
+let
+  wallpaper01 = {
+    url = "https://w.wallhaven.cc/full/5w/wallhaven-5we787.jpg";
+    hash = "sha256-SZnRkJlP7PTPWqcIfZE03dC/qz87LscyAnhIEDHUqcs=";
+  };
 
+  wallpaper02 = {
+    url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/refs/heads/master/flower-field.jpg";
+    hash = "sha256-R5TUkhj8kl4+7OR4P7LK9hItRRw/gvKUbTCvo9LNOII=";
+  };
+
+  wallpaper03 = {
+    url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/refs/heads/master/car-2.png";
+    hash = "sha256-V7vrAggKhuHJd9D9tD7WsS+UOHYT17pryOmMRrratoo=";
+  };
+
+  wallpaper04 = {
+    url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/refs/heads/master/pink-clouds.jpg";
+    hash = "sha256-RQD/8RsBoNmZB+6SGqap3Q7OYnk9xXNy6bjFplUoijQ=";
+  };
+
+  wallpaper05 = {
+    url = "https://w.wallhaven.cc/full/gp/wallhaven-gpl8d3.jpg";
+    hash = "sha256-t5f3VOHHZcaiGasyTyFh8eL87c0mq2FCsPVNNj20gqg=";
+  };
+
+  wallpaper = wallpaper01;
+in
 {
   imports = [
     inputs.stylix.nixosModules.stylix
@@ -13,8 +41,8 @@
     enable = true;
 
     image = pkgs.fetchurl {
-      url = "https://w.wallhaven.cc/full/6d/wallhaven-6dqemx.jpg";
-      hash = "sha256-lAdWwcKubYlbXZN2xG2ajF6zfe4vdk7zr1TSoSqKyjU=";
+      url = wallpaper.url;
+      hash = wallpaper.hash;
     };
 
     polarity = "dark";
