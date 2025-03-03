@@ -43,7 +43,7 @@
 
         "clock" = {
           interval = 1;
-          format = "{:%A %m/%d %H:%M:%S %Z (%Oz)}";
+          format = "{:%A %d/%m %H:%M:%S %Z (%Oz)}";
           tooltip-format = "{tz_list}";
           timezones = [
             "Europe/Stockholm"
