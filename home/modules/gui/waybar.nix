@@ -35,7 +35,9 @@
         ];
 
         modules-right = [
-          "wireplumber"
+          "pulseaudio"
+          "backlight"
+          "battery"
           "tray"
         ];
 
@@ -51,10 +53,37 @@
           ];
         };
 
-        "wireplumber" = {
-          format = "  {volume}%";
-          format-muted = "  {volume}%";
+        "backlight" = {
+          interval = 2;
+          format = "󰖨 {percent}%";
+        };
+
+        "pulseaudio" = {
+          format = "{format_source}   {volume}%";
+          format-muted = "{format_source}   {volume}%";
+
+          format-source = "";
+          format-source-muted = " ";
+
           tooltip = false;
+        };
+
+        "battery" = {
+          format = "{icon}  {capacity}%";
+          format-charging = "󱐋 {capacity}%";
+          format-full = "󱐋 {capacity}%";
+          interval = 2;
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
 
         "tray" = {
@@ -87,6 +116,8 @@
           accent = base0E;
           text = base05;
           hover = base02;
+          green = base0B;
+          yellow = base0A;
           red = base08;
         };
       in
@@ -121,8 +152,27 @@
           border-radius: 0;
         }
 
-        #wireplumber.muted {
+        #pulseaudio.muted {
           color: #${colorScheme.red};
+        }
+
+        #battery.warning:not(.charging) {
+          color: #${colorScheme.yellow};
+        }
+
+        #battery.critical:not(.charging) {
+          color: #${colorScheme.red};
+          animation: flash 0.4s steps(12) infinite;
+        }
+
+        #battery.full:not(.discharging) {
+          color: #${colorScheme.green};
+        }
+
+        @keyframes flash {
+          50% {
+            opacity: 0;
+          }
         }
 
         .modules-right {
