@@ -28,7 +28,6 @@
         modules-left = [
           "hyprland/workspaces"
           "hyprland/submap"
-          "mpd"
         ];
 
         modules-center = [
@@ -126,7 +125,7 @@
           color: #${colorScheme.red};
         }
 
-        #tray {
+        .modules-right {
           margin-right: 8px;
         }
       '';
