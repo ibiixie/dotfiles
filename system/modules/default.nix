@@ -4,5 +4,6 @@
     ./stylix.nix
     ./plymouth.nix
     ./greetd.nix
+    ./blctl.nix
   ];
 }
