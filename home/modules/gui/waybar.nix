@@ -23,7 +23,6 @@
 
     settings = {
       mainBar = {
-        # Spacing between modules in pixels.
         spacing = 16;
 
         modules-left = [
@@ -54,8 +53,9 @@
         };
 
         "wireplumber" = {
-          "format" = "  {volume}%";
-          "format-muted" = "  {volume}%";
+          format = "  {volume}%";
+          format-muted = "  {volume}%";
+          tooltip = false;
         };
 
         "tray" = {
@@ -100,13 +100,25 @@
           color: #${colorScheme.accent};
         }
 
-        #workspaces button.active {
-          border-bottom: 3px solid #${colorScheme.accent};
+        window#waybar {
+          background-color: transparent;
+        }
+
+        window#waybar > box {
+          margin: 12px 12px 12px 12px;
+          background-color: #${colorScheme.background};
+          box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 1);
+          border-radius: 8px;
+        }
+
+        #workspaces button.active label {
+          border-bottom: 2px solid #${colorScheme.accent};
+          padding-top: 2px;
         }
 
         #workspaces button {
-          padding-bottom: 2px; /* compensate for border - 3px looks uneven */
-          border-bottom: 3px solid transparent;
+          padding-bottom: 2px;
+          border-bottom: 2px solid transparent;
           border-radius: 0;
         }
 

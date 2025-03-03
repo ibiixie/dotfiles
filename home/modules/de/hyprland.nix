@@ -29,6 +29,10 @@ in
 
       monitor = with osConfig.settings.display; [
         "${toString source}, ${toString resolution.width}x${toString resolution.height}@${toString refreshRate}, ${toString position.x}x${toString position.y}, ${toString scale}"
+
+        # Fix for gap when bar uses transparent background and padding.
+        # TODO: This should probably be in the bar module?
+        "${toString source}, addreserved, -12, 0, 0, 0"
       ];
 
       dwindle = {
