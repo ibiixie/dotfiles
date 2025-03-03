@@ -101,7 +101,7 @@
         }
 
         #workspaces button.active {
-          border-bottom: 2px solid #${colorScheme.accent};
+          border-bottom: 3px solid #${colorScheme.accent};
         }
 
         #workspaces button {
