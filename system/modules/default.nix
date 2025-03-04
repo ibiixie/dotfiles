@@ -6,5 +6,6 @@
     ./greetd.nix
     ./blctl.nix
     ./hyprland.nix
+    ./steam.nix
   ];
 }
