@@ -133,6 +133,10 @@ in
         disable_hyprland_logo = true;
       };
 
+      windowrule = [
+        "workspace special, vesktop"
+      ];
+
       layerrule = [
         # Forces blur on anyrun despite it being in the overlay layer
         "blur, (anyrun)"
