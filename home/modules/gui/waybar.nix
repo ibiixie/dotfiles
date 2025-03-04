@@ -26,9 +26,42 @@
         spacing = 16;
 
         modules-left = [
+          "group/powermenu"
           "hyprland/workspaces"
           "hyprland/submap"
         ];
+
+        "group/powermenu" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 500;
+            children-class = "not-power";
+            transition-left-to-right = true;
+          };
+          modules = [
+            "custom/shutdown-btn"
+            "custom/reboot-btn"
+            "custom/sleep-btn"
+          ];
+        };
+
+        "custom/shutdown-btn" = {
+          format = "  ";
+          tooltip-format = "Shutdown";
+          on-click = "systemctl poweroff";
+        };
+
+        "custom/reboot-btn" = {
+          format = "  ";
+          tooltip-format = "Reboot";
+          on-click = "systemctl reboot";
+        };
+
+        "custom/sleep-btn" = {
+          format = "  ";
+          tooltip-format = "Sleep";
+          on-click = "systemctl sleep";
+        };
 
         modules-center = [
           "clock"
@@ -70,8 +103,8 @@
 
         "battery" = {
           format = "{icon}  {capacity}%";
-          format-charging = "󱐋 {capacity}%";
-          format-full = "󱐋 {capacity}%";
+          format-charging = " {capacity}%";
+          format-full = " {capacity}%";
           interval = 2;
           states = {
             warning = 30;
@@ -177,6 +210,33 @@
 
         .modules-right {
           margin-right: 8px;
+        }
+
+        #custom-shutdown-btn,
+        #custom-reboot-btn,
+        #custom-sleep-btn {
+          border-radius: 8px;
+          padding-left: 0px;
+          padding-right: 6px;
+          margin: 2px;
+        }
+
+        #custom-shutdown-btn:hover,
+        #custom-reboot-btn:hover,
+        #custom-sleep-btn:hover {
+          background-color: #${colorScheme.hover};
+        }
+
+        #custom-shutdown-btn {
+          color: #${colorScheme.red};
+        }
+
+        #custom-reboot-btn {
+          color: #${colorScheme.yellow};
+        }
+
+        #custom-sleep-btn {
+          color: #${colorScheme.green};
         }
       '';
   };
