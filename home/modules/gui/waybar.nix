@@ -71,8 +71,27 @@
           "pulseaudio"
           "backlight"
           "battery"
-          "tray"
+          "group/tray"
         ];
+
+        "group/tray" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 500;
+            children-class = "not-tray";
+            transition-left-to-right = false;
+          };
+          modules = [
+            "custom/tray-btn"
+            "tray"
+          ];
+        };
+
+        "custom/tray-btn" = {
+          format = "";
+          tooltip-format = "Applauncher/Tray";
+          on-click = "anyrun";
+        };
 
         "clock" = {
           interval = 1;
@@ -208,8 +227,17 @@
           }
         }
 
-        .modules-right {
-          margin-right: 8px;
+        #custom-tray-btn {
+          margin: 2px;
+
+          margin-left: 6px;
+          padding-left: 8px;
+          padding-right: 14px;
+          border-radius: 8px;
+        }
+
+        #custom-tray-btn:hover {
+          background-color: #${colorScheme.hover};
         }
 
         #custom-shutdown-btn,
