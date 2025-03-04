@@ -11,13 +11,19 @@ in
 {
   home.packages = [
     pkgs.wl-clipboard-rs
+
+    # Not sure if it's needed but no harm in adding it anyway :p
+    pkgs.kdePackages.xwaylandvideobridge
   ];
 
   wayland.windowManager.hyprland = {
     enable = true;
 
     xwayland.enable = true;
-    systemd.enable = true;
+
+    # Disable since I have withUWSM enabled.
+    # https://wiki.hyprland.org/Useful-Utilities/Systemd-start/
+    systemd.enable = false;
 
     settings = {
       general = {
