@@ -5,5 +5,6 @@
     ./plymouth.nix
     ./greetd.nix
     ./blctl.nix
+    ./hyprland.nix
   ];
 }
