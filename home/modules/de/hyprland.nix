@@ -41,6 +41,10 @@ in
         "${toString source}, addreserved, -12, 0, 0, 0"
       ];
 
+      exec-once = [
+        "obs --startreplaybuffer --minimize-to-tray --disable-shutdown-check"
+      ];
+
       dwindle = {
         preserve_split = true;
         pseudotile = true;
@@ -161,6 +165,10 @@ in
 
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
+        # Global hotkey for OBS since the built-in one only works when
+        # the OBS window is in focus under wayland.
+        "Alt, z, exec, obs-cmd replay save"
       ];
 
       bindm = [
