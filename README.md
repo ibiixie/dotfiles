@@ -2,4 +2,4 @@
 
 <p align="center">...but for now, they look like this!</p>
 
-<img src="https://i.imgur.com/WskAsW4.png"/>
+<img src="https://i.imgur.com/43kiArh.png"/>
