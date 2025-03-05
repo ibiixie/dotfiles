@@ -18,9 +18,10 @@
     tlp = {
       enable = true;
 
-      # settings = {
-      #   STOP_CHARGE_THRESH_BAT0 = 80;
-      # };
+      settings = {
+        STOP_CHARGE_THRESH_BAT0 = 80;
+        START_CHARGE_THRESH_BAT0 = 40;
+      };
     };
 
     blctl.enable = true;
