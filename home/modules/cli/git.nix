@@ -17,6 +17,7 @@
 
     extraConfig = {
       gpg.format = "ssh";
+      init.defaultBranch = "main";
     };
   };
 }
