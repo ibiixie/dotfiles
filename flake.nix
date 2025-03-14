@@ -33,6 +33,11 @@
       url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -89,6 +94,26 @@
           modules = [
             ./system
             ./system/hosts/desktop/configuration.nix
+
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.biixie = ./home/users/biixie/home.nix;
+
+              home-manager.extraSpecialArgs = { inherit inputs outputs; };
+            }
+          ];
+        };
+
+        wsl = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+
+          specialArgs = { inherit inputs outputs; };
+
+          modules = [
+            ./system
+            ./system/hosts/wsl/configuration.nix
 
             inputs.home-manager.nixosModules.home-manager
             {
