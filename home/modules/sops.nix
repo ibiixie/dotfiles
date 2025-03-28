@@ -20,6 +20,8 @@
 
       "ssh/oracle-vps.pub" = { };
       "ssh/oracle-vps" = { };
+
+      "ssh/gcp-vps-user" = { };
     };
   };
 }
