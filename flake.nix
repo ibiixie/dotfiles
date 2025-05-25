@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,7 +46,7 @@
   };
 
   outputs =
-    inputs@{ self, nixpkgs, ... }:
+    inputs@{ self, nixpkgs, lix-module, ... }:
     let
       inherit (self) outputs;
 
@@ -75,6 +80,8 @@
             ./system
             ./system/hosts/e495/configuration.nix
 
+            lix-module.nixosModules.default
+
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -95,6 +102,8 @@
             ./system
             ./system/hosts/desktop/configuration.nix
 
+            lix-module.nixosModules.default
+
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -114,6 +123,8 @@
           modules = [
             ./system
             ./system/hosts/wsl/configuration.nix
+
+            lix-module.nixosModules.default
 
             inputs.home-manager.nixosModules.home-manager
             {
