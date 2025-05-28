@@ -18,7 +18,13 @@ in
         line-number = "relative";
         cursorline = true;
         shell = [ "fish -c" ];
-        rulers = [ 80 ];
+        true-color = true;
+
+        rulers = [
+          80
+          120
+        ];
+
         bufferline = "always";
 
         inline-diagnostics = {
@@ -40,6 +46,21 @@ in
 
         indent-guides = {
           render = true;
+          character = "╎";
+        };
+
+        statusline = {
+          left = [
+            "mode"
+            "spinner"
+            "version-control"
+            "file-name"
+          ];
+        };
+
+        lsp = {
+          # auto-signature-help = false;
+          display-messages = true;
         };
       };
     };
