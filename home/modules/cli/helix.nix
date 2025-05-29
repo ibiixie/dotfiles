@@ -7,23 +7,36 @@ let
   typescript = pkgs.typescript;
 in
 {
+  # Use a dedicated theme for Helix because the Stylix one is not great.
+  stylix.targets.helix.enable = false;
+
   programs.helix = {
     enable = true;
 
     defaultEditor = true;
 
     settings = {
+      theme = "catppuccin_mocha";
       editor = {
+        mouse = false;
         scrolloff = 10;
         line-number = "relative";
         cursorline = true;
         shell = [ "fish -c" ];
         true-color = true;
+        color-modes = true;
 
         rulers = [
           80
           120
         ];
+
+        # whitespace = {
+        #   render = {
+        #     space = "all";
+        #     tab = "all";
+        #   };
+        # };
 
         bufferline = "always";
 
@@ -53,9 +66,21 @@ in
           left = [
             "mode"
             "spinner"
+            "diagnostics"
             "version-control"
+          ];
+          center = [
             "file-name"
           ];
+          right = [
+            "position"
+            "total-line-numbers"
+          ];
+          mode = {
+            normal = "NORMAL";
+            insert = "INSERT";
+            select = "SELECT";
+          };
         };
 
         lsp = {
