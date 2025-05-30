@@ -134,7 +134,7 @@ in
       };
 
       windowrule = [
-        "workspace special, vesktop"
+        "workspace special, class:^(vesktop)$"
       ];
 
       layerrule = [
