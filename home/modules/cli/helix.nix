@@ -31,13 +31,6 @@ in
           120
         ];
 
-        # whitespace = {
-        #   render = {
-        #     space = "all";
-        #     tab = "all";
-        #   };
-        # };
-
         bufferline = "always";
 
         inline-diagnostics = {
@@ -86,6 +79,15 @@ in
         lsp = {
           # auto-signature-help = false;
           display-messages = true;
+        };
+      };
+
+      keys = {
+        normal = {
+          j = "move_char_left";
+          k = "move_visual_line_up";
+          l = "move_visual_line_down";
+          "ö" = "move_char_right";
         };
       };
     };
