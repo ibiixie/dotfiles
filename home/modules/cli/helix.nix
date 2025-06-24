@@ -183,6 +183,7 @@ in
         {
           name = "html";
           auto-format = true;
+          language-servers = [ "superhtml-lsp" ];
         }
 
         {
@@ -233,6 +234,10 @@ in
             tsdk = "${typescript}/lib/node_modules/typescript/lib";
           };
         };
+      };
+      language-server.superhtml-lsp = {
+        command = "superhtml";
+        args =  [ "lsp" ];
       };
     };
   };
