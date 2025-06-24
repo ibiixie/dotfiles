@@ -25,6 +25,8 @@
       gc = "git commit -m";
       gp = "git push";
 
+      develop = "nix develop -c fish";
+
       battery = "cat /sys/class/power_supply/BAT0/capacity";
     };
 
