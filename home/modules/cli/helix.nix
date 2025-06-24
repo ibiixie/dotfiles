@@ -84,10 +84,10 @@ in
 
       keys = {
         normal = {
-          j = "move_char_left";
-          k = "move_visual_line_up";
-          l = "move_visual_line_down";
-          "ö" = "move_char_right";
+          # j = "move_char_left";
+          # k = "move_visual_line_up";
+          # l = "move_visual_line_down";
+          # "ö" = "move_char_right";
         };
       };
     };
