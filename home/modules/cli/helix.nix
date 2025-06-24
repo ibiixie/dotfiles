@@ -183,6 +183,9 @@ in
         {
           name = "html";
           auto-format = true;
+          scope = "source.html";
+          roots = [];
+          file-types = [ "html" ];
           language-servers = [ "superhtml-lsp" ];
         }
 
