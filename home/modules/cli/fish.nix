@@ -22,8 +22,12 @@
     shellAbbrs = {
       # Git.
       ga = "git add";
-      gc = "git commit -m";
+      gap = "git add --patch";
+      gc = "git commit";
+      gca = "git commit --amend";
       gp = "git push";
+      gs = "git status --short";
+      gl = "git log --all --graph";
 
       develop = "nix develop -c fish";
 
