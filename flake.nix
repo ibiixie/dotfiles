@@ -5,7 +5,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      # url = "git+https://git.lix.systems/lix-project/nixos-module?ref=stable";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -46,7 +47,12 @@
   };
 
   outputs =
-    inputs@{ self, nixpkgs, lix-module, ... }:
+    inputs@{
+      self,
+      nixpkgs,
+      lix-module,
+      ...
+    }:
     let
       inherit (self) outputs;
 
