@@ -17,6 +17,10 @@
         backend = "ssh";
         key = "${config.sops.secrets."ssh/personal".path}";
       };
+      ui = {
+        # annoying pagination be gone >:c
+        paginate = "never";
+      };
     };
   };
 }
