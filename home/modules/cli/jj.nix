@@ -18,6 +18,8 @@
         key = "${config.sops.secrets."ssh/personal".path}";
       };
       ui = {
+        default-command = "log";
+
         # annoying pagination be gone >:c
         paginate = "never";
       };
