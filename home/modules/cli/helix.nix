@@ -42,7 +42,12 @@ in
 
         cursor-shape = {
           normal = "underline";
-          insert = "bar";
+
+          # Bar causes cursor to become invisible when using indent guides
+          # so I'm switching to a block instead for now.
+          # insert = "bar";
+
+          insert = "block";
           select = "block";
         };
 
@@ -184,7 +189,7 @@ in
           name = "html";
           auto-format = true;
           scope = "source.html";
-          roots = [];
+          roots = [ ];
           file-types = [ "html" ];
           language-servers = [ "superhtml-lsp" ];
         }
@@ -240,7 +245,7 @@ in
       };
       language-server.superhtml-lsp = {
         command = "superhtml";
-        args =  [ "lsp" ];
+        args = [ "lsp" ];
       };
     };
   };
