@@ -14,6 +14,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  users.users.biixie.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFLXsKzURFCBKU+z45aHd29z99XfmFPn9nc/Pshz+EFN 65206220+ibiixie@users.noreply.github.com"
+  ];
+
   services = {
     tlp = {
       enable = true;
@@ -24,8 +28,22 @@
       };
     };
 
+    openssh = {
+      enable = true;
+      ports = [ 21622 ];
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        AllowUsers = [
+          "*@192.168.1.*"
+        ];
+      };
+    };
+
     blctl.enable = true;
   };
+
+  networking.firewall.allowedTCPPorts = [ 21622 ];
 
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
