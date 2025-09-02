@@ -14,6 +14,19 @@
         identityFile = "${config.sops.secrets."ssh/personal".path}";
       };
 
+      "e495" = {
+        hostname = "192.168.1.34";
+        user = "biixie";
+        port = 21622;
+        identityFile = "${config.sops.secrets."ssh/personal".path}";
+      };
+
+      "oci-main" = {
+        hostname = "main.ssh.biixie.com";
+        user = "opc";
+        identityFile = "${config.sops.secrets."ssh/oci-main".path}";
+      };
+
       "oci-aux" = {
         hostname = "aux.ssh.biixie.com";
         user = "ubuntu";

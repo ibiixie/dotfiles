@@ -18,6 +18,9 @@
       "ssh/personal.pub" = { };
       "ssh/personal" = { };
 
+      "ssh/oci-main.pub" = { };
+      "ssh/oci-main" = { };
+
       "ssh/oracle-vps.pub" = { };
       "ssh/oracle-vps" = { };
 
