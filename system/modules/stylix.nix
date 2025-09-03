@@ -49,8 +49,8 @@ in
 
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.agave;
-        name = "Agave Nerd Font Mono";
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrains Mono NL Nerd Font Mono";
       };
 
       sizes = {
