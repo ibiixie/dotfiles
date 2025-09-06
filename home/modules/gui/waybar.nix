@@ -121,7 +121,7 @@
         };
 
         "battery" = {
-          format = "{icon}  {capacity}%";
+          format = "{icon} {capacity}%";
           format-charging = " {capacity}%";
           format-full = " {capacity}%";
           interval = 2;
@@ -176,7 +176,7 @@
       # css
       ''
         * {
-          font-family: "Agave Nerd Font";
+          font-family: "JetBrains Mono NL Nerd Font";
           font-size: 18;
           font-weight: bold;
           color: #${colorScheme.accent};
