@@ -8,5 +8,6 @@
     ./vesktop.nix
     ./waybar.nix
     ./obs-studio.nix
+    ./easyeffects.nix
   ];
 }

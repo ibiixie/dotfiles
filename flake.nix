@@ -4,12 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    lix-module = {
-      # url = "git+https://git.lix.systems/lix-project/nixos-module?ref=stable";
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,11 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +39,6 @@
     inputs@{
       self,
       nixpkgs,
-      lix-module,
       ...
     }:
     let
@@ -66,6 +54,15 @@
           inherit system;
 
           overlays = [
+            (final: prev: {
+              inherit (prev.lixPackageSets.stable)
+                nixpkgs-review
+                nix-eval-jobs
+                nix-fast-build
+                colmena
+                ;
+            })
+
             inputs.nur.overlays.default
           ];
 
@@ -86,7 +83,9 @@
             ./system
             ./system/hosts/e495/configuration.nix
 
-            lix-module.nixosModules.default
+            {
+              nix.package = pkgs.lixPackageSets.stable.lix;
+            }
 
             inputs.home-manager.nixosModules.home-manager
             {
@@ -108,7 +107,9 @@
             ./system
             ./system/hosts/desktop/configuration.nix
 
-            lix-module.nixosModules.default
+            {
+              nix.package = pkgs.lixPackageSets.stable.lix;
+            }
 
             inputs.home-manager.nixosModules.home-manager
             {
@@ -130,7 +131,9 @@
             ./system
             ./system/hosts/wsl/configuration.nix
 
-            lix-module.nixosModules.default
+            {
+              nix.package = pkgs.lixPackageSets.stable.lix;
+            }
 
             inputs.home-manager.nixosModules.home-manager
             {

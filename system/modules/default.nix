@@ -6,7 +6,8 @@
     ./plymouth.nix
     ./greetd.nix
     ./blctl.nix
-    ./hyprland.nix
+    #    ./hyprland.nix
+    ./jay.nix
     ./steam.nix
   ];
 }
