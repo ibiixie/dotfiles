@@ -1,15 +1,10 @@
 {
   config,
-  inputs,
   pkgs,
   ...
 }:
 
 {
-  imports = [
-    inputs.anyrun.homeManagerModules.anyrun
-  ];
-
   programs.anyrun = {
     enable = true;
 
@@ -25,11 +20,11 @@
       showResultsImmediately = true;
       maxEntries = 10;
 
-      plugins = with inputs.anyrun.packages.${pkgs.system}; [
-        applications
-        rink
-        symbols
-        shell
+      plugins = [
+        "${pkgs.anyrun}/lib/libapplications.so"
+        "${pkgs.anyrun}/lib/librink.so"
+        "${pkgs.anyrun}/lib/libsymbols.so"
+        "${pkgs.anyrun}/lib/libshell.so"
       ];
     };
 
@@ -75,7 +70,7 @@
           all: unset;
         }
 
-        #entry {
+        text {
           background-color: #${colorScheme.background};
           padding: 8px;
 
@@ -85,7 +80,7 @@
           border: 2px solid #${colorScheme.accent};
         }
 
-        #window {
+        window {
           background-color: rgba(0, 0, 0, 0.3);
 
           color: #${colorScheme.text};
@@ -93,28 +88,28 @@
           font-size: 1.2rem;
         }
 
-        #main {
+        .main {
           background-color: transparent;
           border-radius: 8px;
           padding: 0px 8px;
         }
 
-        #match {
+        .match {
           padding: 2px;
         }
 
-        #match:selected {
+        .match:selected {
           background-color: #${colorScheme.accent};
           color: #${colorScheme.background};
           border-radius: 8px;
         }
 
-        #match:hover {
+        .match:hover {
           background-color: #${colorScheme.hover};
           border-radius: 8px;
         }
 
-        #plugin {
+        .plugin {
           background-color: #${colorScheme.background};
           border-radius: 8px;
 
