@@ -16,10 +16,10 @@
   ];
 
   programs.waybar = {
-    enable = true;
+    enable = false;
 
     # Automatically run Waybar with the configured wayland session.
-    systemd.enable = true;
+    systemd.enable = false;
 
     settings = {
       mainBar = {
