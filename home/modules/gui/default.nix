@@ -7,6 +7,7 @@
     ./obsidian.nix
     ./vesktop.nix
     ./waybar.nix
+    ./quickshell
     ./obs-studio.nix
     ./easyeffects.nix
   ];
