@@ -50,6 +50,26 @@
           border-color = "#0000";
         };
 
+      outputs = [
+        {
+          name = "internal";
+          match.serial-number = "0";
+          x = 0;
+          y = 0;
+        }
+        {
+          name = "desktop-m27qa";
+          match.serial-number = "FA3T01940000";
+          x = 1920;
+          y = 0;
+          mode = {
+            width = 2560;
+            height = 1440;
+            refresh-rate = 180;
+          };
+        }
+      ];
+
       keymap = ''
         xkb_keymap {
           xkb_keycodes { include "evdev+aliases(qwerty)" };
