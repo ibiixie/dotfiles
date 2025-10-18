@@ -19,10 +19,13 @@ in
       theme = "catppuccin_mocha";
       editor = {
         mouse = false;
-        scrolloff = 10;
+        scrolloff = 5;
         line-number = "relative";
         cursorline = true;
-        shell = [ "fish -c" ];
+        shell = [
+          "fish"
+          "-c"
+        ];
         true-color = true;
         color-modes = true;
 
@@ -30,6 +33,10 @@ in
           80
           120
         ];
+
+        soft-wrap = {
+          enable = true;
+        };
 
         bufferline = "always";
 
@@ -83,6 +90,7 @@ in
 
         lsp = {
           # auto-signature-help = false;
+          display-inlay-hints = true;
           display-messages = true;
         };
       };
