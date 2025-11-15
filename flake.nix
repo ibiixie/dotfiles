@@ -156,6 +156,7 @@
             pkgs.nil
             pkgs.nixfmt-rfc-style
             pkgs.vscode-langservers-extracted
+            pkgs.just
 
             # QML language server for Quickshell
             pkgs.kdePackages.qtdeclarative
