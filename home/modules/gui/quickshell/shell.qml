@@ -35,19 +35,6 @@ Variants {
                 anchors.fill: parent
                 clip: true
 
-                MultiEffect {
-                    x: -parent.x
-                    y: -parent.y
-                    width: background.width
-                    height: background.height
-                    source: background
-
-                    blurEnabled: true
-                    blurMax: 1024
-                    blur: 1024.0
-                    blurMultiplier: 20.0
-                }
-
                 Text {
                     id: clock
                     anchors.centerIn: parent
