@@ -27,7 +27,7 @@ Variants {
             Rectangle {
                 id: background
                 anchors.fill: parent
-                color: "transparent"
+                color: "#000000"
             }
 
             Item {

@@ -39,15 +39,15 @@
         in
         {
           # TODO: These should be 0 but it's not allowed in the current release.
-          title-height = 1;
-          border-width = 1;
-          bar-height = 1;
+          title-height = 0;
+          border-width = 2;
+          bar-height = 0;
 
           bg-color = "#0000";
           attention-requested-bg-color = "#0000";
           bar-bg-color = "#0000";
           # border-color = "#${colorScheme.accent}";
-          border-color = "#0000";
+          border-color = "#000000";
         };
 
       outputs = [
