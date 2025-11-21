@@ -20,7 +20,6 @@
   boot.loader.systemd-boot.consoleMode = "0";
 
   networking = {
-    hostName = "nixos";
     networkmanager.enable = true;
   };
 
@@ -94,15 +93,12 @@
 
   programs = {
     fish.enable = true;
-
     hyprland.enable = true;
-
     git.enable = true;
   };
 
   environment.systemPackages = [
     pkgs.ripgrep
-
     pkgs.corefonts
   ];
 

@@ -43,6 +43,7 @@
     blctl.enable = true;
   };
 
+  networking.hostName = "twinkpad";
   networking.firewall.allowedTCPPorts = [ 21622 ];
 
   hardware.enableAllFirmware = true;

@@ -5,7 +5,11 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{ inputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -14,6 +18,8 @@
 
     ./settings.nix
   ];
+
+  networking.hostName = "wsl";
 
   wsl.enable = true;
   wsl.defaultUser = "biixie";
