@@ -24,6 +24,7 @@
       gfx-api = "OpenGl";
 
       show-bar = false;
+      show-titles = false;
 
       theme =
         let
@@ -48,6 +49,10 @@
           bar-bg-color = "#0000";
           # border-color = "#${colorScheme.accent}";
           border-color = "#000000";
+
+          focused-title-bg-color = "#333333";
+          unfocused-title-bg-color = "#000000";
+          
         };
 
       outputs = [
