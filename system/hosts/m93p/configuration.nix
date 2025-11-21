@@ -17,11 +17,28 @@
 
   networking.hostName = "twinkcentre";
 
-  services.openssh.enable = true;
   networking.firewall.allowedTCPPorts = [ 22 ];
 
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
+
+  users.users.biixie.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFLXsKzURFCBKU+z45aHd29z99XfmFPn9nc/Pshz+EFN 65206220+ibiixie@users.noreply.github.com"
+  ];
+
+  services = {
+    openssh = {
+      enable = true;
+      ports = [ 21622 ];
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        AllowUsers = [
+          "*@192.168.1.*"
+        ];
+      };
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
