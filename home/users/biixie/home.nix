@@ -18,14 +18,14 @@
 
   systemd.user.startServices = "sd-switch";
 
-  home.packages = [
-    pkgs.grim
-    pkgs.slurp
+  home.packages = with pkgs; [
+    grim
+    slurp
+    just
   ];
 
   programs = {
     home-manager.enable = true;
-
     btop.enable = true;
   };
 }
