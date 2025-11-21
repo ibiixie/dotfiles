@@ -93,7 +93,6 @@
 
   programs = {
     fish.enable = true;
-    hyprland.enable = true;
     git.enable = true;
   };
 
