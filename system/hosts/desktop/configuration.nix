@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -18,6 +18,8 @@
 
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
+
+  networking.hostName = "desktop";
 
   hardware.graphics.extraPackages = [
     pkgs.intel-media-driver
