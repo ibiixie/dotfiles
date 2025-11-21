@@ -122,6 +122,30 @@
           ];
         };
 
+        m93p = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          # pkgs = pkgsFor.x86_64-linux;
+          specialArgs = { inherit inputs outputs; };
+
+          modules = [
+            ./system
+            ./system/hosts/m93p/configuration.nix
+
+            {
+              nix.package = pkgs.lixPackageSets.stable.lix;
+            }
+
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.biixie = ./home/users/biixie/home.nix;
+
+              home-manager.extraSpecialArgs = { inherit inputs outputs; };
+            }
+          ];
+        };
+
         wsl = nixpkgs.lib.nixosSystem {
           inherit pkgs;
 
