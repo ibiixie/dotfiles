@@ -14,8 +14,15 @@
         identityFile = "${config.sops.secrets."ssh/personal".path}";
       };
 
-      "e495" = {
+      "twinkpad" = {
         hostname = "192.168.1.34";
+        user = "biixie";
+        port = 21622;
+        identityFile = "${config.sops.secrets."ssh/personal".path}";
+      };
+
+      "twinkcentre" = {
+        hostname = "192.168.1.76";
         user = "biixie";
         port = 21622;
         identityFile = "${config.sops.secrets."ssh/personal".path}";
