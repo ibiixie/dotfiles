@@ -287,21 +287,21 @@
 
         search = {
           force = true;
-          default = "DuckDuckGo";
-          privateDefault = "DuckDuckGo";
-          order = [ "DuckDuckGo" ];
+          default = "ddg";
+          privateDefault = "ddg";
+          order = [ "ddg" ];
           engines = {
-            "DuckDuckGo" = {
+            "ddg" = {
               urls = [ { template = "https://duckduckgo.com/?q={searchTerms}"; } ];
-              iconUpdateURL = "https://duckduckgo.com/favicon.png";
+              icon = "https://duckduckgo.com/favicon.png";
               updateInteval = 24 * 60 * 60 * 1000;
               definedAliases = [ "@ddg" ];
             };
 
             # Disable default search engines
-            "Bing".metaData.hidden = true;
-            "Google".metaData.hidden = true;
-            "Wikipedia (en)".metaData.hidden = true;
+            "bing".metaData.hidden = true;
+            "google".metaData.hidden = true;
+            "wikipedia".metaData.hidden = true;
           };
         };
       };
