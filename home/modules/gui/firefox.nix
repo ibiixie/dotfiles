@@ -13,8 +13,8 @@
         isDefault = true;
 
         settings = {
-          "browser.search.defaultenginename" = "DuckDuckGo";
-          "browser.search.order.1" = "DuckDuckGo";
+          "browser.search.defaultenginename" = "qwant";
+          "browser.search.order.1" = "qwant";
 
           "browser.newtabpage.activity-stream.showWeather" = true;
           "browser.newtabpage.activity-stream.system.showWeather" = true;
@@ -287,15 +287,15 @@
 
         search = {
           force = true;
-          default = "ddg";
-          privateDefault = "ddg";
-          order = [ "ddg" ];
+          default = "qwant";
+          privateDefault = "qwant";
+          order = [ "qwant" ];
           engines = {
-            "ddg" = {
-              urls = [ { template = "https://duckduckgo.com/?q={searchTerms}"; } ];
-              icon = "https://duckduckgo.com/favicon.png";
+            "qwant" = {
+              urls = [ { template = "https://qwant.com/?q={searchTerms}"; } ];
+              icon = "https://qwant.com/favicon.png";
               updateInteval = 24 * 60 * 60 * 1000;
-              definedAliases = [ "@ddg" ];
+              definedAliases = [ "@qwant" ];
             };
 
             # Disable default search engines
