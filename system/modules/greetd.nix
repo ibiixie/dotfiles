@@ -13,7 +13,7 @@
 
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --remember --remember-session --power-shutdown 'sudo systemctl poweroff' --power-reboot 'sudo systemctl reboot'";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --remember --remember-session --power-shutdown 'sudo systemctl poweroff' --power-reboot 'sudo systemctl reboot'";
         user = "greeter";
       };
     };
