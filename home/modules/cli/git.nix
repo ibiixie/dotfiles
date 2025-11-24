@@ -9,13 +9,13 @@
 
     lfs.enable = true;
 
-    userEmail = "65206220+ibiixie@users.noreply.github.com";
-    userName = "biixie";
+    settings = {
+      user.email = "65206220+ibiixie@users.noreply.github.com";
+      user.name = "biixie";
 
-    signing.signByDefault = true;
-    signing.key = "${config.sops.secrets."ssh/personal".path}";
+      signing.signByDefault = true;
+      signing.key = "${config.sops.secrets."ssh/personal".path}";
 
-    extraConfig = {
       gpg.format = "ssh";
       init.defaultBranch = "main";
 
