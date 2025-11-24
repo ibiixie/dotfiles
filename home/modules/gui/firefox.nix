@@ -42,6 +42,8 @@
           "general.smoothScroll.stopDecelerationWeighting" = 1;
           "mousewheel.default.delta_multiplier_y" = 300; # adjust between 250-400
 
+          "gfx.webrender.layer-compositor" = true;
+
           # Fastfox
           "content.notify.interval" = 100000;
           "gfx.canvas.accelerated.cache-items" = 4096;
