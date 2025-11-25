@@ -88,6 +88,27 @@
         "type": "github"
       }
     },
+    "discord-rpc-lsp": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764099325,
+        "narHash": "sha256-zc0URtnAlT6Y7nJllNDmacauPC8PFktdryrKV1N7gPE=",
+        "owner": "ibiixie",
+        "repo": "discord-rpc-lsp",
+        "rev": "a35299bbe274479d56a6e6d4e8c67f51b634e12e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ibiixie",
+        "ref": "nix-flake",
+        "repo": "discord-rpc-lsp",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -304,6 +325,7 @@
     "root": {
       "inputs": {
         "blctl": "blctl",
+        "discord-rpc-lsp": "discord-rpc-lsp",
         "home-manager": "home-manager",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",

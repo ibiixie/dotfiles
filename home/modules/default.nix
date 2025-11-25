@@ -10,5 +10,6 @@
     ./gui
 
     ./sops.nix
+    ./discord-rpc-lsp.nix
   ];
 }
