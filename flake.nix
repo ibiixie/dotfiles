@@ -33,6 +33,11 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    discord-rpc-lsp = {
+      url = "github:ibiixie/discord-rpc-lsp/nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

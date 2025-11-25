@@ -114,6 +114,7 @@ in
             command = "nixfmt";
             args = [ ];
           };
+          language-servers = [ "discord-rpc" ];
         }
 
         {
@@ -126,71 +127,85 @@ in
               "yaml"
             ];
           };
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "rust";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "toml";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "dockerfile";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "docker-compose";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "json";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "jsonc";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "javascript";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "jsx";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "gjs";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "typescript";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "tsx";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "css";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "scss";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
@@ -199,23 +214,25 @@ in
           scope = "source.html";
           roots = [ ];
           file-types = [ "html" ];
-          language-servers = [ "superhtml-lsp" ];
+          language-servers = [ "superhtml-lsp" "discord-rpc" ];
         }
 
         {
           name = "gts";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "svelte";
           auto-format = true;
+          language-servers = [ "discord-rpc" ];
         }
 
         {
           name = "astro";
           auto-format = true;
-          language-servers = [ "astro-ls" ];
+          language-servers = [ "astro-ls" "discord-rpc" ];
           # formatter = {
           #   command = "prettier";
           #   args = [
@@ -254,6 +271,9 @@ in
       language-server.superhtml-lsp = {
         command = "superhtml";
         args = [ "lsp" ];
+      };
+      language-server.discord-rpc = {
+        command = "discord-rpc-lsp";
       };
     };
   };
