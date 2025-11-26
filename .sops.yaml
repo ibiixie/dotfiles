@@ -1,0 +1,64 @@
+keys:
+  - &biixie age1cshxzcs8h2xrm2qp4jhkf9a00r0hlm57zn6pv55c0hz4aaamsaxqvvkz62
+
+  - &wsl age17mwjgd5wd5fwx767g3r3x8k0l663tjleqcn3cjcrrsw4legfxshs7rv8wp
+  - &twinkpad age1arqvcez8hva7c8z3khsh954z50hltal9qs68xdwnzvqxaycmjqss4772hv
+  - &twinkcentre age1l30pdcw3uyzez0sn9cwwl63qwhvt2xk7yyrx5kxq7989suwerf5qnau96j
+  # - &desktop TODO
+
+creation_rules:
+  - path_regex: secrets/users/biixie\.yaml
+    key_groups:
+      - age:
+        - *biixie
+        - *wsl
+        - *twinkpad
+        - *twinkcentre
+
+  - path_regex: secrets/hosts/wsl\.yaml
+    key_groups:
+      - age:
+        - *biixie
+        - *wsl
+
+  - path_regex: secrets/hosts/twinkpad\.yaml
+    key_groups:
+      - age:
+        - *biixie
+        - *twinkpad
+
+  - path_regex: secrets/hosts/twinkcentre\.yaml
+    key_groups:
+      - age:
+        - *biixie
+        - *twinkcentre
+
+  - path_regex: secrets/services(/.+)*\.yaml
+    key_groups:
+      - age:
+          - *biixie
+          - *wsl
+          - *twinkpad
+          - *twinkcentre
+
+  # - path_regex: secrets/hosts/desktop\.yaml
+  #   key_groups:
+  #     - age:
+  #       - *biixie
+  #       - *desktop
+
+  # - path_regex: secrets/ssh\.yaml
+  #   key_groups:
+  #     - age:
+  #       - *biixie
+  #       - *wsl
+  #       - *twinkpad
+  #       - *twinkcentre
+  
+  # - path_regex: secrets/secrets\.yaml
+  #   key_groups:
+  #     - age:
+  #       - *biixie
+  #       - *wsl
+  #       - *twinkpad
+  #       - *twinkcentre

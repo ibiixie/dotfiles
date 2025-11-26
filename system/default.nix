@@ -1,12 +1,16 @@
 # Contains system-level configuration shared across all of my devices.
 
 {
+  inputs,
+  config,
   pkgs,
   ...
 }:
 
 {
   imports = [
+    inputs.sops-nix.nixosModules.sops
+
     ./settings.nix
     ./modules
   ];
@@ -64,6 +68,7 @@
     };
 
     # Automount external storage devices.
+    # TODO: Automount should be disabled on headless systems.
     devmon.enable = true;
     gvfs.enable = true;
     udisks2.enable = true;
@@ -87,15 +92,8 @@
     };
   };
 
-  users.users.biixie = {
-    shell = pkgs.fish;
-    isNormalUser = true;
-    description = "Biixie";
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-      "docker"
-    ];
+  users = {
+    mutableUsers = false;
   };
 
   programs = {
@@ -104,7 +102,7 @@
   };
 
   environment.systemPackages = [
-    pkgs.ripgrep
+    pkgs.ripgrep # TODO: Move this to per-user packages?
     pkgs.corefonts
   ];
 

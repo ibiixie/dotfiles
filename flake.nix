@@ -79,14 +79,14 @@
     in
     {
       nixosConfigurations = {
-        e495 = nixpkgs.lib.nixosSystem {
+        twinkpad = nixpkgs.lib.nixosSystem {
           inherit pkgs;
-          # pkgs = pkgsFor.x86_64-linux;
+
           specialArgs = { inherit inputs outputs; };
 
           modules = [
             ./system
-            ./system/hosts/e495/configuration.nix
+            ./system/hosts/twinkpad/configuration.nix
 
             {
               nix.package = pkgs.lixPackageSets.stable.lix;
@@ -105,7 +105,7 @@
 
         desktop = nixpkgs.lib.nixosSystem {
           inherit pkgs;
-          # pkgs = pkgsFor.x86_64-linux;
+
           specialArgs = { inherit inputs outputs; };
 
           modules = [
@@ -127,14 +127,14 @@
           ];
         };
 
-        m93p = nixpkgs.lib.nixosSystem {
+        twinkcentre = nixpkgs.lib.nixosSystem {
           inherit pkgs;
-          # pkgs = pkgsFor.x86_64-linux;
+
           specialArgs = { inherit inputs outputs; };
 
           modules = [
             ./system
-            ./system/hosts/m93p/configuration.nix
+            ./system/hosts/twinkcentre/configuration.nix
 
             {
               nix.package = pkgs.lixPackageSets.stable.lix;

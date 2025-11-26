@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   ...
 }:
@@ -6,6 +7,7 @@
 {
   imports = [
     ../../modules
+    ./secrets.nix
   ];
 
   home.username = "biixie";
