@@ -6,6 +6,8 @@
 
 {
   imports = [
+    ./secrets.nix
+
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
@@ -22,9 +24,24 @@
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
 
-  users.users.biixie.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFLXsKzURFCBKU+z45aHd29z99XfmFPn9nc/Pshz+EFN 65206220+ibiixie@users.noreply.github.com"
-  ];
+  users.users.biixie = {
+    isNormalUser = true;
+    description = "Biixie";
+
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "docker"
+    ];
+
+    hashedPasswordFile = config.sops.secrets."users/biixie/password".path;
+
+    shell = pkgs.fish;
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFLXsKzURFCBKU+z45aHd29z99XfmFPn9nc/Pshz+EFN 65206220+ibiixie@users.noreply.github.com"
+    ];
+  };
 
   services = {
     openssh = {

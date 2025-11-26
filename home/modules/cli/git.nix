@@ -4,6 +4,10 @@
 }:
 
 {
+  sops.secrets = {
+    "users/biixie/ssh-key" = { };
+  };
+
   programs.git = {
     enable = true;
 
@@ -14,7 +18,7 @@
       user.name = "biixie";
 
       signing.signByDefault = true;
-      signing.key = "${config.sops.secrets."ssh/personal".path}";
+      signing.key = config.sops.secrets."users/biixie/ssh-key".path;
 
       gpg.format = "ssh";
       init.defaultBranch = "main";

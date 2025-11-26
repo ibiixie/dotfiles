@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -35,6 +35,21 @@
       "rw"
       "uid=1000"
     ];
+  };
+
+  users.users.biixie = {
+    isNormalUser = true;
+    description = "Biixie";
+
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "docker"
+    ];
+
+    hashedPasswordFile = config.sops.secrets."users/biixie/password".path;
+
+    shell = pkgs.fish;
   };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

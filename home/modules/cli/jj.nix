@@ -4,6 +4,10 @@
 }:
 
 {
+  sops.secrets = {
+    "users/biixie/ssh-key" = { };
+  };
+
   programs.jujutsu = {
     enable = true;
 
@@ -15,7 +19,7 @@
       signing = {
         behavior = "own";
         backend = "ssh";
-        key = "${config.sops.secrets."ssh/personal".path}";
+        key = config.sops.secrets."users/biixie/ssh-key".path;
       };
       ui = {
         default-command = "log";

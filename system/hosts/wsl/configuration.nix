@@ -6,6 +6,7 @@
 # https://github.com/nix-community/NixOS-WSL
 
 {
+  config,
   inputs,
   pkgs,
   ...
@@ -17,6 +18,7 @@
     inputs.nixos-wsl.nixosModules.default
 
     ./settings.nix
+    ./secrets.nix
   ];
 
   networking.hostName = "wsl";
@@ -32,6 +34,21 @@
 
   programs.nix-ld = {
     enable = true; # Also required for VSCode Remote
+  };
+
+  users.users.biixie = {
+    isNormalUser = true;
+    description = "Biixie";
+
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "docker"
+    ];
+
+    hashedPasswordFile = config.sops.secrets."users/biixie/password".path;
+
+    shell = pkgs.fish;
   };
 
   # This value determines the NixOS release from which the default
