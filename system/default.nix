@@ -87,7 +87,7 @@
     };
 
     gc = {
-      automatic = true;
+      automatic = false;
       options = "--delete-older-than 3d";
     };
   };
