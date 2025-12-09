@@ -61,7 +61,9 @@
         enable = true;
         name = "twinkcentre-runner";
         url = "https://github.com/ibiixie/dedicated-infra";
+        user = "biixie";
         tokenFile = config.sops.secrets."hosts/twinkcentre/gh-runner-token".path;
+        extraPackages = [ pkgs.docker ];
       };
     };
   };
