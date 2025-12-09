@@ -15,6 +15,8 @@
         neededForUsers = true;
         sopsFile = ../../../secrets/users/biixie.yaml;
       };
+
+      "hosts/twinkcentre/gh-runner-token" = { };
     };
   };
 }
