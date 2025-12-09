@@ -55,6 +55,15 @@
         ];
       };
     };
+
+    github-runners = {
+      twinkcentre-runner = {i
+        enable = true;
+        name = "twinkcentre-runner";
+        url = "https://github.com/ibiixie/dedicated-infra";
+        tokenFile = config.sops.secrets."hosts/twinkcentre/gh-runner-token".path;
+      }
+    }
   };
 
   # This value determines the NixOS release from which the default
