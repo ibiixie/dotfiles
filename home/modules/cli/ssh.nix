@@ -16,6 +16,12 @@
         identityFile = config.sops.secrets."users/biixie/ssh-key".path;
       };
 
+      "codeberg.org" = {
+        hostname = "codeberg.org";
+        user = "git";
+        identityFile = config.sops.secrets."users/biixie/ssh-key".path;
+      };
+
       "twinkpad" = {
         hostname = "192.168.1.34";
         user = "biixie";
