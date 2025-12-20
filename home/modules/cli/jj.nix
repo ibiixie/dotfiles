@@ -13,8 +13,8 @@
 
     settings = {
       user = {
-        email = "65206220+ibiixie@users.noreply.github.com";
-        name = "biixie";
+        name = config.programs.git.settings.user.name;
+        email = config.programs.git.settings.user.email;
       };
       signing = {
         behavior = "own";

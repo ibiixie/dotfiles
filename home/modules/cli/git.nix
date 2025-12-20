@@ -14,8 +14,8 @@
     lfs.enable = true;
 
     settings = {
-      user.email = "65206220+ibiixie@users.noreply.github.com";
       user.name = "biixie";
+      user.email = "no" + "-re" + "ply" + "@" + "bii" + "xie" + "." + "c" + "om";
 
       signing.signByDefault = true;
       signing.key = config.sops.secrets."users/biixie/ssh-key".path;
