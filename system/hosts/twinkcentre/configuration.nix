@@ -73,9 +73,12 @@
 
       instances.twinkcentre = {
         enable = true;
+        name = "twinkcentre-runner";
+        labels = [
+          "twinkcentre-runner"
+        ];
         url = "https://code.forgejo.org/";
         tokenFile = config.sops.secrets."hosts/twinkcentre/codeberg-runner-token".path;
-        name = "twinkcentre-runner";
       };
     };
   };
