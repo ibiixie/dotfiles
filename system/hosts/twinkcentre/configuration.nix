@@ -43,6 +43,13 @@
     ];
   };
 
+  users.users.gitea-runner = {
+    isNormalUser = true;
+    extraGroups = [
+      "docker"
+    ];
+  };
+
   services = {
     openssh = {
       enable = true;
@@ -74,10 +81,11 @@
       instances.twinkcentre = {
         enable = true;
         name = "twinkcentre-runner";
+        url = "https://codeberg.org/";
         labels = [
-          "twinkcentre-runner"
+          "self-hosted"
+          "twinkcentre"
         ];
-        url = "https://code.forgejo.org/";
         tokenFile = config.sops.secrets."hosts/twinkcentre/codeberg-runner-token".path;
       };
     };
