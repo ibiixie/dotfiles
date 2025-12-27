@@ -17,6 +17,7 @@
       };
 
       "hosts/twinkcentre/gh-runner-token" = { };
+      "hosts/twinkcentre/codeberg-runner-token" = { };
     };
   };
 }
