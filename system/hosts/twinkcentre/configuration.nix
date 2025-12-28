@@ -83,10 +83,21 @@
         name = "twinkcentre-runner";
         url = "https://codeberg.org/";
         labels = [
-          "self-hosted"
-          "twinkcentre"
+          "self-hosted:host"
+          "twinkcentre:host"
         ];
         tokenFile = config.sops.secrets."hosts/twinkcentre/codeberg-runner-token".path;
+        hostPackages = with pkgs; [
+          bash
+          coreutils
+          curl
+          gawk
+          gitMinimal
+          gnused
+          nodejs
+          wget
+          docker
+        ];
       };
     };
   };
