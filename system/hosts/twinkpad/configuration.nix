@@ -24,7 +24,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
-      "docker"
+      # "docker"
     ];
 
     hashedPasswordFile = config.sops.secrets."users/biixie/password".path;
