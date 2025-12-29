@@ -104,10 +104,24 @@
   environment.systemPackages = [
     pkgs.ripgrep # TODO: Move this to per-user packages?
     pkgs.corefonts
+
+    pkgs.podman-compose
   ];
 
   # Used by various software for system authentication.
   security.polkit.enable = true;
 
-  virtualisation.docker.enable = true;
+  virtualisation = {
+    # docker.enable = true;
+
+    podman = {
+      enable = true;
+
+      # Docker compat
+      dockerCompat = true;
+      dockerSocket.enable = true;
+
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 }

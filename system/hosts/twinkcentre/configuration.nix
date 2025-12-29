@@ -31,7 +31,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
-      "docker"
+      # "docker"
     ];
 
     hashedPasswordFile = config.sops.secrets."users/biixie/password".path;
@@ -47,6 +47,7 @@
     isNormalUser = true;
     extraGroups = [
       "docker"
+      "podman"
     ];
   };
 
@@ -84,6 +85,7 @@
           gnused
           nodejs
           wget
+
           docker
         ];
       };
@@ -97,5 +99,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }
