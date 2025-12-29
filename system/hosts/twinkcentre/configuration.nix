@@ -63,18 +63,6 @@
       };
     };
 
-    github-runners = {
-      twinkcentre-runner = {
-        enable = true;
-        name = "twinkcentre-runner";
-        # TODO: Don't think this URL is correct.
-        url = "https://github.com/ibiixie/dedicated-infra";
-        user = "biixie";
-        tokenFile = config.sops.secrets."hosts/twinkcentre/gh-runner-token".path;
-        extraPackages = [ pkgs.docker ];
-      };
-    };
-
     gitea-actions-runner = {
       package = pkgs.forgejo-runner;
 
