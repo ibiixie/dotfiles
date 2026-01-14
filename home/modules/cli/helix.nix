@@ -133,7 +133,7 @@ in
         {
           name = "rust";
           auto-format = true;
-          language-servers = [ "discord-rpc" ];
+          language-servers = [ "rust-analyzer" "discord-rpc" ];
         }
 
         {
