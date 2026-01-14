@@ -114,7 +114,7 @@ in
             command = "nixfmt";
             args = [ ];
           };
-          language-servers = [ "discord-rpc" ];
+          language-servers = [ "nil" "discord-rpc" ];
         }
 
         {
