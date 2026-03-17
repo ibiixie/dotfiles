@@ -7,6 +7,7 @@
 {
   imports = [
     ./settings.nix
+    ./secrets.nix
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -19,7 +20,8 @@
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
 
-  networking.hostName = "desktop";
+  networking.hostName = "twinktop";
+  networking.firewall.allowedTCPPorts = [ 21622 ];
 
   hardware.graphics.extraPackages = [
     pkgs.intel-media-driver
@@ -50,6 +52,24 @@
     hashedPasswordFile = config.sops.secrets."users/biixie/password".path;
 
     shell = pkgs.fish;
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFLXsKzURFCBKU+z45aHd29z99XfmFPn9nc/Pshz+EFN 65206220+ibiixie@users.noreply.github.com"
+    ];
+  };
+
+  services = {
+    openssh = {
+      enable = true;
+      ports = [ 21622 ];
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        AllowUsers = [
+          "*@192.168.1.*"
+        ];
+      };
+    };
   };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

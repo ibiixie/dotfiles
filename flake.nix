@@ -103,14 +103,14 @@
           ];
         };
 
-        desktop = nixpkgs.lib.nixosSystem {
+        twinktop = nixpkgs.lib.nixosSystem {
           inherit pkgs;
 
           specialArgs = { inherit inputs outputs; };
 
           modules = [
             ./system
-            ./system/hosts/desktop/configuration.nix
+            ./system/hosts/twinktop/configuration.nix
 
             {
               nix.package = pkgs.lixPackageSets.stable.lix;
