@@ -17,6 +17,13 @@
     enable = true;
   };
 
+  # xdg.portal = {
+  #   enable = true;
+  #   configPackages = [
+  #     pkgs.jay
+  #   ];
+  # };
+
   wayland.windowManager.jay = {
     enable = true;
 
@@ -52,7 +59,6 @@
 
           focused-title-bg-color = "#333333";
           unfocused-title-bg-color = "#000000";
-          
         };
 
       outputs = [
