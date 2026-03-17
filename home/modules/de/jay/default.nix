@@ -17,13 +17,6 @@
     enable = true;
   };
 
-  # xdg.portal = {
-  #   enable = true;
-  #   configPackages = [
-  #     pkgs.jay
-  #   ];
-  # };
-
   wayland.windowManager.jay = {
     enable = true;
 
