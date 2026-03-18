@@ -4,6 +4,7 @@ keys:
   - &wsl age17mwjgd5wd5fwx767g3r3x8k0l663tjleqcn3cjcrrsw4legfxshs7rv8wp
   - &twinkpad age1ndq5qxmtzkn2smurse473f0ttjcv96tu4y3ulsdqlk459ese8vzqyfa8jd
   - &twinkcentre age1l30pdcw3uyzez0sn9cwwl63qwhvt2xk7yyrx5kxq7989suwerf5qnau96j
+  - &twinktop age18t0qhw33ah6wvc2cf0hh4nhpvrk3687cwh5qkad3upmkvmswkdaquepjst
 
 creation_rules:
   - path_regex: secrets/users/biixie\.yaml
@@ -31,6 +32,12 @@ creation_rules:
       - age:
         - *biixie
         - *twinkcentre
+
+  - path_regex: secrets/hosts/twinktop\.yaml
+    key_groups:
+      - age:
+        - *biixie
+        - *twinktop
 
   - path_regex: secrets/services(/.+)*\.yaml
     key_groups:
