@@ -1,0 +1,79 @@
+{
+  ...
+}:
+
+let
+  # Notes to self :3
+  # Tested on Intel Core i5-13600K.
+  # Minimal distortion at max CPU load w/ a rate of 256.
+  # Moderate distortion at max CPU load w/ a rate of 128.
+  # Less moderate distortion at max CPU load w/ a rate of 196.
+  # Minimal distortion at max CPU load w/ a rate of 256.
+  # No audible distortion at max CPU load w/ a rate of <insert rate here>
+  # TODO: Try 128, 196, 256+ during normal use (i.e., CPU-heavy game).
+  quantumRate = 256;
+  quantumRateMin = quantumRate;
+  quantumRateMax = quantumRate;
+in
+{
+  services = {
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+
+      # Attempt to fix crackling audio issue
+      extraConfig.pipewire = {
+        "98-crackling-fix" = {
+          "context.properties" = {
+            "default.clock.allowed-rates" = [
+              44100 # Added to fix a crackling audio issue!
+              48000
+            ];
+          };
+        };
+
+        "92-low-latency" = {
+          "context.properties" = {
+            "default.clock.rate" = 48000;
+            "default.clock.quantum" = quantumRate;
+            "default.clock.min-quantum" = quantumRateMin;
+            "default.clock.max-quantum" = quantumRateMax;
+          };
+        };
+      };
+
+      extraConfig.pipewire-pulse = {
+        "92-low-latency" = {
+          "context.properties" = [
+            {
+              name = "libpipewire-module-protocol-pulse";
+              args = { };
+            }
+          ];
+          "pulse.properties" = {
+            "pulse.min.req" = "${toString quantumRateMin}/48000";
+            "pulse.default.req" = "${toString quantumRate}/48000";
+            "pulse.max.req" = "${toString quantumRateMax}/48000";
+            "pulse.min.quantum" = "${toString quantumRateMin}/48000";
+            "pulse.max.quantum" = "${toString quantumRateMax}/48000";
+          };
+          "stream.properties" = {
+            "node.latency" = "${toString quantumRate}/48000";
+            "resample.quality" = 1;
+          };
+        };
+      };
+
+      # Does not seem necessary?
+      # wireplumber.extraConfig = {
+      #   "99-crackling-fix" = {
+      #     "api.alsa.period-size" = 1024;
+      #     "api.alsa.headroom" = 8192;
+      #   };
+      # };
+    };
+  };
+}
