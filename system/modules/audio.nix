@@ -4,6 +4,7 @@
 
 let
   # Notes to self :3
+  # Latency formula: (quantumRate / Hz) x 1000
   # Tested on Intel Core i5-13600K.
   # Minimal distortion at max CPU load w/ a rate of 256.
   # Moderate distortion at max CPU load w/ a rate of 128.
