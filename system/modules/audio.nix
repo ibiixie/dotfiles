@@ -10,9 +10,10 @@ let
   # Moderate distortion at max CPU load w/ a rate of 128.
   # Less moderate distortion at max CPU load w/ a rate of 196.
   # Minimal distortion at max CPU load w/ a rate of 256.
-  # No audible distortion at max CPU load w/ a rate of <insert rate here>
-  # TODO: Try 128, 196, 256+ during normal use (i.e., CPU-heavy game).
-  quantumRate = 256;
+  #   ADDENDUM: Audible distortion even w/ an idle CPU!
+  # Minimal distortion at max CPU load w/ a rate of 320.
+  # TODO: Check distortion at max CPU load w/ a rate of 352.
+  quantumRate = 352;
   quantumRateMin = quantumRate;
   quantumRateMax = quantumRate;
 in
