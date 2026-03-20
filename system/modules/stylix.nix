@@ -48,9 +48,21 @@ in
     polarity = "dark";
 
     fonts = {
+      serif = {
+        package = pkgs.charis;
+        name = "Charis";
+      };
+
+      sansSerif = {
+        package = pkgs.cooper-hewitt;
+        name = "Cooper Hewitt";
+      };
+
       monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrains Mono NL Nerd Font Mono";
+        # package = pkgs.nerd-fonts.jetbrains-mono;
+        # name = "JetBrains Mono NL Nerd Font Mono";
+        package = pkgs.maple-mono.NormalNL-NF-unhinted;
+        name = "Maple Mono Normal NL NF";
       };
 
       sizes = {
