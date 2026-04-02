@@ -10,5 +10,6 @@
     ./quickshell
     ./obs-studio.nix
     ./easyeffects.nix
+    ./spicetify.nix
   ];
 }
