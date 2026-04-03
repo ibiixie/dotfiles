@@ -9,6 +9,8 @@
     ./de
     ./gui
 
+    ./nh.nix
+
     ./discord-rpc-lsp.nix
   ];
 }
