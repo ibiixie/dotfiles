@@ -46,7 +46,6 @@ transform = "rotate-270"
 # [[outputs]]
 # name = "twinktop-external-tertiary"
 
-
 [[inputs]]
 name = "twinkpad-touchpad"
 match.name = "SynPS/2 Synaptics TouchPad"
@@ -59,19 +58,17 @@ tap-enabled = true
 action = {
   type = "exec",
   exec = [
-    "grim",
-    "-g",
-    "\"$(slurp)\"",
-    "-",
-    "|",
-    "wl-copy",
-    "-t",
-    "image/png",
+    "jay",
+    "run-privileged",
+    "sh",
+    "-c",
+    "grim -g \"$(slurp)\" - | wl-copy -t image/png",
   ]
 }
 
 [complex-shortcuts.XF86AudioLowerVolume]
 action = {
+  type = "exec",
   exec = [
     "wpctl",
     "set-volume",
@@ -80,7 +77,6 @@ action = {
     "@DEFAULT_AUDIO_SINK@",
     "5%-",
   ],
-  type = "exec"
 }
 
 [complex-shortcuts.XF86AudioMicMute]
