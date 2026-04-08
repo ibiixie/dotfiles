@@ -3,6 +3,8 @@ gfx-api = "Vulkan"
 show-bar = false
 show-titles = false
 
+idle.minutes = 0
+
 keymap = """
   xkb_keymap {
     xkb_keycodes { include "evdev+aliases(qwerty)" };
