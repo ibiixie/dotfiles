@@ -13,7 +13,9 @@ let
   #   ADDENDUM: Audible distortion even w/ an idle CPU!
   # Minimal distortion at max CPU load w/ a rate of 320.
   # TODO: Check distortion at max CPU load w/ a rate of 352.
-  quantumRate = 352;
+  #   ADDENDUM II: Audible distortion when using gamemode.
+  # TODO: Check distortion with gamemode w/ a rate of 384.
+  quantumRate = 384;
   quantumRateMin = quantumRate;
   quantumRateMax = quantumRate;
 in
