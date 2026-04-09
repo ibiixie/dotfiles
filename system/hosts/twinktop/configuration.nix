@@ -67,6 +67,7 @@
       "wheel"
       "networkmanager"
       "docker"
+      "gamemode"
     ];
 
     hashedPasswordFile = config.sops.secrets."users/biixie/password".path;
