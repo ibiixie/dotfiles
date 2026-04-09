@@ -8,5 +8,6 @@
     ./blctl.nix
     ./jay.nix
     ./steam.nix
+    ./obs-studio.nix
   ];
 }
