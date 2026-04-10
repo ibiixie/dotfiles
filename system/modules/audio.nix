@@ -6,16 +6,12 @@ let
   # Notes to self :3
   # Latency formula: (quantumRate / Hz) x 1000
   # Tested on Intel Core i5-13600K.
-  # Minimal distortion at max CPU load w/ a rate of 256.
-  # Moderate distortion at max CPU load w/ a rate of 128.
-  # Less moderate distortion at max CPU load w/ a rate of 196.
-  # Minimal distortion at max CPU load w/ a rate of 256.
-  #   ADDENDUM: Audible distortion even w/ an idle CPU!
-  # Minimal distortion at max CPU load w/ a rate of 320.
-  # TODO: Check distortion at max CPU load w/ a rate of 352.
-  #   ADDENDUM II: Audible distortion when using gamemode.
   # TODO: Check distortion with gamemode w/ a rate of 384.
-  quantumRate = 384;
+  #   Audible distortion still when using gamemode
+  #   but only during prolonged sessions?
+  # TODO: Check distortion with gamemode esp. during prolonged sessions
+  #       with a quantum rate of 448.
+  quantumRate = 416;
   quantumRateMin = quantumRate;
   quantumRateMax = quantumRate;
 in
