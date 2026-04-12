@@ -11,5 +11,6 @@
     ./obs-studio.nix
     ./easyeffects.nix
     ./spicetify.nix
+    ./davinci-resolve.nix
   ];
 }
