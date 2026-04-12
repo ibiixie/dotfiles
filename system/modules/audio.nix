@@ -11,7 +11,7 @@ let
   #   but only during prolonged sessions?
   # TODO: Check distortion with gamemode esp. during prolonged sessions
   #       with a quantum rate of 448.
-  quantumRate = 416;
+  quantumRate = 384;
   quantumRateMin = quantumRate;
   quantumRateMax = quantumRate;
 in
