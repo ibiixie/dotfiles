@@ -38,8 +38,11 @@
       prettyName = "Jay";
       comment = "Jay compositor";
 
-      # TODO: i think this is bad
-      binPath = lib.getExe pkgs.jay + " run";
+      extraArgs = [
+        "run"
+      ];
+
+      binPath = "/run/current-system/sw/bin/jay";
     };
   };
 }
