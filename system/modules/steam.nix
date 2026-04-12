@@ -1,9 +1,14 @@
 {
+  inputs,
   pkgs,
   ...
 }:
 
 {
+  imports = [
+    inputs.nix-gaming.nixosModules.platformOptimizations
+  ];
+
   programs = {
     gamemode.enable = true;
     gamescope = {
@@ -15,6 +20,8 @@
       enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
+
+      platformOptimizations.enable = true;
 
       package = pkgs.steam.override {
         extraPkgs =
