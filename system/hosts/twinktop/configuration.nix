@@ -17,6 +17,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  powerManagement.cpuFreqGovernor = "performance";
+
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
 
@@ -68,6 +70,7 @@
       "networkmanager"
       "docker"
       "gamemode"
+      "audio"
     ];
 
     hashedPasswordFile = config.sops.secrets."users/biixie/password".path;

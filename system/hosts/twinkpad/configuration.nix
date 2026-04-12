@@ -25,6 +25,7 @@
       "wheel"
       "networkmanager"
       "docker"
+      "audio"
     ];
 
     hashedPasswordFile = config.sops.secrets."users/biixie/password".path;
