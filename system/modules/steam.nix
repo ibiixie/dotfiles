@@ -9,6 +9,10 @@
     inputs.nix-gaming.nixosModules.platformOptimizations
   ];
 
+  environment.systemPackages = [
+    pkgs.mangohud
+  ];
+
   programs = {
     gamemode.enable = true;
     gamescope = {
