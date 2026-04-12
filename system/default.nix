@@ -109,6 +109,9 @@
   # Used by various software for system authentication.
   security.polkit.enable = true;
 
+  # Real-time scheduling
+  security.rtkit.enable = true;
+
   virtualisation = {
     docker.enable = true;
 
