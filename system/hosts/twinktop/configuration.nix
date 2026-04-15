@@ -31,6 +31,10 @@
     pkgs.intel-compute-runtime
   ];
 
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
+
   fileSystems."/Storage" = {
     device = "/dev/disk/by-uuid/B2783C05783BC6BF";
     fsType = "ntfs-3g";
