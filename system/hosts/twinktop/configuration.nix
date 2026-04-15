@@ -31,6 +31,9 @@
     pkgs.intel-compute-runtime
   ];
 
+  # Probably not used, but might as well c:
+  services.xserver.videoDrivers = [ "modesetting" ];
+
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
   };
