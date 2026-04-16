@@ -11,6 +11,7 @@
 
   environment.systemPackages = [
     pkgs.mangohud
+    pkgs.osu-lazer # Should probably move this to another module
   ];
 
   programs = {
