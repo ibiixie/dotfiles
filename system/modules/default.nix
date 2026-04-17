@@ -7,6 +7,7 @@
     ./greetd.nix
     ./blctl.nix
     ./jay.nix
+    ./niri.nix
     ./steam.nix
     ./obs-studio.nix
   ];

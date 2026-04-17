@@ -196,6 +196,7 @@
             pkgs.nixfmt
             pkgs.vscode-langservers-extracted
             pkgs.just
+            pkgs.kdlfmt
 
             # QML language server for Quickshell
             pkgs.kdePackages.qtdeclarative
