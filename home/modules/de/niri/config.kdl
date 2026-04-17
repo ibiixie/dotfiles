@@ -349,7 +349,6 @@ window-rule {
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
     match app-id="discord"
     match app-id="vesktop"
-    match app-id="steam"
 
     block-out-from "screen-capture"
 
