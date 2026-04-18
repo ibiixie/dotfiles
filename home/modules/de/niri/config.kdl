@@ -5,6 +5,8 @@
 
 prefer-no-csd
 
+spawn-at-startup "obs --startreplaybuffer --studio-mode --minimize-to-tray --disable-missing-files-check"
+
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Input
@@ -290,7 +292,7 @@ layout {
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    // skip-at-startup
+    skip-at-startup
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -381,6 +383,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+    Mod+F hotkey-overlay-title="Open a File Manager: nautilus" { spawn "nautilus"; }
     Mod+Space hotkey-overlay-title="Run an Application: anyrun" { spawn "anyrun"; }
 
     Mod+Z hotkey-overlay-title="Save OBS Replay: obs-cmd" {
@@ -579,8 +582,8 @@ binds {
     Mod+Ctrl+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
 
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
+    Mod+Shift+F { maximize-column; }
+    Mod+F12 { fullscreen-window; }
 
     // While maximize-column leaves gaps and borders around the window,
     // maximize-window-to-edges doesn't: the window expands to the edges of the screen.
