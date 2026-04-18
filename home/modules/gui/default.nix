@@ -4,6 +4,7 @@
     ./anyrun.nix
     ./gammastep.nix
     ./firefox.nix
+    ./mpv.nix
     ./obsidian.nix
     ./vesktop.nix
     ./waybar.nix
