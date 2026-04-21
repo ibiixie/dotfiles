@@ -40,7 +40,7 @@ Variants {
                     anchors.centerIn: parent
                     color: "#FAF7EA"
 
-                    font.family: "JetBrains Mono NL Nerd Font Mono"
+                    font.family: "Maple Mono Normal NL NF"
                     font.pointSize: 14
         
                     Process {
