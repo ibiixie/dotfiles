@@ -13,7 +13,7 @@
     wl-clipboard-rs
   ];
 
-  services.swww = {
+  services.awww = {
     enable = true;
   };
 

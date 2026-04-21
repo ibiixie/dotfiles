@@ -55,66 +55,67 @@
         )
       '';
 
-    extraCss =
-      let
-        colorScheme = with config.stylix.base16Scheme; {
-          background = base00;
-          accent = base0E;
-          text = base05;
-          hover = base02;
-        };
-      in
-      # css
-      ''
-        * {
-          all: unset;
-        }
+    # TODO: Styling broke, fix
+    # extraCss =
+    #   let
+    #     colorScheme = with config.stylix.base16Scheme; {
+    #       background = base00;
+    #       accent = base0E;
+    #       text = base05;
+    #       hover = base02;
+    #     };
+    #   in
+    #   # css
+    #   ''
+    #     * {
+    #       all: unset;
+    #     }
 
-        text {
-          background-color: #${colorScheme.background};
-          padding: 8px;
+    #     text {
+    #       background-color: #${colorScheme.background};
+    #       padding: 8px;
 
-          margin-bottom: 16px;
+    #       margin-bottom: 16px;
 
-          border-radius: 8px;
-          border: 2px solid #${colorScheme.accent};
-        }
+    #       border-radius: 8px;
+    #       border: 2px solid #${colorScheme.accent};
+    #     }
 
-        window {
-          background-color: rgba(0, 0, 0, 0.3);
+    #     window {
+    #       background-color: rgba(0, 0, 0, 0.3);
 
-          color: #${colorScheme.text};
-          font-family: sans-serif;
-          font-size: 1.2rem;
-        }
+    #       color: #${colorScheme.text};
+    #       font-family: sans-serif;
+    #       font-size: 1.2rem;
+    #     }
 
-        .main {
-          background-color: transparent;
-          border-radius: 8px;
-          padding: 0px 8px;
-        }
+    #     .main {
+    #       background-color: transparent;
+    #       border-radius: 8px;
+    #       padding: 0px 8px;
+    #     }
 
-        .match {
-          padding: 2px;
-        }
+    #     .match {
+    #       padding: 2px;
+    #     }
 
-        .match:selected {
-          background-color: #${colorScheme.accent};
-          color: #${colorScheme.background};
-          border-radius: 8px;
-        }
+    #     .match:selected {
+    #       background-color: #${colorScheme.accent};
+    #       color: #${colorScheme.background};
+    #       border-radius: 8px;
+    #     }
 
-        .match:hover {
-          background-color: #${colorScheme.hover};
-          border-radius: 8px;
-        }
+    #     .match:hover {
+    #       background-color: #${colorScheme.hover};
+    #       border-radius: 8px;
+    #     }
 
-        .plugin {
-          background-color: #${colorScheme.background};
-          border-radius: 8px;
+    #     .plugin {
+    #       background-color: #${colorScheme.background};
+    #       border-radius: 8px;
 
-          margin: 4px;
-        }
-      '';
+    #       margin: 4px;
+    #     }
+    #   '';
   };
 }
