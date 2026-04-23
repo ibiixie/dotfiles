@@ -48,15 +48,15 @@ in
     polarity = "dark";
 
     fonts = {
-      serif = {
-        package = pkgs.charis;
-        name = "Charis";
-      };
+      # serif = {
+      #   package = pkgs.charis;
+      #   name = "Charis";
+      # };
 
-      sansSerif = {
-        package = pkgs.cooper-hewitt;
-        name = "Cooper Hewitt";
-      };
+      # sansSerif = {
+      #   package = pkgs.cooper-hewitt;
+      #   name = "Cooper Hewitt";
+      # };
 
       monospace = {
         # package = pkgs.nerd-fonts.jetbrains-mono;
