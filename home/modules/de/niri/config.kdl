@@ -385,7 +385,7 @@ binds {
     Mod+Space hotkey-overlay-title="Run an Application: anyrun" { spawn "anyrun"; }
 
     Mod+Z hotkey-overlay-title="Save OBS Replay: obs-cmd" {
-        spawn-sh "obs-cmd --websocket obsws://192.168.1.235:4455 replay save";
+        spawn-sh "obs-cmd --websocket obsws://localhost:4455 replay save";
     }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
