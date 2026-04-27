@@ -6,6 +6,7 @@
     ./firefox.nix
     ./mpv.nix
     ./obsidian.nix
+    ./thunderbird.nix
     ./vesktop.nix
     ./waybar.nix
     ./quickshell
