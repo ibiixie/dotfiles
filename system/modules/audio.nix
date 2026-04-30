@@ -5,9 +5,9 @@
 let
   mkQuantumRate = quantum: rate: "${toString quantum}/${toString rate}";
 
-  baseQuantum = 320;
-  minQuantum = 320;
-  maxQuantum = 384;
+  baseQuantum = 384;
+  minQuantum = 384;
+  maxQuantum = 512;
   rate = 48000;
 
   baseQuantumRate = mkQuantumRate baseQuantum rate;
