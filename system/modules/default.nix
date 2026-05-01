@@ -10,5 +10,6 @@
     ./niri.nix
     ./steam.nix
     ./obs-studio.nix
+    ./heroic.nix
   ];
 }
