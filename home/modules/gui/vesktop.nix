@@ -38,7 +38,12 @@
         DisableCallIdle.enabled = true;
         BetterGifAltText.enabled = true;
         BetterUploadButton.enabled = true;
-        CustomIdle.enabled = true;
+        CustomIdle = {
+          enabled = true;
+
+          idleTimeout = 10;
+          remainInIdle = false;
+        };
         DisableDeepLinks.enabled = true;
         ExpressionCloner.enabled = true;
         FavoriteEmojiFirst.enabled = true;
