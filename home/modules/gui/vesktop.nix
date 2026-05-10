@@ -8,6 +8,8 @@
   #   pkgs.vesktop
   # ];
 
+  stylix.targets.vesktop.enable = false;
+
   programs.vesktop = {
     enable = true;
 
