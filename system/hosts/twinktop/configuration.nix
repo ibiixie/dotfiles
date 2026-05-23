@@ -6,6 +6,8 @@
 
 {
   imports = [
+    ./audio
+    
     ./settings.nix
     ./secrets.nix
 
