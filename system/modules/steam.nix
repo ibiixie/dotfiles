@@ -14,6 +14,8 @@
     pkgs.osu-lazer # Should probably move this to another module
   ];
 
+  hardware.xone.enable = true;
+
   programs = {
     gamemode.enable = true;
     gamescope = {
