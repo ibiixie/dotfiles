@@ -36,30 +36,19 @@ Variants {
                 clip: true
 
                 Text {
-                    id: clock
+                    id: clock_text
                     anchors.centerIn: parent
                     color: "#FAF7EA"
 
                     font.family: "Maple Mono Normal NL NF"
                     font.pointSize: 14
-        
-                    Process {
-                        id: dateProc
-                        command: ["date"]
-                        running: true
+                    
+                    text: Qt.formatDateTime(clock.date, "dddd, MMMM d, yyyy — hh:mm:ss t")
+                }
 
-                        stdout: StdioCollector {
-                            onStreamFinished: clock.text = this.text
-                        }
-                    }
-
-                    Timer {
-                        interval: 1000
-                        running: true
-                        repeat: true
-                        onTriggered: dateProc.running = true
-                    }
-
+                SystemClock {
+                    id: clock
+                    precision: SystemClock.Seconds
                 }
                 
             }
