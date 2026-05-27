@@ -5,6 +5,7 @@
     ./gammastep.nix
     ./firefox.nix
     ./mpv.nix
+    ./qimgv.nix
     ./obsidian.nix
     ./thunderbird.nix
     ./vesktop.nix
