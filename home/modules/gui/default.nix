@@ -15,5 +15,6 @@
     ./easyeffects.nix
     ./spicetify.nix
     ./davinci-resolve.nix
+    ./minecraft.nix
   ];
 }

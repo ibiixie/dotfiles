@@ -1,0 +1,9 @@
+{
+  ...
+}:
+
+{
+  programs.prismlauncher = {
+    enable = true;
+  };
+}
