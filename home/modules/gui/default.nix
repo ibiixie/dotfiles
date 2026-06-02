@@ -16,5 +16,7 @@
     ./spicetify.nix
     ./davinci-resolve.nix
     ./minecraft.nix
+    ./unity.nix
+    ./rider.nix
   ];
 }
