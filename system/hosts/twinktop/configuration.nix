@@ -25,7 +25,8 @@
   hardware.enableAllHardware = true;
 
   networking.hostName = "twinktop";
-  networking.firewall.allowedTCPPorts = [ 21622 ];
+  networking.firewall.allowedTCPPorts = [ 21622 26900 ];
+  networking.firewall.allowedUDPPorts = [ 26900 26901 26902 ];
 
   hardware.graphics.extraPackages = [
     pkgs.intel-media-driver
