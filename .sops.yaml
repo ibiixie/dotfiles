@@ -13,8 +13,13 @@ creation_rules:
         - *biixie
         - *wsl
         - *twinkpad
-        - *twinkcentre
 
+  - path_regex: secrets/users/twinkcentre\.yaml
+    key_groups:
+      - age:
+        - *biixie
+        - *twinkcentre
+        
   - path_regex: secrets/hosts/wsl\.yaml
     key_groups:
       - age:

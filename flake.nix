@@ -2,7 +2,7 @@
   description = "Biixie's NixOS configuration flake!";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-server.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/0.1";
 
     home-manager = {
@@ -60,6 +60,7 @@
     inputs@{
       self,
       nixpkgs,
+      nixpkgs-server,
       ...
     }:
     let
@@ -94,6 +95,17 @@
       );
 
       pkgs = pkgsFor.x86_64-linux;
+
+      pkgsForServer = nixpkgs.lib.genAttrs systems (
+        system:
+        import nixpkgs-server {
+          inherit system;
+
+          config.allowUnfree = true;
+        }
+      );
+
+      pkgsServer = pkgsForServer.x86_64-linux;
     in
     {
       nixosConfigurations = {
@@ -146,7 +158,7 @@
         };
 
         twinkcentre = nixpkgs.lib.nixosSystem {
-          inherit pkgs;
+          inherit pkgsServer;
 
           specialArgs = { inherit inputs outputs; };
 
@@ -154,15 +166,11 @@
             ./system
             ./system/hosts/twinkcentre/configuration.nix
 
-            {
-              nix.package = pkgs.lixPackageSets.stable.lix;
-            }
-
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.biixie = ./home/users/biixie/home.nix;
+              home-manager.users.biixie = ./home/users/twinkcentre/home.nix;
 
               home-manager.extraSpecialArgs = { inherit inputs outputs; };
             }

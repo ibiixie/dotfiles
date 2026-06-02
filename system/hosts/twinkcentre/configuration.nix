@@ -24,9 +24,9 @@
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
 
-  users.users.biixie = {
+  users.users.twinkcentre = {
     isNormalUser = true;
-    description = "Biixie";
+    description = "Twinkcentre";
 
     extraGroups = [
       "wheel"
@@ -34,7 +34,7 @@
       "docker"
     ];
 
-    hashedPasswordFile = config.sops.secrets."users/biixie/password".path;
+    hashedPasswordFile = config.sops.secrets."users/twinkcentre/password".path;
 
     shell = pkgs.fish;
 

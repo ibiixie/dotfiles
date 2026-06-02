@@ -388,6 +388,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-server": {
+      "locked": {
+        "lastModified": 1782233679,
+        "narHash": "sha256-QyuGP5+QOtmXpy4i2X4DhBVBaySBdDKQEhqKcphcp34=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "667d5cf1c59585031d743c78b394b0a647537c35",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-26.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -442,6 +458,7 @@
         "nix-gaming": "nix-gaming",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-server": "nixpkgs-server",
         "nur": "nur",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
