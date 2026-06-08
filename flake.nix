@@ -48,6 +48,11 @@
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    xwayland-satellite = {
+      url = "github:Supreeeme/xwayland-satellite?rev=3273a0fccd71da21c6362c74f3b1d1c0a89ff3ba";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -76,6 +81,8 @@
                 nix-fast-build
                 colmena
                 ;
+
+              xwayland-satellite = inputs.xwayland-satellite.packages.${prev.system}.default;
             })
 
             inputs.nur.overlays.default

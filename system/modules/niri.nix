@@ -8,8 +8,8 @@
   programs.niri.useNautilus = true;
 
   environment.systemPackages = [
-    pkgs.xwayland-satellite
     pkgs.nautilus
+    pkgs.xwayland-satellite
   ];
 
   # programs.uwsm = {
