@@ -4,6 +4,7 @@
     ./anyrun.nix
     ./gammastep.nix
     ./firefox.nix
+    ./vivaldi.nix
     ./mpv.nix
     ./qimgv.nix
     ./obsidian.nix
