@@ -7,7 +7,7 @@
 {
   imports = [
     ./audio
-    
+
     ./settings.nix
     ./secrets.nix
 
@@ -25,8 +25,18 @@
   hardware.enableAllHardware = true;
 
   networking.hostName = "twinktop";
-  networking.firewall.allowedTCPPorts = [ 21622 26900 ];
-  networking.firewall.allowedUDPPorts = [ 26900 26901 26902 ];
+  networking.firewall.allowedTCPPorts = [
+    21622
+    26900
+  ];
+  networking.firewall.allowedUDPPorts = [
+    26900
+    26901
+    26902
+  ];
+
+  # TODO: Move this?
+  programs.nix-ld.enable = true;
 
   hardware.graphics.extraPackages = [
     pkgs.intel-media-driver
