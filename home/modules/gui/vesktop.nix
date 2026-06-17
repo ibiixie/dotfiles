@@ -17,6 +17,7 @@
       minimizeToTray = false;
       hardwareAcceleration = true;
       hardwareVideoAcceleration = true;
+      arRPC = true;
     };
 
     vencord.settings = {
@@ -33,7 +34,6 @@
 
         FakeNitro.enabled = true;
         AnonymiseFileNames.enabled = true;
-        ArRPC.enabled = true;
         BetterFolders.enabled = true;
         CallTimer.enabled = true;
         CopyFileContents.enabled = true;
