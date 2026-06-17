@@ -121,5 +121,6 @@
     };
   };
 
-  services.arrpc.enable = true;
+  # using the vesktop setting instead which seems to conflict with this
+  # services.arrpc.enable = true;
 }
