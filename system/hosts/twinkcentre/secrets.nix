@@ -11,9 +11,13 @@
     age.keyFile = "/etc/sops/age/keys.txt";
 
     secrets = {
-      "users/biixie/password" = {
+      "users/twinkcentre/password" = {
         neededForUsers = true;
-        sopsFile = ../../../secrets/users/biixie.yaml;
+        sopsFile = ../../../secrets/users/twinkcentre.yaml;
+      };
+
+      "users/twinkcentre/dotfiles-deploy-key" = {
+        sopsFile = ../../../secrets/users/twinkcentre.yaml;
       };
 
       "hosts/twinkcentre/gh-runner-token" = { };

@@ -9,13 +9,11 @@
   ];
 
   home.username = "twinkcentre";
-  home.homeDirectory = "/home/biixie";
+  home.homeDirectory = "/home/twinkcentre";
 
   home.stateVersion = "24.11";
 
   systemd.user.startServices = "sd-switch";
-
-  # sops.secrets = { };
 
   programs = {
     home-manager.enable = true;

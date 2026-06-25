@@ -9,17 +9,23 @@ let
   ageKeyFilepath = "/etc/sops/age/keys.txt";
 in
 {
-  imports = [
-    inputs.sops-nix.homeManagerModules.sops
-  ];
+  # imports = [
+  #   inputs.sops-nix.homeManagerModules.sops
+  # ];
 
-  home.sessionVariables.SOPS_AGE_KEY_FILE = ageKeyFilepath;
+  # home.sessionVariables.SOPS_AGE_KEY_FILE = ageKeyFilepath;
 
   sops = {
     defaultSopsFile = ../../../secrets/users/twinkcentre.yaml;
 
     age = {
       keyFile = ageKeyFilepath;
+    };
+
+    secrets = {
+      "users/twinkcentre/dotfiles-deploy-key" = {
+        sopsFile = ../../../secrets/users/twinkcentre.yaml;
+      };
     };
 
     # secrets = {

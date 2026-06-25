@@ -96,7 +96,7 @@
 
       pkgs = pkgsFor.x86_64-linux;
 
-      pkgsForServer = nixpkgs.lib.genAttrs systems (
+      pkgsForServer = nixpkgs-server.lib.genAttrs systems (
         system:
         import nixpkgs-server {
           inherit system;
@@ -157,23 +157,13 @@
           ];
         };
 
-        twinkcentre = nixpkgs.lib.nixosSystem {
-          inherit pkgsServer;
-
+        twinkcentre = nixpkgs-server.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
 
           modules = [
-            ./system
+            { nixpkgs.pkgs = pkgsServer; }
+
             ./system/hosts/twinkcentre/configuration.nix
-
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.biixie = ./home/users/twinkcentre/home.nix;
-
-              home-manager.extraSpecialArgs = { inherit inputs outputs; };
-            }
           ];
         };
 
