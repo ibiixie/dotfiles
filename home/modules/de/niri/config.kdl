@@ -112,8 +112,8 @@ output "DP-5" {
     position x=0 y=560
 }
 
-output "DP-4" {
-    mode "2560x1440@165"
+output "DP-2" {
+    mode "2560x1440@143.855"
     scale 1
     transform "270"
     position x=2560 y=0
