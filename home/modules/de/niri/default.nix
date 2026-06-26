@@ -26,10 +26,13 @@
 
   # Steam sometimes stops working in a way that makes me unable to open
   # my friends list using the Steam UI, so this is a workaround for that.
-  #
-  # No longer used after I switched to native Wayland mode c:
-  # xdg.desktopEntries.steam-friends = {
-  #   name = "Steam Friends";
-  #   exec = "xdg-open steam://open/friends";
-  # };
+  xdg.desktopEntries.steam-friends = {
+    name = "Steam Friends";
+    exec = "xdg-open steam://open/friends";
+  };
+
+  xdg.desktopEntries.steam-settings = {
+    name = "Steam Settings";
+    exec = "xdg-open steam://open/settings";
+  };
 }
