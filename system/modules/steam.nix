@@ -45,6 +45,8 @@
             keyutils
             # Add other libraries as needed
           ];
+
+        extraArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland";
       };
 
       extraCompatPackages = [

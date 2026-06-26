@@ -17,15 +17,19 @@
   # main steam window shows a black screen
   # running steam with -system-composer fixes this
   # so i add a new desktop entry to run with that
-  xdg.desktopEntries.steam = {
-    name = "Steam (Niri)";
-    exec = "steam -system-composer %U";
-  };
+  #
+  # No longer used after I switched to native Wayland mode c:
+  # xdg.desktopEntries.steam = {
+  #   name = "Steam (Niri)";
+  #   exec = "steam -system-composer %U";
+  # };
 
   # Steam sometimes stops working in a way that makes me unable to open
   # my friends list using the Steam UI, so this is a workaround for that.
-  xdg.desktopEntries.steam-friends = {
-    name = "Steam Friends";
-    exec = "xdg-open steam://open/friends";
-  };
+  #
+  # No longer used after I switched to native Wayland mode c:
+  # xdg.desktopEntries.steam-friends = {
+  #   name = "Steam Friends";
+  #   exec = "xdg-open steam://open/friends";
+  # };
 }
