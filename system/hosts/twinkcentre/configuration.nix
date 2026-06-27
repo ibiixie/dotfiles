@@ -175,32 +175,32 @@
 
     fstrim.enable = true;
 
-    gitea-actions-runner = {
-      package = pkgs.forgejo-runner;
+    # gitea-actions-runner = {
+    #   package = pkgs.forgejo-runner;
 
-      instances.twinkcentre = {
-        enable = true;
-        name = "twinkcentre-runner";
-        url = "https://codeberg.org/";
-        labels = [
-          "self-hosted:host"
-          "twinkcentre:host"
-        ];
-        tokenFile = config.sops.secrets."hosts/twinkcentre/codeberg-runner-token".path;
-        hostPackages = with pkgs; [
-          bash
-          coreutils
-          curl
-          gawk
-          gitMinimal
-          gnused
-          nodejs
-          wget
+    #   instances.twinkcentre = {
+    #     enable = true;
+    #     name = "twinkcentre-runner";
+    #     url = "https://codeberg.org/";
+    #     labels = [
+    #       "self-hosted:host"
+    #       "twinkcentre:host"
+    #     ];
+    #     tokenFile = config.sops.secrets."hosts/twinkcentre/codeberg-runner-token".path;
+    #     hostPackages = with pkgs; [
+    #       bash
+    #       coreutils
+    #       curl
+    #       gawk
+    #       gitMinimal
+    #       gnused
+    #       nodejs
+    #       wget
 
-          docker
-        ];
-      };
-    };
+    #       docker
+    #     ];
+    #   };
+    # };
   };
 
   # This value determines the NixOS release from which the default
