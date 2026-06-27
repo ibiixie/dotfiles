@@ -33,7 +33,10 @@
     hostName = "twinkcentre";
     networkmanager.enable = true;
 
-    firewall.allowedTCPPorts = [ 22 21622 ];
+    firewall.allowedTCPPorts = [
+      22
+      21622
+    ];
   };
 
   hardware.enableAllFirmware = true;
@@ -43,6 +46,16 @@
 
   programs.fish.enable = true;
   programs.git.enable = true;
+
+  programs.ssh = {
+    extraConfig = ''
+      Host dotfiles
+        HostName codeberg.org
+        User git
+        IdentityFile ${config.sops.secrets.dotfiles-deploy-key.path}
+        IdentitiesOnly yes
+    '';
+  };
 
   environment.systemPackages = [
     pkgs.ripgrep
@@ -91,7 +104,6 @@
     #   options = "--delete-older-than 3d";
     # };
   };
-
 
   time = {
     timeZone = "Europe/Stockholm";
