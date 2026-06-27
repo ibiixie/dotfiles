@@ -52,7 +52,7 @@
       Host dotfiles
         HostName codeberg.org
         User git
-        IdentityFile ${config.sops.secrets.dotfiles-deploy-key.path}
+        IdentityFile ${config.sops.secrets."hosts/twinkcentre/dotfiles-deploy-key".path}
         IdentitiesOnly yes
     '';
   };
@@ -73,7 +73,7 @@
       "docker"
     ];
 
-    hashedPasswordFile = config.sops.secrets."users/twinkcentre/password".path;
+    hashedPasswordFile = config.sops.secrets."hosts/twinkcentre/password".path;
 
     shell = pkgs.fish;
 
