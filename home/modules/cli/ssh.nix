@@ -30,8 +30,8 @@
       };
 
       "twinkcentre" = {
-        hostname = "192.168.1.76";
-        user = "biixie";
+        hostname = "192.168.1.247";
+        user = "twinkcentre";
         port = 21622;
         identityFile = config.sops.secrets."users/biixie/ssh-key".path;
       };
