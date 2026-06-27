@@ -130,6 +130,11 @@
   console = {
     # Tty keyboard layout.
     keyMap = "sv-latin1";
+
+    # Reduce font size
+    earlySetup = true;
+    font = "ter-u18b";
+    packages = [ pkgs.terminus_font ];
   };
 
   # Used by various software for system authentication.
