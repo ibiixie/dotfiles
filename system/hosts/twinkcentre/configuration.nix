@@ -44,17 +44,28 @@
 
   users.mutableUsers = false;
 
-  programs.fish.enable = true;
-  programs.git.enable = true;
+  programs = {
+    fish.enable = true;
+    git.enable = true;
 
-  programs.ssh = {
-    extraConfig = ''
-      Host dotfiles
-        HostName codeberg.org
-        User git
-        IdentityFile ${config.sops.secrets."hosts/twinkcentre/dotfiles-deploy-key".path}
-        IdentitiesOnly yes
-    '';
+    ssh = {
+      extraConfig = ''
+        Host dotfiles
+          HostName codeberg.org
+          User git
+          IdentityFile ${config.sops.secrets."hosts/twinkcentre/dotfiles-deploy-key".path}
+          IdentitiesOnly yes
+      '';
+    };
+
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep 5 --keep-since 3d";
+        dates = "weekly";
+      };
+    };
   };
 
   environment.systemPackages = [
@@ -96,13 +107,8 @@
         "flakes"
       ];
 
-      # auto-optimise-store = true;
+      auto-optimise-store = true;
     };
-
-    # gc = {
-    #   automatic = false;
-    #   options = "--delete-older-than 3d";
-    # };
   };
 
   time = {
