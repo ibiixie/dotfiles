@@ -68,11 +68,7 @@
     };
   };
 
-  environment.systemPackages = [
-    pkgs.ripgrep
-    pkgs.helix
-    pkgs.jujutsu
-  ];
+  environment.systemPackages = [ ];
 
   users.users.twinkcentre = {
     isNormalUser = true;
