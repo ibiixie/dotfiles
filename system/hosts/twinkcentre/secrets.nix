@@ -22,6 +22,10 @@
         mode = "0600";
       };
 
+      "hosts/twinkcentre/pushover-credentials" = {
+        sopsFile = ../../../secrets/hosts/twinkcentre.yaml;
+      };
+
       "hosts/twinkcentre/gh-runner-token" = { };
       "hosts/twinkcentre/codeberg-runner-token" = { };
     };

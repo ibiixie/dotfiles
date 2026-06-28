@@ -96,6 +96,35 @@
     ];
   };
 
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = true;
+    dates = "daily";
+    flake = "git+https://codeberg.org/biixie/dotfiles#twinkcentre";
+    flags = [
+      # All other inputs are unused by the server
+      "--update-input"
+      "nixpkgs-server"
+    ];
+    runGarbageCollection = true;
+  };
+
+  systemd.services.nixos-upgrade-notify-failure = {
+    script = ''
+      ${pkgs.curl}/bin/curl -s \
+        --form-string "token=$PUSHOVER_TOKEN" \
+        --form-string "user=$PUSHOVER_USER" \
+        --form-string "message=NixOS server upgrade failed on $(hostname)" \
+        https://api.pushover.net/1/messages.json
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      EnvironmentFile = config.sops.secrets."hosts/twinkcentre/pushover-credentials".path;
+    };
+  };
+
+  systemd.services.nixos-upgrade.serviceConfig.OnFailure = "nixos-upgrade-notify-failure.service";
+
   nix = {
     settings = {
       experimental-features = [
