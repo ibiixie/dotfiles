@@ -85,7 +85,6 @@
     shell = pkgs.fish;
 
     openssh.authorizedKeys.keys = [
-      # "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFLXsKzURFCBKU+z45aHd29z99XfmFPn9nc/Pshz+EFN"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG0hpm4wxNoqYj4MLqjZtUDs095vcgG7Wukb0uDryCZH"
     ];
   };
