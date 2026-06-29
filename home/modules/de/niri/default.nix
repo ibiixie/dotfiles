@@ -35,4 +35,14 @@
     name = "Steam Settings";
     exec = "xdg-open steam://open/settings";
   };
+
+  xdg.desktopEntries.steam-status-online = {
+    name = "Steam Status: Online";
+    exec = "xdg-open steam://friends/status/online";
+  };
+
+  xdg.desktopEntries.steam-status-invisible = {
+    name = "Steam Status: Invisible";
+    exec = "xdg-open steam://friends/status/invisible";
+  };
 }
