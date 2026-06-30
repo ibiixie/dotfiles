@@ -24,6 +24,8 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+
   # Server is currently connected to a vertical monitor
   boot.kernelParams = [
     "fbcon=rotate:1"
@@ -66,6 +68,12 @@
               allowedIPs = [ "10.0.0.3/32" ];
             }
           ];
+          postSetup = ''
+            ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eno1 -j MASQUERADE
+          '';
+          postShutdown = ''
+            ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.0.0.0/24 -o eno1 -j MASQUERADE
+          '';
         };
       };
     };
