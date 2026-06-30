@@ -38,6 +38,10 @@
       21622
     ];
 
+    firewall.allowedUDPPorts = [
+      45155
+    ];
+
     wireguard = {
       enable = true;
 
