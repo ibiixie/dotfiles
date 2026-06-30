@@ -133,6 +133,7 @@
       # All other inputs are unused by the server
       "--update-input"
       "nixpkgs-server"
+      "--no-write-lock-file"
     ];
     runGarbageCollection = true;
   };
