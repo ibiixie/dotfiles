@@ -37,6 +37,34 @@
       22
       21622
     ];
+
+    wireguard = {
+      enable = true;
+
+      interfaces = {
+        wg-vpn = {
+          ips = [ "10.0.0.1/24" ];
+          listenPort = 45155;
+          privateKeyFile = config.sops.secrets."hosts/twinkcentre/wireguard/vpn/private-key".path;
+          peers = [
+            {
+              name = "biixie";
+              publicKey = "LQA6Vx2aNszvyMx12ISbq04Mxn59wPOk7ttKyugxxVE=";
+              presharedKeyFile =
+                config.sops.secrets."hosts/twinkcentre/wireguard/vpn/peers/biixie/preshared-key".path;
+              allowedIPs = [ "10.0.0.2/32" ];
+            }
+            {
+              name = "1cfa6c6e5fcfbd369733746c3552b9cb";
+              publicKey = "tqaeOBIJ+Z7WazNYR+qPXGjnYm2MSSucwFRP9p4AiEc=";
+              presharedKeyFile =
+                config.sops.secrets."hosts/twinkcentre/wireguard/vpn/peers/1cfa6c6e5fcfbd369733746c3552b9cb/preshared-key".path;
+              allowedIPs = [ "10.0.0.3/32" ];
+            }
+          ];
+        };
+      };
+    };
   };
 
   hardware.enableAllFirmware = true;
