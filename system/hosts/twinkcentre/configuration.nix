@@ -126,6 +126,10 @@
 
   virtualisation.docker.enable = true;
 
+  virtualisation.docker.daemon.settings = {
+    userland-proxy = false;
+  };
+
   virtualisation.oci-containers = {
     backend = "docker";
 
