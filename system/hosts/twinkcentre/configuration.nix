@@ -120,7 +120,7 @@
         autoStart = true;
         image = "docker.io/traefik/whoami";
         ports = [ "10.1.0.1:80:80" ];
-        pull = "newer";
+        pull = "always";
       };
     };
   };
