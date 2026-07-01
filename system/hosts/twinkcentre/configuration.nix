@@ -164,7 +164,7 @@
     };
   };
 
-  systemd.services.nixos-upgrade.serviceConfig.OnFailure = "nixos-upgrade-notify-failure.service";
+  systemd.services.nixos-upgrade.unitConfig.OnFailure = "nixos-upgrade-notify-failure.service";
 
   nix = {
     settings = {
