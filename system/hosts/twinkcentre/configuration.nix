@@ -163,8 +163,8 @@
     extraGroups = [
       "wheel"
       "networkmanager"
-      # "docker"
-      "podman"
+      "docker"
+      # "podman"
     ];
 
     hashedPasswordFile = config.sops.secrets."hosts/twinkcentre/password".path;
