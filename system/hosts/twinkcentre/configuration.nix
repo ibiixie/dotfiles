@@ -6,6 +6,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
@@ -99,6 +100,19 @@
   systemd.services.docker-whoami-internal = {
     after = [ "wireguard-wg-intranet.service" ];
     requires = [ "wireguard-wg-intranet.service" ];
+  };
+
+  systemd.services.docker-user-firewall = {
+    description = "Restrict published container ports to their intended wireguard tunnels";
+    after = [ "docker.service" ];
+    requires = [ "docker.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "oneshot";
+    serviceConfig.RemainAfterExit = true;
+    script = ''
+      ${pkgs.iptables}/bin/iptables -C DOCKER-USER -p tcp -d 10.1.0.1 --dport 80 ! -i wg-intranet -j DROP 2>/dev/null || \
+      ${pkgs.iptables}/bin/iptables -I DOCKER-USER -p tcp -d 10.1.0.1 --dport 80 ! -i wg-intranet -j DROP
+    '';
   };
 
   virtualisation.containers.enable = true;
