@@ -96,7 +96,7 @@
     };
   };
 
-  systemd.services.podman-whoami-internal = {
+  systemd.services.docker-whoami-internal = {
     after = [ "wireguard-wg-intranet.service" ];
     requires = [ "wireguard-wg-intranet.service" ];
   };
