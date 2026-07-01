@@ -32,6 +32,10 @@
       "hosts/twinkcentre/wireguard/vpn/peers/1cfa6c6e5fcfbd369733746c3552b9cb/private-key" = { };
       "hosts/twinkcentre/wireguard/vpn/peers/1cfa6c6e5fcfbd369733746c3552b9cb/preshared-key" = { };
 
+      "hosts/twinkcentre/wireguard/intranet/private-key" = { };
+      "hosts/twinkcentre/wireguard/intranet/peers/biixie/private-key" = { };
+      "hosts/twinkcentre/wireguard/intranet/peers/biixie/preshared-key" = { };
+
       "hosts/twinkcentre/gh-runner-token" = { };
       "hosts/twinkcentre/codeberg-runner-token" = { };
     };

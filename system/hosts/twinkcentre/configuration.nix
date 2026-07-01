@@ -36,13 +36,15 @@
     networkmanager.enable = true;
 
     firewall.allowedTCPPorts = [
-      22
       21622
     ];
 
     firewall.allowedUDPPorts = [
       45155
+      45255
     ];
+
+    firewall.interfaces.wg-intranet.allowedTCPPorts = [ 80 ];
 
     wireguard = {
       enable = true;
@@ -75,6 +77,48 @@
             ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.0.0.0/24 -o eno1 -j MASQUERADE
           '';
         };
+
+        wg-intranet = {
+          ips = [ "10.1.0.1/24" ];
+          listenPort = 45255;
+          privateKeyFile = config.sops.secrets."hosts/twinkcentre/wireguard/intranet/private-key".path;
+          peers = [
+            {
+              name = "biixie";
+              publicKey = "LQA6Vx2aNszvyMx12ISbq04Mxn59wPOk7ttKyugxxVE=";
+              presharedKeyFile =
+                config.sops.secrets."hosts/twinkcentre/wireguard/intranet/peers/biixie/preshared-key".path;
+              allowedIPs = [ "10.1.0.2/32" ];
+            }
+          ];
+        };
+      };
+    };
+  };
+
+  systemd.services.podman-whoami-internal = {
+    after = [ "wireguard-wg-intranet.service" ];
+    requires = [ "wireguard-wg-intranet.service" ];
+  };
+
+  virtualisation.containers.enable = true;
+
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    autoPrune.enable = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
+
+  virtualisation.oci-containers = {
+    backend = "podman";
+
+    containers = {
+      whoami-internal = {
+        autoStart = true;
+        image = "docker.io/traefik/whoami";
+        ports = [ "10.1.0.1:80:80" ];
+        pull = "newer";
       };
     };
   };
@@ -117,7 +161,8 @@
     extraGroups = [
       "wheel"
       "networkmanager"
-      "docker"
+      # "docker"
+      "podman"
     ];
 
     hashedPasswordFile = config.sops.secrets."hosts/twinkcentre/password".path;
@@ -129,12 +174,12 @@
     ];
   };
 
-  users.users.gitea-runner = {
-    isNormalUser = true;
-    extraGroups = [
-      "docker"
-    ];
-  };
+  # users.users.gitea-runner = {
+  #   isNormalUser = true;
+  #   extraGroups = [
+  #     # "docker"
+  #   ];
+  # };
 
   system.autoUpgrade = {
     enable = true;
@@ -215,9 +260,10 @@
   # Real-time scheduling
   security.rtkit.enable = true;
 
-  virtualisation = {
-    docker.enable = true;
-  };
+  # Trying podman c:
+  # virtualisation = {
+  #   docker.enable = true;
+  # };
 
   # Graphics acceleration.
   hardware.graphics = {
