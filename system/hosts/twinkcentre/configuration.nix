@@ -109,39 +109,11 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig.Type = "oneshot";
     serviceConfig.RemainAfterExit = true;
-    script = ''
-      ${pkgs.iptables}/bin/iptables -C DOCKER-USER -p tcp -d 10.1.0.1 --dport 80 ! -i wg-intranet -j DROP 2>/dev/null || \
-      ${pkgs.iptables}/bin/iptables -I DOCKER-USER -p tcp -d 10.1.0.1 --dport 80 ! -i wg-intranet -j DROP
-    '';
+    script = "";
   };
 
   virtualisation.containers.enable = true;
-
-  # virtualisation.podman = {
-  #   enable = true;
-  #   dockerCompat = true;
-  #   autoPrune.enable = true;
-  #   defaultNetwork.settings.dns_enabled = true;
-  # };
-
   virtualisation.docker.enable = true;
-
-  virtualisation.docker.daemon.settings = {
-    userland-proxy = false;
-  };
-
-  virtualisation.oci-containers = {
-    backend = "docker";
-
-    containers = {
-      whoami-internal = {
-        autoStart = true;
-        image = "docker.io/traefik/whoami";
-        ports = [ "10.1.0.1:80:80" ];
-        pull = "always";
-      };
-    };
-  };
 
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
@@ -220,7 +192,7 @@
       ${pkgs.curl}/bin/curl -s \
         --form-string "token=$PUSHOVER_TOKEN" \
         --form-string "user=$PUSHOVER_USER" \
-        --form-string "message=NixOS server upgrade failed on $(hostname)" \
+        --form-string "message=NixOS server upgrade failed!" \
         https://api.pushover.net/1/messages.json
     '';
     serviceConfig = {
