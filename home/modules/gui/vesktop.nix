@@ -21,6 +21,10 @@
     };
 
     vencord.settings = {
+      enabledThemes = [
+        "https://raw.githubusercontent.com/shvedes/discord-gruvbox/refs/heads/main/gruvbox-dark.theme.css"
+      ];
+
       plugins = {
         BetterNotesBox.enabled = true;
         BetterRoleContext.enabled = true;
