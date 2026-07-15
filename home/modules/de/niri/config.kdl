@@ -28,6 +28,11 @@ input {
     mod-key-nested "Alt"
 }
 
+cursor {
+    xcursor-theme "BreezeX-RosePine-Linux"
+    xcursor-size 30
+}
+
 output "DP-5" {
     mode "2560x1440@180.0"
     scale 1

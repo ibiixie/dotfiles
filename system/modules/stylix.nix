@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   lib,
+  config,
   ...
 }:
 let
@@ -73,7 +74,7 @@ in
     cursor = {
       package = pkgs.rose-pine-cursor;
       name = "BreezeX-RosePine-Linux";
-      size = 48;
+      size = 30;
     };
 
     # This doesn't work, not sure why?
