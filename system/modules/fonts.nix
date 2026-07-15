@@ -1,8 +1,15 @@
 {
+  pkgs,
   ...
 }:
 
 {
+  fonts.enableDefaultPackages = true;
+
+  fonts.packages = [
+    pkgs.charis
+  ];
+
   fonts.fontconfig = {
     enable = true;
     antialias = true;
