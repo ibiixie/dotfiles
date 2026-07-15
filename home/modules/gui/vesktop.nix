@@ -20,11 +20,14 @@
       arRPC = true;
     };
 
-    vencord.settings = {
-      enabledThemes = [
-        "https://raw.githubusercontent.com/shvedes/discord-gruvbox/refs/heads/main/gruvbox-dark.theme.css"
-      ];
+    vencord.extraQuickCss = builtins.readFile (
+      pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/round-panda/gruvbox-sharp/54f0612a1d0fb38d3f2c7a7f4b697b5ad607d312/GruvboxSharp.theme.css";
+        hash = "sha256-fRj80A/foM6Bc6odECU2JuYrLhxuknbqot7QL3TUqWo=";
+      }
+    );
 
+    vencord.settings = {
       plugins = {
         BetterNotesBox.enabled = true;
         BetterRoleContext.enabled = true;
