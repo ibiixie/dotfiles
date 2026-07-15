@@ -58,10 +58,15 @@ layout {
     // default-column-width {}
 
     focus-ring {
-        width 4
+        width 2
 
-        active-color "#cba6f7"
-        inactive-color "#505050"
+        // Gruvbox
+        active-color "#d3869b"
+        inactive-color "#504945"
+
+        // Catppuccin
+        // active-color "#cba6f7"
+        // inactive-color "#505050"
 
         // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
@@ -70,10 +75,17 @@ layout {
     border {
         off
 
-        width 4
-        active-color "#ffc87f"
-        inactive-color "#505050"
-        urgent-color "#9b0000"
+        width 2
+
+        // Gruvbox
+        active-color "#d3869b"
+        inactive-color "#504945"
+        urgent-color "#fb4934"
+
+        // Catppuccin
+        // active-color "#ffc87f"
+        // inactive-color "#505050"
+        // urgent-color "#9b0000"
 
         // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
