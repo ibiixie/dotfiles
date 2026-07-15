@@ -50,7 +50,7 @@
         CustomIdle = {
           enabled = true;
 
-          idleTimeout = 10;
+          idleTimeout = 60;
           remainInIdle = false;
         };
         DisableDeepLinks.enabled = true;
