@@ -51,7 +51,8 @@
     };
 
     xwayland-satellite = {
-      url = "github:Supreeeme/xwayland-satellite?rev=3273a0fccd71da21c6362c74f3b1d1c0a89ff3ba";
+      # url = "github:Supreeeme/xwayland-satellite?rev=3273a0fccd71da21c6362c74f3b1d1c0a89ff3ba";
+      url = "github:En-En-Code/xwayland-satellite?rev=dd2b4d9af106fe448fe8733bf3bf68279d10d80a";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

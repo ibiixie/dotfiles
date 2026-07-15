@@ -8,7 +8,7 @@ let
 in
 {
   # Use a dedicated theme for Helix because the Stylix one is not great.
-  stylix.targets.helix.enable = false;
+  stylix.targets.helix.enable = true;
 
   programs.helix = {
     enable = true;
@@ -16,7 +16,7 @@ in
     defaultEditor = true;
 
     settings = {
-      theme = "catppuccin_mocha";
+      # theme = "catppuccin_mocha";
       editor = {
         mouse = false;
         scrolloff = 5;
@@ -114,7 +114,10 @@ in
             command = "nixfmt";
             args = [ ];
           };
-          language-servers = [ "nil" "discord-rpc" ];
+          language-servers = [
+            "nil"
+            "discord-rpc"
+          ];
         }
 
         {
@@ -133,7 +136,10 @@ in
         {
           name = "rust";
           auto-format = true;
-          language-servers = [ "rust-analyzer" "discord-rpc" ];
+          language-servers = [
+            "rust-analyzer"
+            "discord-rpc"
+          ];
         }
 
         {
@@ -214,7 +220,10 @@ in
           scope = "source.html";
           roots = [ ];
           file-types = [ "html" ];
-          language-servers = [ "superhtml-lsp" "discord-rpc" ];
+          language-servers = [
+            "superhtml-lsp"
+            "discord-rpc"
+          ];
         }
 
         {
@@ -232,7 +241,10 @@ in
         {
           name = "astro";
           auto-format = true;
-          language-servers = [ "astro-ls" "discord-rpc" ];
+          language-servers = [
+            "astro-ls"
+            "discord-rpc"
+          ];
           # formatter = {
           #   command = "prettier";
           #   args = [
