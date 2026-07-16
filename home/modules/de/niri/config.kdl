@@ -115,7 +115,10 @@ layout {
     }
 }
 
-spawn-sh-at-startup "obs --startreplaybuffer --studio-mode --minimize-to-tray --disable-missing-files-check"
+// OBS no longer supports the --disable-shutdown-check which breaks
+// my startup automation. Deleting the .sentinel directory effectively
+// makes OBS forget it was shutdown improperly, which fixes the issue.
+spawn-sh-at-startup "rm -rf ~/.config/obs-studio/.sentinel && obs --startreplaybuffer --studio-mode --minimize-to-tray --disable-missing-files-check"
 
 hotkey-overlay {
     skip-at-startup
