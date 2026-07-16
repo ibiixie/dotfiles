@@ -124,6 +124,14 @@ spawn-sh-at-startup "disown && easyeffects --hide-window"
 // makes OBS forget it was shutdown improperly, which fixes the issue.
 spawn-sh-at-startup "rm -rf ~/.config/obs-studio/.sentinel && obs --startreplaybuffer --studio-mode --minimize-to-tray --disable-missing-files-check"
 
+spawn-sh-at-startup "vesktop"
+spawn-sh-at-startup "spotify"
+spawn-sh-at-startup "sleep 2 && steam" // Delay to make sure xwayland is running
+spawn-sh-at-startup "vivaldi"
+
+spawn-sh-at-startup "niri msg action focus-workspace chat"
+spawn-sh-at-startup "niri msg action focus-workspace browser"
+
 hotkey-overlay {
     skip-at-startup
 }
@@ -148,9 +156,10 @@ workspace "browser" {
 }
 
 window-rule {
-    match app-id=r#"^vivaldi"#
+    match app-id=r#"^vivaldi"# at-startup=true
     default-column-width { proportion 1.0; }
     open-on-workspace "browser"
+    open-focused false
 }
 
 workspace "work-primary" {
@@ -173,12 +182,14 @@ window-rule {
     match app-id=r#"^steam$"# title=r#"^Steam$"#
     default-column-width { proportion 0.85; }
     open-on-workspace "gaming"
+    open-focused false
 }
 
 window-rule {
     match app-id=r#"^steam$"# title=r#"^Friends List$"#
     default-column-width { proportion 0.15; }
     open-on-workspace "gaming"
+    open-focused false
 }
 
 workspace "music" {
@@ -189,6 +200,7 @@ window-rule {
     match app-id="spotify"
     default-column-width { proportion 1.0; }
     open-on-workspace "music"
+    open-focused false
 }
 
 workspace "chat" {
@@ -203,6 +215,7 @@ window-rule {
     match app-id="vesktop"
     default-column-width { proportion 1.0; }
     open-on-workspace "chat"
+    open-focused false
 }
 
 workspace "recording" {
