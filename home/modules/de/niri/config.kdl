@@ -33,6 +33,7 @@ cursor {
     xcursor-size 30
 }
 
+// Todo: Replace DP-5 with serial
 output "DP-5" {
     mode "2560x1440@180.0"
     scale 1
@@ -40,6 +41,7 @@ output "DP-5" {
     position x=0 y=560
 }
 
+// Todo: Replace DP-2 with serial
 output "DP-2" {
     mode "2560x1440@143.855"
     scale 1
@@ -126,9 +128,89 @@ animations {
     // slowdown 3.0
 }
 
+workspace "work-secondary" {
+    open-on-output "DP-2"
+
+    layout {
+        default-column-width { proportion 0.5; }
+    }
+}
+
+workspace "browser" {
+    open-on-output "DP-5" // Todo: Replace with serial
+}
+
 window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
+    match app-id=r#"^vivaldi"#
+    default-column-width { proportion 1.0; }
+    open-on-workspace "browser"
+}
+
+workspace "work-primary" {
+    open-on-output "DP-5"
+
+    layout {
+        default-column-width { proportion 0.5; }
+    }
+}
+
+workspace "gaming" {
+    open-on-output "DP-5"
+
+    layout {
+        default-column-width { proportion 1.0; }
+    }
+}
+
+window-rule {
+    match app-id=r#"^steam$"# title=r#"^Steam$"#
+    default-column-width { proportion 0.85; }
+    open-on-workspace "gaming"
+}
+
+window-rule {
+    match app-id=r#"^steam$"# title=r#"^Friends List$"#
+    default-column-width { proportion 0.15; }
+    open-on-workspace "gaming"
+}
+
+workspace "music" {
+    open-on-output "DP-5"
+}
+
+window-rule {
+    match app-id="spotify"
+    default-column-width { proportion 1.0; }
+    open-on-workspace "music"
+}
+
+workspace "chat" {
+    open-on-output "DP-2"
+
+    layout {
+        default-column-width { proportion 1.0; }
+    }
+}
+
+window-rule {
+    match app-id="vesktop"
+    default-column-width { proportion 1.0; }
+    open-on-workspace "chat"
+}
+
+workspace "recording" {
+    open-on-output "DP-2"
+
+    layout {
+        default-column-width { proportion 1.0; }
+    }
+}
+
+window-rule {
+    match app-id=r#"^com\.obsproject\.Studio$"#
+    default-column-width { proportion 1.0; }
+    open-on-workspace "recording"
+    open-focused false
 }
 
 // Open the Firefox picture-in-picture player as floating by default.
@@ -138,8 +220,6 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
     match app-id="discord"
     match app-id="vesktop"
 
