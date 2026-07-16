@@ -116,8 +116,8 @@ layout {
 }
 
 // EasyEffects sometimes doesn't seem to start automatically
-// so hopefully this fixes that issue so the EQ is applied always
-spawn-sh-at-startup "disown && easyeffects --hide-window"
+// so hopefully this fixes that issue so the EQ is applied always.
+spawn-sh-at-startup "sleep 3 && easyeffects --hide-window"
 
 // OBS no longer supports the --disable-shutdown-check which breaks
 // my startup automation. Deleting the .sentinel directory effectively
@@ -250,6 +250,12 @@ window-rule {
     geometry-corner-radius 0 // 12
     clip-to-geometry true
     draw-border-with-background false
+}
+
+// Attempt to fix window size bug
+window-rule {
+    match app-id="Unity" title=r#"^Unity.*$"#
+    default-column-width { proportion 1.0; }
 }
 
 binds {
