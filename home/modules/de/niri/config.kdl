@@ -251,6 +251,12 @@ window-rule {
     geometry-corner-radius 0 // 12
     clip-to-geometry true
     draw-border-with-background false
+
+    opacity 0.875
+
+    background-effect {
+        blur true
+    }
 }
 
 // Attempt to fix window size bug
