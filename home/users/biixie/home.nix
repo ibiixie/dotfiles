@@ -24,6 +24,7 @@
     grim
     slurp
     just
+    jq
   ];
 
   programs = {
