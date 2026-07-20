@@ -8,6 +8,8 @@
     systemd.enable = true;
   };
 
+  qt.enable = true;
+
   xdg.configFile."quickshell/shell.qml" = {
     source = ./shell.qml;
 
