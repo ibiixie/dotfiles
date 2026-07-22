@@ -53,12 +53,14 @@
     #   iptables -I DOCKER-USER -p tcp --dport 80 -j DROP
     # '';
 
+    # virtualisation.docker.extraOptions = "--iptables=false";
+
     # for any public services:
     # ip daddr <service ip> tcp dport 80 accept
-    firewall.extraForwardRules = ''
-      iifname "wg-intranet" accept
-      tcp dport 80 drop
-    '';
+    # firewall.extraForwardRules = ''
+    #   iifname "wg-intranet" accept
+    #   tcp dport 80 drop
+    # '';
 
     wireguard = {
       enable = true;
@@ -122,7 +124,10 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig.Type = "oneshot";
     serviceConfig.RemainAfterExit = true;
-    script = "";
+    script = "
+      iptables -I DOCKER-USER -p tcp --dport 80 -j DROP
+      iptables -I DOCKER-USER -i wg-intranet -p tcp --dport 80 -j ACCEPT
+    ";
   };
 
   virtualisation.containers.enable = true;
