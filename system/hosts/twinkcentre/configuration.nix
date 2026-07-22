@@ -125,8 +125,8 @@
     serviceConfig.Type = "oneshot";
     serviceConfig.RemainAfterExit = true;
     script = "
-      iptables -I DOCKER-USER -p tcp --dport 80 -j DROP
-      iptables -I DOCKER-USER -i wg-intranet -p tcp --dport 80 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -I DOCKER-USER -p tcp --dport 80 -j DROP
+      ${pkgs.iptables}/bin/iptables -I DOCKER-USER -i wg-intranet -p tcp --dport 80 -j ACCEPT
     ";
   };
 
