@@ -47,21 +47,6 @@
 
     firewall.interfaces.wg-intranet.allowedTCPPorts = [ 80 ];
 
-    # NOTE: iptables -I DOCKER-USER -d <service ip> -p tcp --dport 80 -j ACCEPT
-    # firewall.extraCommands = ''
-    #   iptables -I DOCKER-USER -i wg-intranet -p tcp --dport 80 -j ACCEPT
-    #   iptables -I DOCKER-USER -p tcp --dport 80 -j DROP
-    # '';
-
-    # virtualisation.docker.extraOptions = "--iptables=false";
-
-    # for any public services:
-    # ip daddr <service ip> tcp dport 80 accept
-    # firewall.extraForwardRules = ''
-    #   iifname "wg-intranet" accept
-    #   tcp dport 80 drop
-    # '';
-
     wireguard = {
       enable = true;
 
@@ -112,26 +97,8 @@
     };
   };
 
-  systemd.services.docker-whoami-internal = {
-    after = [ "wireguard-wg-intranet.service" ];
-    requires = [ "wireguard-wg-intranet.service" ];
-  };
-
-  systemd.services.docker-user-firewall = {
-    description = "Restrict published container ports to their intended wireguard tunnels";
-    after = [ "docker.service" ];
-    requires = [ "docker.service" ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.Type = "oneshot";
-    serviceConfig.RemainAfterExit = true;
-    script = "
-      sudo ${pkgs.iptables}/bin/iptables -I DOCKER-USER -p tcp --dport 80 -j DROP
-      sudo ${pkgs.iptables}/bin/iptables -I DOCKER-USER -i wg-intranet -p tcp --dport 80 -j ACCEPT
-    ";
-  };
-
-  virtualisation.containers.enable = true;
-  virtualisation.docker.enable = true;
+  # virtualisation.containers.enable = true;
+  # virtualisation.docker.enable = true;
 
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
