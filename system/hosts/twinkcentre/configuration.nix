@@ -48,7 +48,7 @@
     firewall.interfaces.wg-intranet.allowedTCPPorts = [ 80 ];
 
     # NOTE: iptables -I DOCKER-USER -d <service ip> -p tcp --dport 80 -j ACCEPT
-    networking.firewall.extraCommands = ''
+    firewall.extraCommands = ''
       iptables -I DOCKER-USER -i wg-intranet -p tcp --dport 80 -j ACCEPT
       iptables -I DOCKER-USER -p tcp --dport 80 -j DROP
     '';
