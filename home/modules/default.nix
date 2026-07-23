@@ -11,6 +11,6 @@
 
     ./nh.nix
 
-    ./discord-rpc-lsp.nix
+    ./discord-rpc-lsp
   ];
 }

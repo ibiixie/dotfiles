@@ -1,0 +1,86 @@
+[discord]
+# Custom Discord Application ID for the Rich Presence.
+# This is optional, as the lsp handles it based on the editor being used.
+application_id = ''
+
+# Determines what is displayed in the small icon.
+# Valid values: "language" or "editor".
+small_usage = 'editor'
+
+# Determines what is displayed in the large icon.
+# Valid values: "language" or "editor".
+large_usage = 'language'
+
+# retry_after is the duration to wait before retrying in case it fails to create the discord rpc client.
+# Must be a valid duration string (e.g., "1m", "30s").
+retry_after = '30s'
+
+[discord.activity]
+# The discord activity is customizable via placeholders.
+# 
+# List of avaible placeholder:
+# {action} : holds the action being executed, can be customized below.
+# {filename} : holds the name of current file.
+# {workspace} : holds the workspace name.
+# {editor} : holds the editor name (e.g., "helix", "neovim")
+# {language} : holds the language name of the current file.
+
+# These 3 fields define the {action} placeholder based on the current action.
+idle_action = 'Idle in {workspace}'
+view_action = 'Viewing {filename}'
+edit_action = 'Editing {filename}'
+
+# state is the first line of the activity status.
+state = '{action}'
+
+# Details hold the current workspace.
+details = 'In {workspace}'
+
+# OPTIONAL: field only fill it if u would like to overwrite the default picked one. (MUST BE A URL TAKING TO THE IMAGE)
+large_image = ''
+
+# Large icon text for when u hover over it.
+large_text = '{editor}'
+
+# OPTIONAL: field only fill it if u would like to overwrite the default picked one. (MUST BE A URL TAKING TO THE IMAGE)
+small_image = ''
+
+# Small icon text for when u hover over it.
+small_text = 'Coding in {language}'
+
+# If true, the time since the activity started will be shown.
+timestamp = true
+
+# If true, additional information on the file being edited will be shown
+editing_info = true
+
+[git]
+# If true, will show the repository and branch information
+git_info = false
+
+[lsp]
+# The duration after which the LSP will enable idling if no activity is detected.
+# Must be a valid duration string (e.g., "5m", "30s").
+idle_after = '15m'
+# The duration after which the editing mode will go in viewing if no changes are applied.
+# Must be a valid duration string (e.g., "5m", "30s").
+view_after = '14m'
+# This indicates how much u should offset the line for, this is a fix incase ur line index isnt right.
+# Must be a valid expression ("+1", "+ 2", "-3", "- 4").
+# If ur line is off by one, change this to "+0" or "-0".
+line_offset = '+1'
+
+
+[language_maps]
+# The URL to a JSON file containing mappings of file extensions to programming languages.
+url = 'https://raw.githubusercontent.com/zerootoad/discord-rich-presence-lsp/main/assets/languages.json'
+
+[logging]
+# level is the logging level.
+# Valid values: "debug", "info", "warn", "error".
+# Make sure to use debug if you're sumbitting an issue.
+level = 'info'
+
+# output is the output destination for logs.
+# Valid values: "file" (logs to a file) or "stdout" (logs to the console).
+output = 'file'
