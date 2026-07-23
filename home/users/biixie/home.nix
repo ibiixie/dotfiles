@@ -25,6 +25,7 @@
     slurp
     just
     jq
+    croc
   ];
 
   programs = {

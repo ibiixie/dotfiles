@@ -126,7 +126,9 @@
     };
   };
 
-  environment.systemPackages = [ ];
+  environment.systemPackages = [
+    pkgs.croc
+  ];
 
   users.users.twinkcentre = {
     isNormalUser = true;
