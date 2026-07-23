@@ -47,6 +47,10 @@
 
     firewall.interfaces.wg-intranet.allowedTCPPorts = [ 80 ];
 
+    # TODO: Add nftables rules
+    #        - Public services accessible from all wg-public and wg-intranet (caddy?)
+    #        - Private services accessible from wg-intranet (whoami)
+
     wireguard = {
       enable = true;
 
@@ -56,13 +60,6 @@
           listenPort = 45155;
           privateKeyFile = config.sops.secrets."hosts/twinkcentre/wireguard/vpn/private-key".path;
           peers = [
-            {
-              name = "biixie";
-              publicKey = "LQA6Vx2aNszvyMx12ISbq04Mxn59wPOk7ttKyugxxVE=";
-              presharedKeyFile =
-                config.sops.secrets."hosts/twinkcentre/wireguard/vpn/peers/biixie/preshared-key".path;
-              allowedIPs = [ "10.0.0.2/32" ];
-            }
             {
               name = "1cfa6c6e5fcfbd369733746c3552b9cb";
               publicKey = "tqaeOBIJ+Z7WazNYR+qPXGjnYm2MSSucwFRP9p4AiEc=";
@@ -85,7 +82,7 @@
           privateKeyFile = config.sops.secrets."hosts/twinkcentre/wireguard/intranet/private-key".path;
           peers = [
             {
-              name = "biixie";
+              name = "biixie-intranet";
               publicKey = "LQA6Vx2aNszvyMx12ISbq04Mxn59wPOk7ttKyugxxVE=";
               presharedKeyFile =
                 config.sops.secrets."hosts/twinkcentre/wireguard/intranet/peers/biixie/preshared-key".path;
@@ -98,7 +95,7 @@
   };
 
   # virtualisation.containers.enable = true;
-  # virtualisation.docker.enable = true;
+  virtualisation.docker.enable = true;
 
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
@@ -236,11 +233,6 @@
 
   # Real-time scheduling
   security.rtkit.enable = true;
-
-  # Trying podman c:
-  # virtualisation = {
-  #   docker.enable = true;
-  # };
 
   # Graphics acceleration.
   hardware.graphics = {
