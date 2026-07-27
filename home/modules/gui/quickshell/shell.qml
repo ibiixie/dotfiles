@@ -3,8 +3,6 @@
 import Quickshell
 import Quickshell.Io
 import Quickshell.Widgets
-import Quickshell.Services.Mpris
-import Quickshell.Services.SystemTray
 
 import QtQuick
 import QtQuick.Effects
@@ -237,73 +235,6 @@ PanelWindow {
                 spacing: 8
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-
-                Rectangle {
-                    visible: false
-                    
-                    color: "black"
-
-                    border {
-                        color: "#d3869b"
-                        pixelAligned: true
-                        width: 1
-                    }
-
-                    radius: 0
-
-                    width: implicitWidth
-                    height: implicitHeight
-
-                    implicitWidth: tray.implicitWidth + 10
-                    implicitHeight: tray.implicitHeight + 4
-
-                    Row {
-                        id: tray
-                        Repeater {
-                            model: SystemTray.items
-
-                            Item {
-                                id: trayIcon
-                                
-                                required property SystemTrayItem modelData
-                                width: 32
-                                height: 32
-
-                                IconImage {
-                                    anchors.fill: parent
-                                    source: modelData.icon
-                                    implicitSize: 32
-                                    asynchronous: true
-                                }
-
-                                QsMenuAnchor {
-                                    id: menuAnchor
-                                    menu: trayIcon.modelData.menu
-                                    anchor.item: trayIcon
-                                }
-
-                                MouseArea {
-                                    anchors.fill: parent
-                                    acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
-                                    onClicked: (mouse) => {
-                                        if (mouse.button === Qt.RightButton && trayIcon.modelData.hasMenu) {
-                                            menuAnchor.open()
-                                        } else if (mouse.button === Qt.LeftButton) {
-                                            if (trayIcon.modelData.hasMenu && !trayIcon.modelData.onlyMenu === false) {
-                                                trayIcon.modelData.activate()
-                                            } else {
-                                                menuAnchor.open()
-                                            }
-                                        } else if (mouse.button === Qt.MiddleButton) {
-                                            trayIcon.modelData.secondaryActivate()
-                                        }
-                                    }
-                                    onWheel: (wheel) => trayIcon.modelData.scroll(wheel.angleDelta.y, false)
-                                }
-                            }
-                        }
-                    }
-                }
             }
         }
     }
