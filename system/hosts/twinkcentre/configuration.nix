@@ -67,6 +67,13 @@
                 config.sops.secrets."hosts/twinkcentre/wireguard/vpn/peers/1cfa6c6e5fcfbd369733746c3552b9cb/preshared-key".path;
               allowedIPs = [ "10.0.0.3/32" ];
             }
+            {
+              name = "biixie-vpn";
+              publicKey = "R8liprjNkn8I5PrAGLoju+VEkPWoTP0eOHLj0szrOzE=";
+              presharedKeyFile =
+                config.sops.secrets."hosts/twinkcentre/wireguard/vpn/peers/biixie-vpn/preshared-key".path;
+              allowedIPs = [ "10.0.0.3/32" ];
+            }
           ];
           postSetup = ''
             ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eno1 -j MASQUERADE
