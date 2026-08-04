@@ -34,7 +34,6 @@
 
   networking = {
     hostName = "twinkcentre";
-    networkmanager.enable = true;
 
     firewall.allowedTCPPorts = [
       21622
@@ -218,9 +217,6 @@
 
   time = {
     timeZone = "Europe/Stockholm";
-
-    # Conform with Windows.
-    hardwareClockInLocalTime = true;
   };
 
   # Select internationalisation properties.
