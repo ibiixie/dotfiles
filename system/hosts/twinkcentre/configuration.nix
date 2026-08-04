@@ -52,15 +52,15 @@
 
     # firewall.interfaces.wg-vpn.allowedTCPPorts = [ 80 ];
 
-    firewall.extraForwardRules = ''
-      ct state invalid drop
-      ct state established,related accept
+    # firewall.extraForwardRules = ''
+    #   ct state invalid drop
+    #   ct state established,related accept
 
-      iifname { "wg-vpn", "wg-public" } oifname "br-pubnet" tcp dport { 80 } accept
-      iifname "wg-intranet" oifname "br-intranet" tcp dport { 80, 8080 } accept
+    #   iifname { "wg-vpn", "wg-public" } oifname "br-pubnet" tcp dport { 80 } accept
+    #   iifname "wg-intranet" oifname "br-intranet" tcp dport { 80, 8080 } accept
 
-      oifname { "br-pubnet", "br-intranet" } drop
-    '';
+    #   oifname { "br-pubnet", "br-intranet" } drop
+    # '';
 
     wireguard = {
       enable = true;
