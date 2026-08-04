@@ -50,6 +50,11 @@
     # TODO: Add nftables rules
     #        - Public services accessible from all wg-public and wg-intranet (caddy?)
     #        - Private services accessible from wg-intranet (whoami)
+    # firewall.extraInputRules = ''
+    #   iif wg-intranet tcp dport 80 ip daddr 10.1.0.1 accept
+    #   iif { wg-public, wg-vpn } tcp dport 80 ip daddr 10.0.0.1 accept
+    #   drop
+    # '';
 
     wireguard = {
       enable = true;
@@ -103,6 +108,28 @@
 
   # virtualisation.containers.enable = true;
   virtualisation.docker.enable = true;
+
+  systemd.services.docker-user-rules = {
+    description = "DOCKER-CHAIN rules for access management";
+    after = [ "docker.service" ];
+    requires = [ "docker.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "oneshot";
+    serviceConfig.RemainAfterExit = true;
+    script = ''
+      ${pkgs.iptables}/bin/iptables -F DOCKER-USER
+
+      ${pkgs.iptables}/bin/iptables -A DOCKER-USER -m conntrack --ctstate INVALID -j DROP
+      ${pkgs.iptables}/bin/iptables -A DOCKER-USER -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+      ${pkgs.iptables}/bin/iptables -A DOCKER-USER -i wg-intranet -m conntrack --ctstate NEW -p tcp --dport 80 -d 10.1.5.0/24 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -A DOCKER-USER -i wg-public   -m conntrack --ctstate NEW -p tcp --dport 80 -d 10.0.5.0/24 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -A DOCKER-USER -i wg-vpn      -m conntrack --ctstate NEW -p tcp --dport 80 -d 10.0.5.0/24 -j ACCEPT
+
+      ${pkgs.iptables}/bin/iptables -A DOCKER-USER -d 10.1.5.0/24 -j DROP
+      ${pkgs.iptables}/bin/iptables -A DOCKER-USER -d 10.0.5.0/24 -j DROP
+    '';
+  };
 
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
