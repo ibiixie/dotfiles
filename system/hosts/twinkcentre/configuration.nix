@@ -52,7 +52,7 @@
 
     # firewall.interfaces.wg-vpn.allowedTCPPorts = [ 80 ];
 
-    networking.firewall.extraForwardRules = ''
+    firewall.extraForwardRules = ''
       ct state invalid drop
       ct state established,related accept
 
