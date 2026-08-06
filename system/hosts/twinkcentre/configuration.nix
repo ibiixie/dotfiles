@@ -53,6 +53,8 @@
 
     nftables.enable = true;
 
+    firewall.filterForward = true;
+
     firewall.extraForwardRules = ''
       ct state invalid drop
       ct state established,related accept
