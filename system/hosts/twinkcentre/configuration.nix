@@ -53,6 +53,10 @@
 
     firewall.filterForward = true;
 
+    firewall.extraForwardRules = ''
+      iifname { "wg-vpn", "wg-public", "wg-intranet" } oifname "eno1" accept
+    '';
+
     nftables.enable = true;
 
     # nftables.tables."wg-access-control" = {
