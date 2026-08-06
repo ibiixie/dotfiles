@@ -67,6 +67,10 @@
       '';
     };
 
+    firewall.extraForwardRules = ''
+      iifname { "wg-vpn", "wg-intranet" } oifname "eno1" accept
+    '';
+
     # firewall.extraForwardRules = ''
     #   ct state invalid drop
     #   ct state established,related accept
