@@ -55,21 +55,21 @@
 
     nftables.enable = true;
 
-    nftables.tables."wg-access-control" = {
-      family = "ip";
-      content = ''
-        chain prerouting {
-          type filter hook prerouting priority raw; policy accept;
+    # nftables.tables."wg-access-control" = {
+    #   family = "ip";
+    #   content = ''
+    #     chain prerouting {
+    #       type filter hook prerouting priority raw; policy accept;
 
-          ip daddr 10.1.0.0/16 iifname != "wg-intranet" drop
-          ip daddr 10.0.0.0/16 iifname != { "wg-vpn", "wg-intranet" } drop
-        }
-      '';
-    };
+    #       ip daddr 10.1.0.0/16 iifname != "wg-intranet" drop
+    #       ip daddr 10.0.0.0/16 iifname != { "wg-vpn", "wg-intranet" } drop
+    #     }
+    #   '';
+    # };
 
-    firewall.extraForwardRules = ''
-      iifname { "wg-vpn", "wg-intranet" } oifname "eno1" accept
-    '';
+    # firewall.extraForwardRules = ''
+    #   iifname { "wg-vpn", "wg-intranet" } oifname "eno1" accept
+    # '';
 
     # firewall.extraForwardRules = ''
     #   ct state invalid drop
