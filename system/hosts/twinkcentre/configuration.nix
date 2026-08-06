@@ -51,19 +51,31 @@
 
     # firewall.interfaces.wg-vpn.allowedTCPPorts = [ 80 ];
 
-    nftables.enable = true;
-
     firewall.filterForward = true;
 
-    firewall.extraForwardRules = ''
-      ct state invalid drop
-      ct state established,related accept
+    nftables.enable = true;
 
-      iifname { "wg-vpn", "wg-public" } oifname "br-pubnet" tcp dport { 80 } accept
-      iifname "wg-intranet" oifname "br-intranet" tcp dport { 80, 8080 } accept
+    nftables.tables."wg-access-control" = {
+      family = "ip";
+      content = ''
+        chain prerouting {
+          type filter hook prerouting priority raw; policy accept;
 
-      oifname { "br-pubnet", "br-intranet" } drop
-    '';
+          ip daddr 10.1.0.0/16 iifname != "wg-intranet" drop
+          ip daddr 10.0.0.0/16 iifname != { "wg-vpn", "wg-intranet" } drop
+        }
+      '';
+    };
+
+    # firewall.extraForwardRules = ''
+    #   ct state invalid drop
+    #   ct state established,related accept
+
+    #   iifname { "wg-vpn", "wg-public" } oifname "br-pubnet" tcp dport { 80 } accept
+    #   iifname "wg-intranet" oifname "br-intranet" tcp dport { 80, 8080 } accept
+
+    #   oifname { "br-pubnet", "br-intranet" } drop
+    # '';
 
     wireguard = {
       enable = true;
