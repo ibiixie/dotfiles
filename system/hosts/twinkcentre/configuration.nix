@@ -106,7 +106,7 @@
               publicKey = "R8liprjNkn8I5PrAGLoju+VEkPWoTP0eOHLj0szrOzE=";
               presharedKeyFile =
                 config.sops.secrets."hosts/twinkcentre/wireguard/vpn/peers/biixie-vpn/preshared-key".path;
-              allowedIPs = [ "10.0.0.3/32" ];
+              allowedIPs = [ "10.0.0.4/32" ];
             }
           ];
           postSetup = ''
