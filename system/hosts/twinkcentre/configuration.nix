@@ -57,6 +57,11 @@
       iifname { "wg-vpn", "wg-public", "wg-intranet" } oifname "eno1" accept
     '';
 
+    firewall.extraInputRules = ''
+      iifname "wg-intranet" accept
+      iifname { "wg-public", "wg-vpn" } ip daddr 10.1.0.0/24 accept
+    '';
+
     nftables.enable = true;
 
     # nftables.tables."wg-access-control" = {
