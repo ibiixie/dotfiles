@@ -58,8 +58,8 @@
     '';
 
     firewall.extraInputRules = ''
-      iifname "wg-intranet" accept
-      iifname { "wg-public", "wg-vpn" } ip daddr 10.1.0.0/24 accept
+      iifname "wg-intranet" counter accept
+      iifname { "wg-public", "wg-vpn" } ip daddr 10.1.0.0/24 counter accept
     '';
 
     nftables.enable = true;
