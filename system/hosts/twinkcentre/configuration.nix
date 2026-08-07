@@ -178,6 +178,7 @@
 
   environment.systemPackages = [
     pkgs.croc
+    pkgs.podman-compose
   ];
 
   users.users.twinkcentre = {
