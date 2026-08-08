@@ -2,7 +2,7 @@
 enable_overdrive = true
 
 [bar.default]
-center = [ "clock", "weather" ]
+center = [ "weather", "date", "clock" ]
 concave_edge_corners = false
 end = [
     "network_rx",
@@ -99,8 +99,6 @@ layer = "overlay"
 position = "top_center"
 
 [shell]
-# TODO: Declaratively download and set avatar
-# avatar_path = "profile-picture.png"
 clipboard_enabled = false
 
 [theme]
@@ -109,12 +107,13 @@ mode = "dark"
 source = "wallpaper"
 
 [wallpaper.default]
-# TODO: Declaratively download and set wallpaper
-# path = "wallpaper.png"
+path = "wallpaper.png"
 
 [wallpaper.last]
-# TODO: Declaratively download and set wallpaper
-# path = "wallpaper.png"
+path = "wallpaper.png"
+
+[widget.clock]
+format = "{:%H:%M:%S}"
 
 [widget.control-center]
 enabled = true
