@@ -1,7 +1,7 @@
 {
   imports = [
     ./foot.nix
-    ./anyrun.nix
+    # ./anyrun.nix
     ./gammastep.nix
     ./firefox.nix
     ./vivaldi.nix
@@ -11,7 +11,8 @@
     ./thunderbird.nix
     ./vesktop.nix
     ./waybar.nix
-    ./quickshell
+    ./noctalia
+    # ./quickshell
     ./obs-studio.nix
     ./easyeffects.nix
     ./spicetify.nix

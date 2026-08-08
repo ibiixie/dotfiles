@@ -11,5 +11,6 @@
     ./steam.nix
     ./obs-studio.nix
     ./heroic.nix
+    ./noctalia.nix
   ];
 }
