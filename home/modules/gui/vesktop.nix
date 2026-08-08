@@ -4,12 +4,6 @@
 }:
 
 {
-  # home.packages = [
-  #   pkgs.vesktop
-  # ];
-
-  stylix.targets.vesktop.enable = false;
-
   programs.vesktop = {
     enable = true;
 
@@ -19,13 +13,6 @@
       hardwareVideoAcceleration = true;
       arRPC = true;
     };
-
-    vencord.extraQuickCss = builtins.readFile (
-      pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/round-panda/gruvbox-sharp/54f0612a1d0fb38d3f2c7a7f4b697b5ad607d312/GruvboxSharp.theme.css";
-        hash = "sha256-fRj80A/foM6Bc6odECU2JuYrLhxuknbqot7QL3TUqWo=";
-      }
-    );
 
     vencord.settings = {
       plugins = {
@@ -127,7 +114,4 @@
       };
     };
   };
-
-  # using the vesktop setting instead which seems to conflict with this
-  # services.arrpc.enable = true;
 }

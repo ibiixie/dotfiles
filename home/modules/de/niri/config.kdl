@@ -21,7 +21,6 @@ input {
         accel-profile "flat"
     }
 
-    // Uncomment this to make the mouse warp to the center of newly focused windows.
     // warp-mouse-to-focus
 
     mod-key "Super"
@@ -61,42 +60,20 @@ layout {
         proportion 0.66667
     }
 
-    // preset-window-heights { }
     default-column-width { proportion 0.5; }
-    // default-column-width {}
 
     focus-ring {
         width 2
 
-        // Gruvbox
-        active-color "#d3869b"
-        inactive-color "#504945"
-
         // Catppuccin
-        // active-color "#cba6f7"
-        // inactive-color "#505050"
-
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        active-color "#cba6f7"
+        inactive-color "#505050"
     }
 
     border {
         off
 
         width 2
-
-        // Gruvbox
-        active-color "#d3869b"
-        inactive-color "#504945"
-        urgent-color "#fb4934"
-
-        // Catppuccin
-        // active-color "#ffc87f"
-        // inactive-color "#505050"
-        // urgent-color "#9b0000"
-
-        // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     shadow {
@@ -255,7 +232,7 @@ window-rule {
 }
 
 window-rule {
-    geometry-corner-radius 0 // 12
+    geometry-corner-radius 12
     clip-to-geometry true
     draw-border-with-background false
 
@@ -277,17 +254,11 @@ binds {
 
     Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+F hotkey-overlay-title="Open a File Manager: nautilus" { spawn "nautilus"; }
-    // Mod+Space hotkey-overlay-title="Run an Application: anyrun" { spawn "anyrun"; }
     Mod+Space { spawn-sh "noctalia msg panel-open launcher"; }
 
     Mod+Z hotkey-overlay-title="Save OBS Replay: obs-cmd" {
         spawn-sh "obs-cmd --websocket obsws://localhost:4455 replay save";
     }
-
-    // XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    // XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    // XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    // XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
@@ -298,9 +269,6 @@ binds {
     XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
-
-    // XF86MonBrightnessUp allow-when-locked=true { spawn "blctl" "increase" "10"; }
-    // XF86MonBrightnessDown allow-when-locked=true { spawn "blctl" "decrease" "10"; }
 
     XF86MonBrightnessUp   { spawn-sh "noctalia msg brightness-up"; }
     XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
@@ -431,10 +399,6 @@ binds {
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     Mod+W { toggle-column-tabbed-display; }
-
-    // Print { screenshot; }
-    // Ctrl+Print { screenshot-screen; }
-    // Alt+Print { screenshot-window; }
 
     Print { spawn-sh "set -e; grim -t ppm -g \"$(slurp -o -d -F monospace)\" - | satty --filename - --copy-command=wl-copy --annotation-size-factor 2.0 --actions-on-enter=save-to-clipboard,exit --brush-smooth-history-size=5 --disable-notifications"; }
 

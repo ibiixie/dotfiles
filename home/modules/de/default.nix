@@ -1,6 +1,5 @@
 {
   imports = [
-    # ./jay
     ./niri
   ];
 }

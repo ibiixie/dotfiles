@@ -7,16 +7,12 @@ let
   typescript = pkgs.typescript;
 in
 {
-  # Use a dedicated theme for Helix because the Stylix one is not great.
-  stylix.targets.helix.enable = true;
-
   programs.helix = {
     enable = true;
 
     defaultEditor = true;
 
     settings = {
-      # theme = "catppuccin_mocha";
       editor = {
         mouse = false;
         scrolloff = 5;
@@ -49,10 +45,6 @@ in
 
         cursor-shape = {
           normal = "underline";
-
-          # Bar causes cursor to become invisible when using indent guides
-          # so I'm switching to a block instead for now.
-          # insert = "bar";
 
           insert = "block";
           select = "block";
@@ -89,18 +81,8 @@ in
         };
 
         lsp = {
-          # auto-signature-help = false;
           display-inlay-hints = true;
           display-messages = true;
-        };
-      };
-
-      keys = {
-        normal = {
-          # j = "move_char_left";
-          # k = "move_visual_line_up";
-          # l = "move_visual_line_down";
-          # "ö" = "move_char_right";
         };
       };
     };

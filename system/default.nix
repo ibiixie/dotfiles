@@ -2,7 +2,6 @@
 
 {
   inputs,
-  config,
   pkgs,
   ...
 }:
@@ -115,7 +114,6 @@
   virtualisation = {
     docker.enable = true;
 
-    # one day ill get this to work :D
     # podman = {
     #   enable = true;
 

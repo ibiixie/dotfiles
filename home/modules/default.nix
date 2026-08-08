@@ -9,6 +9,8 @@
     ./de
     ./gui
 
+    ./catppuccin.nix
+
     ./nh.nix
 
     ./discord-rpc-lsp

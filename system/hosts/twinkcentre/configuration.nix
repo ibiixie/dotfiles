@@ -44,13 +44,6 @@
       45255
     ];
 
-    # firewall.interfaces.wg-intranet.allowedTCPPorts = [
-    #   80
-    #   8080
-    # ];
-
-    # firewall.interfaces.wg-vpn.allowedTCPPorts = [ 80 ];
-
     firewall.filterForward = true;
 
     firewall.extraForwardRules = ''
@@ -63,32 +56,6 @@
     '';
 
     nftables.enable = true;
-
-    # nftables.tables."wg-access-control" = {
-    #   family = "ip";
-    #   content = ''
-    #     chain prerouting {
-    #       type filter hook prerouting priority raw; policy accept;
-
-    #       ip daddr 10.1.0.0/16 iifname != "wg-intranet" drop
-    #       ip daddr 10.0.0.0/16 iifname != { "wg-vpn", "wg-intranet" } drop
-    #     }
-    #   '';
-    # };
-
-    # firewall.extraForwardRules = ''
-    #   iifname { "wg-vpn", "wg-intranet" } oifname "eno1" accept
-    # '';
-
-    # firewall.extraForwardRules = ''
-    #   ct state invalid drop
-    #   ct state established,related accept
-
-    #   iifname { "wg-vpn", "wg-public" } oifname "br-pubnet" tcp dport { 80 } accept
-    #   iifname "wg-intranet" oifname "br-intranet" tcp dport { 80, 8080 } accept
-
-    #   oifname { "br-pubnet", "br-intranet" } drop
-    # '';
 
     wireguard = {
       enable = true;
@@ -140,9 +107,6 @@
     };
   };
 
-  # virtualisation.containers.enable = true;
-  # virtualisation.docker.enable = true;
-
   virtualisation = {
     # containers.enable = true;
     podman = {
@@ -193,8 +157,6 @@
     extraGroups = [
       "wheel"
       "networkmanager"
-      "docker"
-      # "podman"
     ];
 
     hashedPasswordFile = config.sops.secrets."hosts/twinkcentre/password".path;
@@ -313,12 +275,6 @@
       layout = "se";
       variant = "";
     };
-
-    # Automount external storage devices.
-    # TODO: Automount should be disabled on headless systems.
-    devmon.enable = true;
-    gvfs.enable = true;
-    udisks2.enable = true;
 
     fstrim.enable = true;
 

@@ -6,14 +6,12 @@
   programs.hyfetch = {
     enable = true;
     settings = {
-      preset = "rainbow";
+      preset = "bisexual";
 
-      # TODO: The Rust port of hyfetch has a macchina backend so i'll
-      #       wait for the release of that to configure this further :D
-      backend = "fastfetch";
+      backend = "macchina";
       mode = "rgb";
       light_dark = "dark";
-      lightness = 0.8;
+      lightness = 0.75;
       color_align = {
         mode = "horizontal";
         custom_colors = [ ];
@@ -26,8 +24,8 @@
     };
   };
 
-  # Enable the backend dependency too.
-  programs.fastfetch = {
+  # Enable the backend dependency
+  programs.macchina = {
     enable = true;
   };
 }

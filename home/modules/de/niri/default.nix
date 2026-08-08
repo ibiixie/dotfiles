@@ -11,10 +11,6 @@
     satty
   ];
 
-  # services.awww = {
-  #   enable = true;
-  # };
-
   # main steam window shows a black screen
   # running steam with -system-composer fixes this
   # so i add a new desktop entry to run with that

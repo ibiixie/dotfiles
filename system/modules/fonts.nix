@@ -8,6 +8,7 @@
 
   fonts.packages = [
     pkgs.charis
+    pkgs.maple-mono.NormalNL-NF-unhinted
   ];
 
   fonts.fontconfig = {

@@ -3,7 +3,7 @@
 }:
 
 {
-  stylix.targets.firefox.profileNames = [ "default" ];
+  programs.firefox.profiles.default.extensions.force = true;
 
   programs.firefox = {
     enable = true;

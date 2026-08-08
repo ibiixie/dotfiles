@@ -1,35 +1,67 @@
 [audio]
 enable_overdrive = true
 
-[bar.default]
-center = [ "weather", "date", "clock" ]
-concave_edge_corners = false
-end = [
-    "network_rx",
-    "network_tx",
-    "ram",
-    "cpu",
-    "tray",
-    "notifications",
-    "clipboard",
-    "network",
-    "bluetooth",
-    "volume",
-    "brightness",
-    "battery",
-    "control-center",
-    "session"
-]
-font_family = "Maple Mono Normal NL NF Medium"
-font_weight = 700
-margin_ends = 0
-position = "bottom"
-radius = 0
-start = [ "launcher", "wallpaper", "workspaces", "media", "audio_visualizer" ]
-widget_spacing = 16
+[bar]
+order = [ "default" ]
+
+    [bar.default]
+    center = [ "weather", "date", "clock" ]
+    concave_edge_corners = false
+    end = [
+        "tray",
+        "clipboard",
+        "bluetooth",
+        "volume",
+        "brightness",
+        "battery",
+        "network",
+        "notifications",
+        "control-center",
+        "session"
+    ]
+    font_family = "Maple Mono Normal NL NF Medium"
+    font_weight = 700
+    margin_ends = 0
+    position = "bottom"
+    radius = 0
+    start = [ "launcher", "wallpaper", "workspaces", "media", "audio_visualizer" ]
+    widget_spacing = 16
+
+        [bar.default.monitor.DP-2]
+        center = [ "weather", "date", "clock" ]
+        enabled = true
+        end = [ "tray", "notifications" ]
+        start = [ "workspaces" ]
 
 [control_center.calendar]
 show_week_numbers = true
+
+[[control_center.shortcuts]]
+type = "wifi"
+
+[[control_center.shortcuts]]
+type = "power_profile"
+
+[[control_center.shortcuts]]
+type = "mic_mute"
+
+[[control_center.shortcuts]]
+type = "audio"
+
+[[control_center.shortcuts]]
+type = "media"
+
+[desktop_widgets]
+enabled = false
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
 
 [location]
 address = "Norrköping"
@@ -96,24 +128,26 @@ widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-5" ]
 
 [notification]
 layer = "overlay"
-position = "top_center"
+position = "top_right"
+
+[osd.kinds]
+lock_keys = false
+media = false
 
 [shell]
 clipboard_enabled = false
 
+[system.monitor]
+enabled = false
+
 [theme]
 builtin = "Catppuccin"
 mode = "dark"
-source = "wallpaper"
-
-[wallpaper.default]
-path = "wallpaper.png"
-
-[wallpaper.last]
-path = "wallpaper.png"
+source = "builtin"
+wallpaper_scheme = "soft"
 
 [widget.clock]
-format = "{:%H:%M:%S}"
+format = "{:%H:%M:%S %Z}"
 
 [widget.control-center]
 enabled = true
