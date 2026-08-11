@@ -64,6 +64,7 @@
           iifname "wg-intranet" tcp dport 80 counter redirect to :8080
         }
       '';
+      family = "inet";
     };
 
     wireguard = {
@@ -292,7 +293,6 @@
       settings = {
         interface = "wg-intranet";
         address = "/whoami.internal/10.1.0.1";
-        family = "inet";
       };
     };
 
