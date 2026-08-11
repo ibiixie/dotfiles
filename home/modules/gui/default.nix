@@ -18,5 +18,6 @@
     ./unity.nix
     ./rider.nix
     ./onlyoffice.nix
+    ./aseprite.nix
   ];
 }
