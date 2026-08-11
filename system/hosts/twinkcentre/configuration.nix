@@ -6,7 +6,6 @@
   config,
   pkgs,
   inputs,
-  lib,
   ...
 }:
 
@@ -293,6 +292,7 @@
       settings = {
         interface = "wg-intranet";
         address = "/whoami.internal/10.1.0.1";
+        family = "inet";
       };
     };
 
