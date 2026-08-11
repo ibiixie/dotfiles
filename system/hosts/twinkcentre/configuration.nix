@@ -57,6 +57,16 @@
 
     nftables.enable = true;
 
+    nftables.tables.port-redir = {
+      enable = true;
+      content = ''
+        chain prerouting {
+          type nat hook prerouting priority -100;
+          iifname "wg-intranet" tcp dport 80 counter redirect to :8080
+        }
+      '';
+    };
+
     wireguard = {
       enable = true;
 
@@ -277,6 +287,14 @@
     };
 
     fstrim.enable = true;
+
+    dnsmasq = {
+      enable = true;
+      settings = {
+        interface = "wg-intranet";
+        address = "/whoami.internal/10.1.0.1";
+      };
+    };
 
     # gitea-actions-runner = {
     #   package = pkgs.forgejo-runner;
