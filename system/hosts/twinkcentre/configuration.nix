@@ -302,7 +302,7 @@
       enable = true;
       settings = {
         interface = "wg-intranet";
-        address = "/whoami.internal/10.2.0.1";
+        address = "/whoami.internal/10.2.1.1";
       };
     };
 
