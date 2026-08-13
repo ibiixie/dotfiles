@@ -120,6 +120,7 @@
         wg-intranet = {
           ips = [
             "10.2.0.1/16"
+            "10.2.1.1/32"
           ];
           listenPort = 45355;
           privateKeyFile = config.sops.secrets."hosts/twinkcentre/wireguard/intranet/private-key".path;
@@ -305,6 +306,7 @@
       settings = {
         interface = "wg-intranet";
         listen-address = "10.2.1.1";
+        bind-interfaces = true;
         address = "/whoami.internal/10.2.0.1";
       };
     };
