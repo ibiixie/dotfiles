@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   config,
   pkgs,
@@ -15,7 +11,6 @@
 
     ./secrets.nix
 
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -118,7 +113,6 @@
   };
 
   virtualisation = {
-    # containers.enable = true;
     podman = {
       enable = true;
       dockerCompat = true;
@@ -177,13 +171,6 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG0hpm4wxNoqYj4MLqjZtUDs095vcgG7Wukb0uDryCZH"
     ];
   };
-
-  # users.users.gitea-runner = {
-  #   isNormalUser = true;
-  #   extraGroups = [
-  #     # "docker"
-  #   ];
-  # };
 
   system.autoUpgrade = {
     enable = true;
@@ -296,32 +283,32 @@
       };
     };
 
-    # gitea-actions-runner = {
-    #   package = pkgs.forgejo-runner;
+    gitea-actions-runner = {
+      package = pkgs.forgejo-runner;
 
-    #   instances.twinkcentre = {
-    #     enable = true;
-    #     name = "twinkcentre-runner";
-    #     url = "https://codeberg.org/";
-    #     labels = [
-    #       "self-hosted:host"
-    #       "twinkcentre:host"
-    #     ];
-    #     tokenFile = config.sops.secrets."hosts/twinkcentre/codeberg-runner-token".path;
-    #     hostPackages = with pkgs; [
-    #       bash
-    #       coreutils
-    #       curl
-    #       gawk
-    #       gitMinimal
-    #       gnused
-    #       nodejs
-    #       wget
+      instances.twinkcentre = {
+        enable = true;
+        name = "twinkcentre-runner";
+        url = "https://codeberg.org/";
+        labels = [
+          "self-hosted:host"
+          "twinkcentre:host"
+        ];
+        tokenFile = config.sops.secrets."hosts/twinkcentre/codeberg-runner-token".path;
+        hostPackages = with pkgs; [
+          bash
+          coreutils
+          curl
+          gawk
+          gitMinimal
+          gnused
+          nodejs
+          wget
 
-    #       docker
-    #     ];
-    #   };
-    # };
+          docker
+        ];
+      };
+    };
   };
 
   # This value determines the NixOS release from which the default
