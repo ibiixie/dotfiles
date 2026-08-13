@@ -36,6 +36,7 @@
     firewall.allowedUDPPorts = [
       45155
       45255
+      45355
     ];
 
     firewall.filterForward = true;
@@ -46,7 +47,7 @@
 
     firewall.extraInputRules = ''
       iifname "wg-intranet" counter accept
-      iifname { "wg-public", "wg-vpn" } ip daddr 10.1.0.0/24 counter accept
+      iifname { "wg-public", "wg-vpn" } ip daddr 10.0.0.0/16 counter accept
     '';
 
     nftables.enable = true;
@@ -66,9 +67,31 @@
       enable = true;
 
       interfaces = {
-        wg-vpn = {
-          ips = [ "10.0.0.1/24" ];
+        wg-public = {
+          ips = [ "10.0.0.1/16" ];
           listenPort = 45155;
+          privateKeyFile = config.sops.secrets."hosts/twinkcentre/wireguard/public/private-key".path;
+          peers = [
+            {
+              name = "bastion";
+              publicKey = "LYVXDCvLUTn0M38KkfAYwzuItfGxibULIpwhVgV+nBA=";
+              presharedKeyFile =
+                config.sops.secrets."hosts/twinkcentre/wireguard/public/peers/bastion/preshared-key".path;
+              allowedIPs = [ "10.0.0.2/32" ];
+            }
+            {
+              name = "biixie";
+              publicKey = "CtZcUBWzswfgObZEBGQY2KEkkwISF55SOsL9gqLfN0o=";
+              presharedKeyFile =
+                config.sops.secrets."hosts/twinkcentre/wireguard/public/peers/biixie/preshared-key".path;
+              allowedIPs = [ "10.0.0.3/32" ];
+            }
+          ];
+        };
+
+        wg-vpn = {
+          ips = [ "10.1.0.1/16" ];
+          listenPort = 45255;
           privateKeyFile = config.sops.secrets."hosts/twinkcentre/wireguard/vpn/private-key".path;
           peers = [
             {
@@ -76,35 +99,35 @@
               publicKey = "tqaeOBIJ+Z7WazNYR+qPXGjnYm2MSSucwFRP9p4AiEc=";
               presharedKeyFile =
                 config.sops.secrets."hosts/twinkcentre/wireguard/vpn/peers/1cfa6c6e5fcfbd369733746c3552b9cb/preshared-key".path;
-              allowedIPs = [ "10.0.0.3/32" ];
+              allowedIPs = [ "10.1.0.2/32" ];
             }
             {
-              name = "biixie-vpn";
+              name = "biixie";
               publicKey = "R8liprjNkn8I5PrAGLoju+VEkPWoTP0eOHLj0szrOzE=";
               presharedKeyFile =
-                config.sops.secrets."hosts/twinkcentre/wireguard/vpn/peers/biixie-vpn/preshared-key".path;
-              allowedIPs = [ "10.0.0.4/32" ];
+                config.sops.secrets."hosts/twinkcentre/wireguard/vpn/peers/biixie/preshared-key".path;
+              allowedIPs = [ "10.1.0.3/32" ];
             }
           ];
           postSetup = ''
-            ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eno1 -j MASQUERADE
+            ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.1.0.0/16 -o eno1 -j MASQUERADE
           '';
           postShutdown = ''
-            ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.0.0.0/24 -o eno1 -j MASQUERADE
+            ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.1.0.0/16 -o eno1 -j MASQUERADE
           '';
         };
 
         wg-intranet = {
-          ips = [ "10.1.0.1/24" ];
-          listenPort = 45255;
+          ips = [ "10.2.0.1/16" ];
+          listenPort = 45355;
           privateKeyFile = config.sops.secrets."hosts/twinkcentre/wireguard/intranet/private-key".path;
           peers = [
             {
-              name = "biixie-intranet";
+              name = "biixie";
               publicKey = "LQA6Vx2aNszvyMx12ISbq04Mxn59wPOk7ttKyugxxVE=";
               presharedKeyFile =
                 config.sops.secrets."hosts/twinkcentre/wireguard/intranet/peers/biixie/preshared-key".path;
-              allowedIPs = [ "10.1.0.2/32" ];
+              allowedIPs = [ "10.2.0.2/32" ];
             }
           ];
         };
@@ -279,7 +302,7 @@
       enable = true;
       settings = {
         interface = "wg-intranet";
-        address = "/whoami.internal/10.1.0.1";
+        address = "/whoami.internal/10.2.0.1";
       };
     };
 
