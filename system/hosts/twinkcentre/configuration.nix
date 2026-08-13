@@ -56,8 +56,8 @@
       enable = true;
       content = ''
         chain prerouting {
-          type nat hook prerouting priority -100;
-          iifname "wg-intranet" tcp dport 80 counter redirect to :8080
+          type nat hook prerouting priority dstnat; policy accept;
+          iifname { "wg-intranet", "wg-vpn", "wg-public" } tcp dport 80 dnat to :8080
         }
       '';
       family = "inet";
