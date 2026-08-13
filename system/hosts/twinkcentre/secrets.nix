@@ -24,9 +24,15 @@
         sopsFile = ../../../secrets/hosts/twinkcentre.yaml;
       };
 
+      "hosts/twinkcentre/wireguard/public/private-key" = { };
+      "hosts/twinkcentre/wireguard/public/peers/bastion/private-key" = { };
+      "hosts/twinkcentre/wireguard/public/peers/bastion/preshared-key" = { };
+      "hosts/twinkcentre/wireguard/public/peers/biixie/private-key" = { };
+      "hosts/twinkcentre/wireguard/public/peers/biixie/preshared-key" = { };
+
       "hosts/twinkcentre/wireguard/vpn/private-key" = { };
-      "hosts/twinkcentre/wireguard/vpn/peers/biixie-vpn/private-key" = { };
-      "hosts/twinkcentre/wireguard/vpn/peers/biixie-vpn/preshared-key" = { };
+      "hosts/twinkcentre/wireguard/vpn/peers/biixie/private-key" = { };
+      "hosts/twinkcentre/wireguard/vpn/peers/biixie/preshared-key" = { };
       "hosts/twinkcentre/wireguard/vpn/peers/1cfa6c6e5fcfbd369733746c3552b9cb/private-key" = { };
       "hosts/twinkcentre/wireguard/vpn/peers/1cfa6c6e5fcfbd369733746c3552b9cb/preshared-key" = { };
 
