@@ -55,6 +55,7 @@
     device = "/dev/disk/by-uuid/B2783C05783BC6BF";
     fsType = "ntfs-3g";
     options = [
+      "noatime"
       "nofail"
       "rw"
       "uid=1000"
@@ -65,6 +66,7 @@
     device = "/dev/disk/by-uuid/94A4EB75A4EB57EE";
     fsType = "ntfs-3g";
     options = [
+      "noatime"
       "nofail"
       "rw"
       "uid=1000"
@@ -75,6 +77,7 @@
     device = "/dev/disk/by-uuid/509C44B39C4494FE";
     fsType = "ntfs-3g";
     options = [
+      "noatime"
       "nofail"
       "rw"
       "uid=1000"

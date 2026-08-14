@@ -2,6 +2,7 @@
 
 {
   inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -74,6 +75,9 @@
 
     fstrim.enable = true;
   };
+
+  # disable setting access time on read to improve performance
+  fileSystems."/".options = [ "noatime" ];
 
   nix = {
     settings = {
