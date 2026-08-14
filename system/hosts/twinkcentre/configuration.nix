@@ -365,7 +365,7 @@
   };
 
   systemd.services."gitea-runner-twinkcentre" = {
-    path = [ "/run/wrappers/bin" ];
+    path = [ "/run/wrappers" ];
     serviceConfig = {
       DynamicUser = lib.mkForce false;
       User = lib.mkForce "gitea-runner";
