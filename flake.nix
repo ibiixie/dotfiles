@@ -172,29 +172,29 @@
           ];
         };
 
-        wsl = nixpkgs.lib.nixosSystem {
-          inherit pkgs;
+        # wsl = nixpkgs.lib.nixosSystem {
+        #   inherit pkgs;
 
-          specialArgs = { inherit inputs outputs; };
+        #   specialArgs = { inherit inputs outputs; };
 
-          modules = [
-            ./system
-            ./system/hosts/wsl/configuration.nix
+        #   modules = [
+        #     ./system
+        #     ./system/hosts/wsl/configuration.nix
 
-            {
-              nix.package = pkgs.lixPackageSets.stable.lix;
-            }
+        #     {
+        #       nix.package = pkgs.lixPackageSets.stable.lix;
+        #     }
 
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.biixie = ./home/users/biixie/home.nix;
+        #     inputs.home-manager.nixosModules.home-manager
+        #     {
+        #       home-manager.useGlobalPkgs = true;
+        #       home-manager.useUserPackages = true;
+        #       home-manager.users.biixie = ./home/users/biixie/home.nix;
 
-              home-manager.extraSpecialArgs = { inherit inputs outputs; };
-            }
-          ];
-        };
+        #       home-manager.extraSpecialArgs = { inherit inputs outputs; };
+        #     }
+        #   ];
+        # };
       };
 
       devShells.x86_64-linux.default =
