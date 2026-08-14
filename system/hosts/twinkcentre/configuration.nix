@@ -364,7 +364,7 @@
     };
   };
 
-  systemd.services."gitea-runner-<instance>".serviceConfig = {
+  systemd.services."gitea-runner-twinkcentre".serviceConfig = {
     DynamicUser = lib.mkForce false;
     User = lib.mkForce "gitea-runner";
     Group = lib.mkForce "gitea-runner";
