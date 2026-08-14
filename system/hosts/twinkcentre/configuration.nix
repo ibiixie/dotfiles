@@ -198,28 +198,28 @@
     ];
   };
 
-  users.users.gitea-runner = {
-    isNormalUser = true;
-    description = "Forgejo/Gitea Runner";
-    group = "gitea-runner";
-    linger = true;
+  # users.users.gitea-runner = {
+  #   isNormalUser = true;
+  #   description = "Forgejo/Gitea Runner";
+  #   group = "gitea-runner";
+  #   linger = true;
 
-    subUidRanges = [
-      {
-        startUid = 100000;
-        count = 65536;
-      }
-    ];
+  #   subUidRanges = [
+  #     {
+  #       startUid = 100000;
+  #       count = 65536;
+  #     }
+  #   ];
 
-    subGidRanges = [
-      {
-        startGid = 100000;
-        count = 65536;
-      }
-    ];
-  };
+  #   subGidRanges = [
+  #     {
+  #       startGid = 100000;
+  #       count = 65536;
+  #     }
+  #   ];
+  # };
 
-  users.groups.gitea-runner = {};
+  # users.groups.gitea-runner = {};
 
   system.autoUpgrade = {
     enable = true;
