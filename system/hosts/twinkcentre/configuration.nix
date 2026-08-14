@@ -198,6 +198,14 @@
     ];
   };
 
+  users.users.gitea-runner = {
+    isSystemUser = true;
+    description = "Forgejo/Gitea Runner";
+    group = "gitea-runner";
+  };
+
+  users.groups.gitea-runner = {};
+
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
