@@ -364,10 +364,13 @@
     };
   };
 
-  systemd.services."gitea-runner-twinkcentre".serviceConfig = {
-    DynamicUser = lib.mkForce false;
-    User = lib.mkForce "gitea-runner";
-    Group = lib.mkForce "gitea-runner";
+  systemd.services."gitea-runner-twinkcentre" = {
+    path = [ "/run/wrappers/bin" ];
+    serviceConfig = {
+      DynamicUser = lib.mkForce false;
+      User = lib.mkForce "gitea-runner";
+      Group = lib.mkForce "gitea-runner";
+    };
   };
 
   # This value determines the NixOS release from which the default
