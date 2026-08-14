@@ -199,7 +199,7 @@
   };
 
   users.users.gitea-runner = {
-    isSystemUser = true;
+    isNormalUser = true;
     description = "Forgejo/Gitea Runner";
     group = "gitea-runner";
     linger = true;
