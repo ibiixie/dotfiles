@@ -202,6 +202,21 @@
     isSystemUser = true;
     description = "Forgejo/Gitea Runner";
     group = "gitea-runner";
+    linger = true;
+
+    subUidRanges = [
+      {
+        startUid = 100000;
+        count = 65536;
+      }
+    ];
+
+    subGidRanges = [
+      {
+        startGid = 100000;
+        count = 65536;
+      }
+    ];
   };
 
   users.groups.gitea-runner = {};
