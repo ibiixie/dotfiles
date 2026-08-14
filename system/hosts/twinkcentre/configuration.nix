@@ -333,7 +333,8 @@
           nodejs
           wget
 
-          docker
+          podman
+          podman-compose
         ];
       };
     };
