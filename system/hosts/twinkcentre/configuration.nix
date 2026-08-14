@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   ...
@@ -198,28 +199,28 @@
     ];
   };
 
-  # users.users.gitea-runner = {
-  #   isNormalUser = true;
-  #   description = "Forgejo/Gitea Runner";
-  #   group = "gitea-runner";
-  #   linger = true;
+  users.users.gitea-runner = {
+    isSystemUser = true;
+    description = "Forgejo/Gitea Runner";
+    group = "gitea-runner";
+    linger = true;
 
-  #   subUidRanges = [
-  #     {
-  #       startUid = 100000;
-  #       count = 65536;
-  #     }
-  #   ];
+    subUidRanges = [
+      {
+        startUid = 100000;
+        count = 65536;
+      }
+    ];
 
-  #   subGidRanges = [
-  #     {
-  #       startGid = 100000;
-  #       count = 65536;
-  #     }
-  #   ];
-  # };
+    subGidRanges = [
+      {
+        startGid = 100000;
+        count = 65536;
+      }
+    ];
+  };
 
-  # users.groups.gitea-runner = {};
+  users.groups.gitea-runner = { };
 
   system.autoUpgrade = {
     enable = true;
@@ -361,6 +362,12 @@
         ];
       };
     };
+  };
+
+  systemd.services."gitea-runner-<instance>".serviceConfig = {
+    DynamicUser = lib.mkForce false;
+    User = lib.mkForce "gitea-runner";
+    Group = lib.mkForce "gitea-runner";
   };
 
   # This value determines the NixOS release from which the default
