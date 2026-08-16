@@ -145,6 +145,22 @@
       dockerCompat = true;
       defaultNetwork.settings.dns_enabled = true;
     };
+
+    oci-containers.containers.caddy = {
+      image = "caddy:2.11-alpine";
+      pull = "newer";
+      podman.user = "containers";
+      networks = [
+        "intranet"
+        "pubnet"
+      ];
+      ports = [
+        "8080:80"
+      ];
+      volumes = [
+        "${./services/caddy/Caddyfile}:/etc/caddy/Caddyfile:ro"
+      ];
+    };
   };
 
   hardware.enableAllFirmware = true;
@@ -199,11 +215,12 @@
     ];
   };
 
-  users.users.gitea-runner = {
+  users.users.containers = {
     isSystemUser = true;
     description = "Forgejo/Gitea Runner";
-    group = "gitea-runner";
+    group = "containers";
     linger = true;
+    uid = 900;
 
     subUidRanges = [
       {
@@ -220,7 +237,7 @@
     ];
   };
 
-  users.groups.gitea-runner = { };
+  users.groups.containers = { };
 
   system.autoUpgrade = {
     enable = true;
@@ -368,8 +385,8 @@
     path = [ "/run/wrappers" ];
     serviceConfig = {
       DynamicUser = lib.mkForce false;
-      User = lib.mkForce "gitea-runner";
-      Group = lib.mkForce "gitea-runner";
+      User = lib.mkForce "containers";
+      Group = lib.mkForce "containers";
     };
   };
 
