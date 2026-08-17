@@ -216,11 +216,11 @@
   };
 
   users.users.containers = {
-    isSystemUser = true;
+    isNormalUser = true;
     description = "Forgejo/Gitea Runner";
     group = "containers";
     linger = true;
-    uid = 900;
+    uid = 1900;
 
     subUidRanges = [
       {
