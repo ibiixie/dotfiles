@@ -142,12 +142,14 @@
   virtualisation = {
     podman = {
       enable = true;
+      autoPrune.enable = true;
       dockerCompat = true;
       defaultNetwork.settings.dns_enabled = true;
     };
 
     oci-containers.containers.caddy = {
       image = "caddy:2.11-alpine";
+      autoStart = true;
       pull = "newer";
       podman.user = "containers";
       networks = [
@@ -161,6 +163,28 @@
         "${./services/caddy/Caddyfile}:/etc/caddy/Caddyfile:ro"
       ];
     };
+  };
+
+  systemd.services.podman-networks = {
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      User = "containers";
+      RemainAfterExit = true;
+    };
+
+    script = ''
+      ${pkgs.podman}/bin/podman network exists intranet ||
+        ${pkgs.podman}/bin/podman network create \
+          --subnet 172.2.0.0/24 \
+          intranet
+
+      ${pkgs.podman}/bin/podman network exists pubnet ||
+        ${pkgs.podman}/bin/podman network create \
+          --subnet 172.0.0.0/24 \
+          pubnet
+    '';
   };
 
   hardware.enableAllFirmware = true;
@@ -216,25 +240,13 @@
   };
 
   users.users.containers = {
-    isNormalUser = true;
+    isSystemUser = true;
+    createHome = true;
     description = "Forgejo/Gitea Runner";
     group = "containers";
     linger = true;
-    uid = 1900;
-
-    subUidRanges = [
-      {
-        startUid = 100000;
-        count = 65536;
-      }
-    ];
-
-    subGidRanges = [
-      {
-        startGid = 100000;
-        count = 65536;
-      }
-    ];
+    uid = 900;
+    autoSubUidGidRange = true;
   };
 
   users.groups.containers = { };
