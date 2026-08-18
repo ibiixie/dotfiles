@@ -149,7 +149,7 @@
     };
 
     quadlet.containers.caddy = {
-      # rootlessConfig.uid = config.users.users.containers.uid;
+      rootlessConfig.uid = config.users.users.containers.uid;
       containerConfig = {
         image = "docker.io/caddy:2.11-alpine";
         volumes = [
