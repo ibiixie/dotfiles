@@ -9,6 +9,7 @@
 {
   imports = [
     inputs.sops-nix.nixosModules.sops
+    inputs.quadlet-nix.nixosModules.quadlet
 
     ./secrets.nix
 
@@ -147,44 +148,29 @@
       defaultNetwork.settings.dns_enabled = true;
     };
 
-    oci-containers.containers.caddy = {
-      image = "caddy:2.11-alpine";
-      autoStart = true;
-      pull = "newer";
-      podman.user = "containers";
-      networks = [
-        "intranet"
-        "pubnet"
-      ];
-      ports = [
-        "8080:80"
-      ];
-      volumes = [
-        "${./services/caddy/Caddyfile}:/etc/caddy/Caddyfile:ro"
-      ];
-    };
-  };
-
-  systemd.services.podman-networks = {
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig = {
-      Type = "oneshot";
-      User = "containers";
-      RemainAfterExit = true;
+    quadlet.containers.caddy = {
+      rootlessConfig.uid = config.users.users.containers.uid;
+      containerConfig = {
+        image = "docker.io/caddy:2.11-alpine";
+        volumes = [
+          "${config.virtualisation.quadlet.volumes.caddy-config.ref}:/etc/caddy/Caddyfile:ro"
+        ];
+        networks = [
+          config.virtualisation.quadlet.networks.intranet.ref
+          config.virtualisation.quadlet.networks.pubnet.ref
+        ];
+      };
     };
 
-    script = ''
-      ${pkgs.podman}/bin/podman network exists intranet ||
-        ${pkgs.podman}/bin/podman network create \
-          --subnet 172.2.0.0/24 \
-          intranet
+    quadlet.volumes.caddy-config.volumeConfig = {
+      type = "bind";
+      device = "${./services/caddy/Caddyfile}";
+    };
 
-      ${pkgs.podman}/bin/podman network exists pubnet ||
-        ${pkgs.podman}/bin/podman network create \
-          --subnet 172.0.0.0/24 \
-          pubnet
-    '';
+    quadlet.networks = {
+      pubnet.networkConfig.subnets = [ "172.20.0.0/24" ];
+      intranet.networkConfig.subnets = [ "172.22.0.0/24" ];
+    };
   };
 
   hardware.enableAllFirmware = true;
@@ -360,7 +346,7 @@
         interface = "wg-intranet";
         listen-address = "10.2.1.1";
         bind-interfaces = true;
-        address = "/whoami.internal/10.2.0.1";
+        address = "/whoami.internal/172.22.0.1";
       };
     };
 

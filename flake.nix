@@ -1,5 +1,5 @@
 {
-  description = "Biixie's NixOS configuration flake!";
+  description = "don't judge pls";
 
   inputs = {
     nixpkgs-server.url = "github:nixos/nixpkgs/nixos-26.05";
@@ -58,6 +58,10 @@
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    quadlet-nix = {
+      url = "github:SEIAROTg/quadlet-nix";
     };
   };
 
@@ -172,6 +176,7 @@
           ];
         };
 
+        # TODO: get rid of this, i don't use microslop binbows anymore c:
         # wsl = nixpkgs.lib.nixosSystem {
         #   inherit pkgs;
 
