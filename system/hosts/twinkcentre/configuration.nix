@@ -149,13 +149,14 @@
     };
 
     quadlet.containers.caddy = {
-      rootlessConfig.uid = config.users.users.containers.uid;
+      # rootlessConfig.uid = config.users.users.containers.uid;
       containerConfig = {
         image = "docker.io/caddy:2.11-alpine";
         volumes = [
           "${config.virtualisation.quadlet.volumes.caddy-config.ref}:/etc/caddy/Caddyfile:ro"
         ];
         networks = [
+          "podman"
           config.virtualisation.quadlet.networks.intranet.ref
           config.virtualisation.quadlet.networks.pubnet.ref
         ];
