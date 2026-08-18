@@ -153,7 +153,7 @@
       containerConfig = {
         image = "docker.io/caddy:2.11-alpine";
         volumes = [
-          "${config.virtualisation.quadlet.volumes.caddy-config.ref}:/etc/caddy/Caddyfile:ro"
+          "${./services/caddy/Caddyfile}:/etc/caddy/Caddyfile:ro"
         ];
         networks = [
           "podman"
@@ -161,11 +161,6 @@
           config.virtualisation.quadlet.networks.pubnet.ref
         ];
       };
-    };
-
-    quadlet.volumes.caddy-config.volumeConfig = {
-      type = "bind";
-      device = "${./services/caddy/Caddyfile}";
     };
 
     quadlet.networks = {
