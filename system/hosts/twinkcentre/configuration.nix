@@ -148,7 +148,8 @@
           config.virtualisation.quadlet.networks.pubnet.ref
         ];
         publishPorts = [
-          "80:80"
+          "10.0.0.1:80:8080"
+          "10.2.0.1:80:8081"
         ];
       };
     };
