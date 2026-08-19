@@ -149,7 +149,7 @@
     };
 
     quadlet.containers.caddy = {
-      rootlessConfig.uid = config.users.users.containers.uid;
+      # rootlessConfig.uid = config.users.users.containers.uid;
       containerConfig = {
         image = "docker.io/caddy:2.11-alpine";
         volumes = [
@@ -161,14 +161,18 @@
           config.virtualisation.quadlet.networks.pubnet.ref
         ];
         publishPorts = [
-          "80:80"
+          "8080:80"
         ];
       };
     };
 
     quadlet.networks = {
-      pubnet.networkConfig.subnets = [ "172.20.0.0/24" ];
-      intranet.networkConfig.subnets = [ "172.22.0.0/24" ];
+      pubnet.networkConfig = {
+        subnets = [ "172.20.0.0/24" ];
+      };
+      intranet = {
+        networkConfig.subnets = [ "172.22.0.0/24" ];
+      };
     };
   };
 
@@ -227,7 +231,7 @@
   users.users.containers = {
     isNormalUser = true;
     createHome = true;
-    description = "Forgejo/Gitea Runner";
+    description = "Containers";
     group = "containers";
     linger = true;
     uid = 1900;
@@ -378,14 +382,14 @@
     };
   };
 
-  systemd.services."gitea-runner-twinkcentre" = {
-    path = [ "/run/wrappers" ];
-    serviceConfig = {
-      DynamicUser = lib.mkForce false;
-      User = lib.mkForce "containers";
-      Group = lib.mkForce "containers";
-    };
-  };
+  # systemd.services."gitea-runner-twinkcentre" = {
+  #   path = [ "/run/wrappers" ];
+  #   serviceConfig = {
+  #     DynamicUser = lib.mkForce false;
+  #     User = lib.mkForce "containers";
+  #     Group = lib.mkForce "containers";
+  #   };
+  # };
 
   fileSystems."/".options = [ "noatime" ];
 
