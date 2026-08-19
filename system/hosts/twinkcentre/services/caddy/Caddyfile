@@ -1,21 +1,10 @@
 10.0.0.1:80 {
-    respond /ping "Pong!" 200
-    reverse_proxy whoami:8080
+    reverse_proxy whoami:80
 }
 
 10.2.0.1:80 {
-    @ping host ping.internal
-    handle @ping {
-        respond "Pong!" 200
-    }
-
     @whoami host whoami.internal
     handle @whoami {
-        reverse_proxy whoami-internal:8080
-    }
-    
-    @wallos host wallos.internal
-    handle @wallos {
-        reverse_proxy wallos:8080
+        reverse_proxy whoami-internal:80
     }
 }

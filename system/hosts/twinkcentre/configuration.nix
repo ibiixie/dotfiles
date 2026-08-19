@@ -53,17 +53,6 @@
 
     nftables.enable = true;
 
-    # nftables.tables.port-redir = {
-    #   enable = true;
-    #   content = ''
-    #     chain prerouting {
-    #       type nat hook prerouting priority dstnat; policy accept;
-    #       iifname { "wg-intranet", "wg-vpn", "wg-public" } tcp dport 80 dnat to :8080
-    #     }
-    #   '';
-    #   family = "inet";
-    # };
-
     wireguard = {
       enable = true;
 
@@ -148,7 +137,6 @@
     };
 
     quadlet.containers.caddy = {
-      # rootlessConfig.uid = config.users.users.containers.uid;
       containerConfig = {
         image = "docker.io/caddy:2.11-alpine";
         volumes = [
@@ -160,9 +148,17 @@
           config.virtualisation.quadlet.networks.pubnet.ref
         ];
         publishPorts = [
-          "8080:80"
+          "80:80"
         ];
       };
+    };
+
+    quadlet.containers.whoami-internal.containerConfig = {
+      image = "docker.io/traefik/whoami";
+      networks = [
+        config.virtualisation.quadlet.networks.intranet.ref
+      ];
+      name = "whoami-internal";
     };
 
     quadlet.networks = {
@@ -226,18 +222,6 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG0hpm4wxNoqYj4MLqjZtUDs095vcgG7Wukb0uDryCZH"
     ];
   };
-
-  # users.users.containers = {
-  #   isNormalUser = true;
-  #   createHome = true;
-  #   description = "Containers";
-  #   group = "containers";
-  #   linger = true;
-  #   uid = 1900;
-  #   autoSubUidGidRange = true;
-  # };
-
-  # users.groups.containers = { };
 
   system.autoUpgrade = {
     enable = true;
@@ -351,44 +335,7 @@
         address = "/whoami.internal/172.22.0.1";
       };
     };
-
-    # gitea-actions-runner = {
-    #   package = pkgs.forgejo-runner;
-
-    #   instances.twinkcentre = {
-    #     enable = true;
-    #     name = "twinkcentre-runner";
-    #     url = "https://codeberg.org/";
-    #     labels = [
-    #       "self-hosted:host"
-    #       "twinkcentre:host"
-    #     ];
-    #     tokenFile = config.sops.secrets."hosts/twinkcentre/codeberg-runner-token".path;
-    #     hostPackages = with pkgs; [
-    #       bash
-    #       coreutils
-    #       curl
-    #       gawk
-    #       gitMinimal
-    #       gnused
-    #       nodejs
-    #       wget
-
-    #       podman
-    #       podman-compose
-    #     ];
-    #   };
-    # };
   };
-
-  # systemd.services."gitea-runner-twinkcentre" = {
-  #   path = [ "/run/wrappers" ];
-  #   serviceConfig = {
-  #     DynamicUser = lib.mkForce false;
-  #     User = lib.mkForce "containers";
-  #     Group = lib.mkForce "containers";
-  #   };
-  # };
 
   fileSystems."/".options = [ "noatime" ];
 
