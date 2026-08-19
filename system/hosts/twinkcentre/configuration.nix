@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   inputs,
   ...
@@ -54,16 +53,16 @@
 
     nftables.enable = true;
 
-    nftables.tables.port-redir = {
-      enable = true;
-      content = ''
-        chain prerouting {
-          type nat hook prerouting priority dstnat; policy accept;
-          iifname { "wg-intranet", "wg-vpn", "wg-public" } tcp dport 80 dnat to :8080
-        }
-      '';
-      family = "inet";
-    };
+    # nftables.tables.port-redir = {
+    #   enable = true;
+    #   content = ''
+    #     chain prerouting {
+    #       type nat hook prerouting priority dstnat; policy accept;
+    #       iifname { "wg-intranet", "wg-vpn", "wg-public" } tcp dport 80 dnat to :8080
+    #     }
+    #   '';
+    #   family = "inet";
+    # };
 
     wireguard = {
       enable = true;
@@ -149,7 +148,7 @@
     };
 
     quadlet.containers.caddy = {
-      rootlessConfig.uid = config.users.users.containers.uid;
+      # rootlessConfig.uid = config.users.users.containers.uid;
       containerConfig = {
         image = "docker.io/caddy:2.11-alpine";
         volumes = [
@@ -228,17 +227,17 @@
     ];
   };
 
-  users.users.containers = {
-    isNormalUser = true;
-    createHome = true;
-    description = "Containers";
-    group = "containers";
-    linger = true;
-    uid = 1900;
-    autoSubUidGidRange = true;
-  };
+  # users.users.containers = {
+  #   isNormalUser = true;
+  #   createHome = true;
+  #   description = "Containers";
+  #   group = "containers";
+  #   linger = true;
+  #   uid = 1900;
+  #   autoSubUidGidRange = true;
+  # };
 
-  users.groups.containers = { };
+  # users.groups.containers = { };
 
   system.autoUpgrade = {
     enable = true;
@@ -259,7 +258,7 @@
       ${pkgs.curl}/bin/curl -s \
         --form-string "token=$PUSHOVER_TOKEN" \
         --form-string "user=$PUSHOVER_USER" \
-        --form-string "message=NixOS server upgrade failed!" \
+        --form-string "message=❌ NixOS server: flake upgrade failed!" \
         https://api.pushover.net/1/messages.json
     '';
     serviceConfig = {
@@ -353,43 +352,43 @@
       };
     };
 
-    gitea-actions-runner = {
-      package = pkgs.forgejo-runner;
+    # gitea-actions-runner = {
+    #   package = pkgs.forgejo-runner;
 
-      instances.twinkcentre = {
-        enable = true;
-        name = "twinkcentre-runner";
-        url = "https://codeberg.org/";
-        labels = [
-          "self-hosted:host"
-          "twinkcentre:host"
-        ];
-        tokenFile = config.sops.secrets."hosts/twinkcentre/codeberg-runner-token".path;
-        hostPackages = with pkgs; [
-          bash
-          coreutils
-          curl
-          gawk
-          gitMinimal
-          gnused
-          nodejs
-          wget
+    #   instances.twinkcentre = {
+    #     enable = true;
+    #     name = "twinkcentre-runner";
+    #     url = "https://codeberg.org/";
+    #     labels = [
+    #       "self-hosted:host"
+    #       "twinkcentre:host"
+    #     ];
+    #     tokenFile = config.sops.secrets."hosts/twinkcentre/codeberg-runner-token".path;
+    #     hostPackages = with pkgs; [
+    #       bash
+    #       coreutils
+    #       curl
+    #       gawk
+    #       gitMinimal
+    #       gnused
+    #       nodejs
+    #       wget
 
-          podman
-          podman-compose
-        ];
-      };
-    };
+    #       podman
+    #       podman-compose
+    #     ];
+    #   };
+    # };
   };
 
-  systemd.services."gitea-runner-twinkcentre" = {
-    path = [ "/run/wrappers" ];
-    serviceConfig = {
-      DynamicUser = lib.mkForce false;
-      User = lib.mkForce "containers";
-      Group = lib.mkForce "containers";
-    };
-  };
+  # systemd.services."gitea-runner-twinkcentre" = {
+  #   path = [ "/run/wrappers" ];
+  #   serviceConfig = {
+  #     DynamicUser = lib.mkForce false;
+  #     User = lib.mkForce "containers";
+  #     Group = lib.mkForce "containers";
+  #   };
+  # };
 
   fileSystems."/".options = [ "noatime" ];
 
