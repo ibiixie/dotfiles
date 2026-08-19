@@ -143,7 +143,6 @@
           "${./services/caddy/Caddyfile}:/etc/caddy/Caddyfile:ro"
         ];
         networks = [
-          "podman"
           config.virtualisation.quadlet.networks.intranet.ref
           config.virtualisation.quadlet.networks.pubnet.ref
         ];
@@ -164,10 +163,10 @@
 
     quadlet.networks = {
       pubnet.networkConfig = {
-        subnets = [ "172.20.0.0/24" ];
+        subnets = [ "172.22.0.0/24" ];
       };
-      intranet = {
-        networkConfig.subnets = [ "172.22.0.0/24" ];
+      intranet.networkConfig = {
+        subnets = [ "172.22.0.0/24" ];
       };
     };
   };
