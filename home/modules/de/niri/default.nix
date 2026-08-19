@@ -42,4 +42,20 @@
     name = "Steam Status: Invisible";
     exec = "xdg-open steam://friends/status/invisible";
   };
+
+  # add niri's dynamic screencast target commands to app launcher
+  xdg.desktopEntries.niri-cast-target-monitor = {
+    name = "Screencast: Focused Monitor";
+    exec = "niri msg action set-dynamic-cast-monitor";
+  };
+
+  xdg.desktopEntries.niri-cast-target-window = {
+    name = "Screencast: Focused Window";
+    exec = "niri msg action set-dynamic-cast-window";
+  };
+
+  xdg.desktopEntries.niri-cast-target-clear = {
+    name = "Screencast: Clear target";
+    exec = "niri msg action clear-dynamic-cast-target";
+  };
 }
