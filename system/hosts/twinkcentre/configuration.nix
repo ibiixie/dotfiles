@@ -152,11 +152,13 @@
     quadlet.containers.whoami-internal.containerConfig = {
       image = "docker.io/traefik/whoami";
       name = "whoami-internal";
+      exec = "/whoami --name whoami-internal";
     };
 
     quadlet.containers.whoami-public.containerConfig = {
       image = "docker.io/traefik/whoami";
       name = "whoami-public";
+      exec = "/whoami --name whoami-public";
     };
   };
 
