@@ -333,7 +333,7 @@
         interface = "wg-intranet";
         listen-address = "10.2.1.1";
         bind-interfaces = true;
-        address = "/whoami.internal/172.22.0.1";
+        address = "/whoami.internal/10.2.0.1";
       };
     };
   };
