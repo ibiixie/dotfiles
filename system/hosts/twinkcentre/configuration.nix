@@ -142,10 +142,10 @@
         volumes = [
           "${./services/caddy/Caddyfile}:/etc/caddy/Caddyfile:ro"
         ];
-        networks = [
-          config.virtualisation.quadlet.networks.intranet.ref
-          config.virtualisation.quadlet.networks.pubnet.ref
-        ];
+        # networks = [
+        #   config.virtualisation.quadlet.networks.intranet.ref
+        #   config.virtualisation.quadlet.networks.pubnet.ref
+        # ];
         publishPorts = [
           "10.0.0.1:80:8080"
           "10.2.0.1:80:8081"
@@ -155,20 +155,21 @@
 
     quadlet.containers.whoami-internal.containerConfig = {
       image = "docker.io/traefik/whoami";
-      networks = [
-        config.virtualisation.quadlet.networks.intranet.ref
-      ];
+      # networks = [
+      #   config.virtualisation.quadlet.networks.intranet.ref
+      # ];
       name = "whoami-internal";
+      # ip = "172.22.0.1";
     };
 
-    quadlet.networks = {
-      pubnet.networkConfig = {
-        subnets = [ "172.22.0.0/24" ];
-      };
-      intranet.networkConfig = {
-        subnets = [ "172.22.0.0/24" ];
-      };
-    };
+    # quadlet.networks = {
+    #   pubnet.networkConfig = {
+    #     subnets = [ "172.22.0.0/24" ];
+    #   };
+    #   intranet.networkConfig = {
+    #     subnets = [ "172.22.0.0/24" ];
+    #   };
+    # };
   };
 
   hardware.enableAllFirmware = true;
