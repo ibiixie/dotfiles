@@ -19,6 +19,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # For games mainly :D
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   powerManagement.cpuFreqGovernor = "performance";
 
   hardware.enableAllFirmware = true;
