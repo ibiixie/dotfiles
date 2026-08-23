@@ -62,7 +62,7 @@
           peers = [
             {
               name = "bastion";
-              publicKey = "dEpAPsIx0AOwENj1eyGVzFkASvk75bITRR7mKTjpoFU=";
+              publicKey = "8Ld5UJgNIwCARh8rzXQ4CGdGZgcqocMP94m6swoaqAU=";
               presharedKeyFile =
                 config.sops.secrets."hosts/twinkcentre/wireguard/public/peers/bastion/preshared-key".path;
               allowedIPs = [ "10.0.0.1/32" ];
