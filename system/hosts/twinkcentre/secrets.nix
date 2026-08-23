@@ -27,8 +27,6 @@
       "hosts/twinkcentre/wireguard/public/private-key" = { };
       "hosts/twinkcentre/wireguard/public/peers/bastion/private-key" = { };
       "hosts/twinkcentre/wireguard/public/peers/bastion/preshared-key" = { };
-      "hosts/twinkcentre/wireguard/public/peers/biixie/private-key" = { };
-      "hosts/twinkcentre/wireguard/public/peers/biixie/preshared-key" = { };
 
       "hosts/twinkcentre/wireguard/vpn/private-key" = { };
       "hosts/twinkcentre/wireguard/vpn/peers/biixie/private-key" = { };
