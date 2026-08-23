@@ -35,7 +35,6 @@
     ];
 
     firewall.allowedUDPPorts = [
-      45155
       45255
       45355
     ];
@@ -58,24 +57,24 @@
 
       interfaces = {
         wg-public = {
-          ips = [ "10.0.0.1/16" ];
-          listenPort = 45155;
+          ips = [ "10.0.0.2/16" ];
           privateKeyFile = config.sops.secrets."hosts/twinkcentre/wireguard/public/private-key".path;
           peers = [
             {
               name = "bastion";
-              publicKey = "LYVXDCvLUTn0M38KkfAYwzuItfGxibULIpwhVgV+nBA=";
+              publicKey = "dEpAPsIx0AOwENj1eyGVzFkASvk75bITRR7mKTjpoFU=";
               presharedKeyFile =
                 config.sops.secrets."hosts/twinkcentre/wireguard/public/peers/bastion/preshared-key".path;
-              allowedIPs = [ "10.0.0.2/32" ];
+              allowedIPs = [ "10.0.0.1/32" ];
+              endpoint = "79.76.57.184:45155";
             }
-            {
-              name = "biixie";
-              publicKey = "CtZcUBWzswfgObZEBGQY2KEkkwISF55SOsL9gqLfN0o=";
-              presharedKeyFile =
-                config.sops.secrets."hosts/twinkcentre/wireguard/public/peers/biixie/preshared-key".path;
-              allowedIPs = [ "10.0.0.3/32" ];
-            }
+            # {
+            #   name = "biixie";
+            #   publicKey = "CtZcUBWzswfgObZEBGQY2KEkkwISF55SOsL9gqLfN0o=";
+            #   presharedKeyFile =
+            #     config.sops.secrets."hosts/twinkcentre/wireguard/public/peers/biixie/preshared-key".path;
+            #   allowedIPs = [ "10.0.0.3/32" ];
+            # }
           ];
         };
 
