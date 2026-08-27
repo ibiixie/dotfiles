@@ -54,6 +54,11 @@
     LIBVA_DRIVER_NAME = "iHD";
   };
 
+  boot.kernelParams = [
+    "i915.force_probe=!56a0"
+    "xe.force_probe=56a0"
+  ];
+
   fileSystems."/Storage" = {
     device = "/dev/disk/by-uuid/B2783C05783BC6BF";
     fsType = "ntfs-3g";
