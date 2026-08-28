@@ -22,6 +22,19 @@
   # For games mainly :D
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # QuickSync/VAAPI is mostly broken on Alchemist GPUs when using the
+  # newer `xe` graphics driver due to lack of HuC support. This patch
+  # implements support for the GPU to enable QuickSync/VAAPI properly.
+  boot.kernelPatches = [
+    {
+      name = "xe-dg2-huc-mei";
+      patch = pkgs.fetchpatch2 {
+        url = "https://gitlab.freedesktop.org/drm/xe/kernel/-/commit/4fc0ff994edb4e1e6c00e42ea2ac6d72a3c27efb.patch";
+        hash = "sha256-yvnAtOeozZQcbVhv7pdpADHLKJsEAQvvxlO4dgWfZ7Q=";
+      };
+    }
+  ];
+
   powerManagement.cpuFreqGovernor = "performance";
 
   hardware.enableAllFirmware = true;
