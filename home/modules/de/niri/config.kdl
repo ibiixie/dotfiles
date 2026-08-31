@@ -229,7 +229,7 @@ window-rule {
     match app-id="discord"
     match app-id="vesktop"
 
-    block-out-from "screen-capture"
+    // block-out-from "screen-capture"
 }
 
 window-rule {
