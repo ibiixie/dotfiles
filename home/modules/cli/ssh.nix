@@ -42,10 +42,10 @@
         identityFile = config.sops.secrets."services/vpses/oci-main/ssh-key".path;
       };
 
-      "oci-aux" = {
-        hostname = "aux.ssh.biixie.com";
-        user = "ubuntu";
-        identityFile = config.sops.secrets."services/vpses/oci-aux/ssh-key".path;
+      "bastion" = {
+        hostname = "bastion.ssh.biixie.com";
+        user = "opc";
+        identityFile = config.sops.secrets."services/vpses/oci-bastion/ssh-key".path;
       };
 
       "gcp" = {

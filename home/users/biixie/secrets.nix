@@ -39,12 +39,12 @@ in
         sopsFile = ../../../secrets/services/vpses/oci-main.yaml;
       };
 
-      "services/vpses/oci-aux/ssh-key-pub" = {
-        sopsFile = ../../../secrets/services/vpses/oci-aux.yaml;
+      "services/vpses/oci-bastion/ssh-key-pub" = {
+        sopsFile = ../../../secrets/services/vpses/oci-bastion.yaml;
       };
 
-      "services/vpses/oci-aux/ssh-key" = {
-        sopsFile = ../../../secrets/services/vpses/oci-aux.yaml;
+      "services/vpses/oci-bastion/ssh-key" = {
+        sopsFile = ../../../secrets/services/vpses/oci-bastion.yaml;
       };
 
       "services/vpses/gcp/ssh-key" = {
