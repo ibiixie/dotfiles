@@ -51,6 +51,41 @@
     26902
   ];
 
+  # Quad9 DoH
+  networking = {
+    nameservers = [
+      "127.0.0.1"
+      "::1"
+    ];
+    dhcpcd.extraConfig = "nohook resolv.conf";
+    networkmanager.dns = "none";
+  };
+
+  services.dnscrypt-proxy = {
+    enable = true;
+    settings = {
+      sources.public-resolvers = {
+        urls = [
+          "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
+          "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
+        ];
+        minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+        cache_file = "/var/lib/dnscrypt-proxy/public-resolvers.md";
+      };
+
+      ipv6_servers = true;
+      block_ipv6 = false;
+
+      require_dnssec = true;
+      require_nolog = true;
+
+      server_names = [
+        "quad9-doh-ip4-port443-nofilter-pri"
+        "quad9-doh-ip6-port443-nofilter-pri"
+      ];
+    };
+  };
+
   # TODO: Move this?
   programs.nix-ld.enable = true;
 
