@@ -136,7 +136,7 @@
           "${./services/caddy/Caddyfile}:/etc/caddy/Caddyfile:ro"
         ];
         publishPorts = [
-          "10.0.0.1:80:80"
+          "10.0.0.2:80:80"
           "10.1.0.1:80:8080"
           "10.2.0.1:80:8081"
         ];
