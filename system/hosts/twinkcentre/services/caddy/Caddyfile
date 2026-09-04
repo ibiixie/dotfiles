@@ -1,3 +1,7 @@
+:80 {
+    respond "[WireGuard reverse tunnel established]"
+}
+
 :8080 {
     reverse_proxy whoami-public:80
 
