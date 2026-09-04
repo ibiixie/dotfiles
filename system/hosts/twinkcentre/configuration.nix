@@ -66,7 +66,7 @@
               presharedKeyFile =
                 config.sops.secrets."hosts/twinkcentre/wireguard/public/peers/bastion/preshared-key".path;
               allowedIPs = [ "10.0.0.1/32" ];
-              endpoint = "79.76.57.184:45155";
+              endpoint = "79.76.53.71:45155";
               persistentKeepalive = 25;
             }
             # {
