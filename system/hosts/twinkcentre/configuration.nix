@@ -69,13 +69,6 @@
               endpoint = "79.76.53.71:45155";
               persistentKeepalive = 25;
             }
-            # {
-            #   name = "biixie";
-            #   publicKey = "CtZcUBWzswfgObZEBGQY2KEkkwISF55SOsL9gqLfN0o=";
-            #   presharedKeyFile =
-            #     config.sops.secrets."hosts/twinkcentre/wireguard/public/peers/biixie/preshared-key".path;
-            #   allowedIPs = [ "10.0.0.3/32" ];
-            # }
           ];
         };
 
