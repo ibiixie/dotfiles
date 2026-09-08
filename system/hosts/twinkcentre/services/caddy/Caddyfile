@@ -1,5 +1,9 @@
 :80 {
-	respond "WireGuard reverse tunnel established.\nRemote IP: {http.request.remote.host}\nForwarded Client IP: {http.request.header.X-Forwarded-For}"
+	respond <<EOF
+		WireGuard reverse tunnel established.
+		Remote IP: {http.request.remote.host}
+		Forwarded Client IP: {http.request.header.X-Forwarded-For}
+		EOF
 }
 
 :8080 {
