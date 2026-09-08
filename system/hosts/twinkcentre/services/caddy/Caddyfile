@@ -1,18 +1,18 @@
 :80 {
-    respond "[WireGuard reverse tunnel established]"
+	respond "WireGuard reverse tunnel established.\nRemote IP: {http.request.remote.host}\nForwarded Client IP: {http.request.header.X-Forwarded-For}"
 }
 
 :8080 {
-    reverse_proxy whoami-public:80
+	reverse_proxy whoami-public:80
 
-    # respond "Hello, pubnet!"
+	# respond "Hello, pubnet!"
 }
 
 :8081 {
-    @whoami host whoami.internal
-    handle @whoami {
-        reverse_proxy whoami-internal:80
-    }
+	@whoami host whoami.internal
+	handle @whoami {
+		reverse_proxy whoami-internal:80
+	}
 
-    # respond "Hello, intranet!"
+	# respond "Hello, intranet!"
 }
