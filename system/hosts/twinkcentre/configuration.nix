@@ -154,6 +154,11 @@
       name = "whoami-public";
       exec = "/whoami --name whoami-public";
     };
+
+    quadlet.containers.biixie-frontend.containerConfig = {
+      image = "docker.io/biixie/biixie.com:frontend-latest";
+      name = "biixie-frontend";
+    };
   };
 
   hardware.enableAllFirmware = true;

@@ -1,9 +1,11 @@
-:80 {
-	respond <<EOF
-		WireGuard reverse tunnel established.
-		Remote IP: {http.request.remote.host}
-		Forwarded Client IP: {http.request.header.X-Forwarded-For}
-		EOF
+biixie.com:80 {
+	# handle /api {
+	# 	reverse_proxy biixie-backend:3000
+	# }
+
+	handle {
+		reverse_proxy biixie-frontend:80
+	}
 }
 
 :8080 {
