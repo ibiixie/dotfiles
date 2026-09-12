@@ -96,6 +96,13 @@
 
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
+
+    # I hit the limit every now and then which causes
+    # games to compile shader every startup, so I'm
+    # setting an overkill limit to prevent that.
+    # NOTE: Might have to clear the cache manually
+    # occasionally at ~/.cache/mesa_shader_cache
+    MESA_SHADER_CACHE_MAX_SIZE = "50G";
   };
 
   boot.kernelParams = [
