@@ -46,7 +46,7 @@
             # Add other libraries as needed
           ];
 
-        extraArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland";
+        extraArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland -system-composer";
       };
 
       extraCompatPackages = [

@@ -16,6 +16,8 @@
   # so i add a new desktop entry to run with that
   #
   # No longer used after I switched to native Wayland mode c:
+  # NOTE: Using this again to fix sluggishness with Steam, but
+  #       I'm injecting it into the Steam module directly.
   # xdg.desktopEntries.steam = {
   #   name = "Steam (Niri)";
   #   exec = "steam -system-composer %U";
