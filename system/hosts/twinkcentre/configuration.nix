@@ -132,6 +132,8 @@
     quadlet.containers.caddy = {
       containerConfig = {
         image = "docker.io/caddy:2.11-alpine";
+        name = "caddy";
+        autoUpdate = "registry";
         volumes = [
           "${./services/caddy/Caddyfile}:/etc/caddy/Caddyfile:ro"
         ];
@@ -146,23 +148,27 @@
     quadlet.containers.whoami-internal.containerConfig = {
       image = "docker.io/traefik/whoami";
       name = "whoami-internal";
+      autoUpdate = "registry";
       exec = "/whoami --name whoami-internal";
     };
 
     quadlet.containers.whoami-public.containerConfig = {
       image = "docker.io/traefik/whoami";
       name = "whoami-public";
+      autoUpdate = "registry";
       exec = "/whoami --name whoami-public";
     };
 
     quadlet.containers.biixie-frontend.containerConfig = {
       image = "docker.io/biixie/biixie.com:frontend-latest";
       name = "biixie-frontend";
+      autoUpdate = "registry";
     };
 
     quadlet.containers.biixie-backend.containerConfig = {
       image = "docker.io/biixie/biixie.com:backend-latest";
       name = "biixie-backend";
+      autoUpdate = "registry";
       volumes =
         let
           sops_yaml_path = "hosts/twinkcentre/quadlet/biixie-backend";
@@ -175,6 +181,9 @@
         ];
     };
   };
+
+  # Trigger podman container update after a successful scheduled NixOS upgrade.
+  systemd.services.nixos-upgrade.onSuccess = [ "podman-auto-update.service" ];
 
   hardware.enableAllFirmware = true;
   hardware.enableAllHardware = true;
