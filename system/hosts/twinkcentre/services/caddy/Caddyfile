@@ -1,5 +1,5 @@
 biixie.com:80 {
-	handle /api {
+	handle /api* {
 		reverse_proxy biixie-backend:3000
 	}
 
