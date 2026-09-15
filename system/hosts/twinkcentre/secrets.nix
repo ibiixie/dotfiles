@@ -24,6 +24,9 @@
         sopsFile = ../../../secrets/hosts/twinkcentre.yaml;
       };
 
+      "hosts/twinkcentre/quadlet/biixie-backend/cf_turnstile_secret" = { };
+      "hosts/twinkcentre/quadlet/biixie-backend/redacted_terms" = { };
+
       "hosts/twinkcentre/wireguard/public/private-key" = { };
       "hosts/twinkcentre/wireguard/public/peers/bastion/private-key" = { };
       "hosts/twinkcentre/wireguard/public/peers/bastion/preshared-key" = { };

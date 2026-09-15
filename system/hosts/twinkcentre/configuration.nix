@@ -159,6 +159,21 @@
       image = "docker.io/biixie/biixie.com:frontend-latest";
       name = "biixie-frontend";
     };
+
+    quadlet.containers.biixie-backend.containerConfig = {
+      image = "docker.io/biixie/biixie.com:backend-latest";
+      name = "biixie-backend";
+      volumes =
+        let
+          sops_yaml_path = "hosts/twinkcentre/quadlet/biixie-backend";
+          redacted_terms_path = "${config.sops.secrets."${sops_yaml_path}/redacted_terms".path}";
+          cf_turnstile_secret = "${config.sops.secrets."${sops_yaml_path}/cf_turnstile_secret".path}";
+        in
+        [
+          "${redacted_terms_path}:/run/secrets/redacted_terms:ro"
+          "${cf_turnstile_secret}:/run/secrets/cf_turnstile_secret:ro"
+        ];
+    };
   };
 
   hardware.enableAllFirmware = true;
