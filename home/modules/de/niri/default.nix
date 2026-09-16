@@ -8,6 +8,7 @@
 
   home.packages = with pkgs; [
     wl-clipboard-rs
+    still
     satty
   ];
 

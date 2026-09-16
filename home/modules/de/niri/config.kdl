@@ -401,7 +401,9 @@ binds {
 
     Mod+W { toggle-column-tabbed-display; }
 
-    Print { spawn-sh "set -e; grim -t ppm -g \"$(slurp -o -d -F monospace)\" - | satty --filename - --copy-command=wl-copy --annotation-size-factor 2.0 --actions-on-enter=save-to-clipboard,exit --brush-smooth-history-size=5 --disable-notifications"; }
+    Print {
+        spawn-sh "still -c 'slurp | grim -g- -' | satty -f - --copy-command=wl-copy --annotation-size-factor 1.0 --actions-on-enter save-to-clipboard,exit --brush-smooth-history-size 5"
+    }
 
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
