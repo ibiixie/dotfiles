@@ -5,9 +5,9 @@
 let
   mkQuantumRate = quantum: rate: "${toString quantum}/${toString rate}";
 
-  baseQuantum = 384;
-  minQuantum = 384;
-  maxQuantum = 512;
+  minQuantum = 256;
+  baseQuantum = 256;
+  maxQuantum = 256;
   rate = 48000;
 
   baseQuantumRate = mkQuantumRate baseQuantum rate;
@@ -29,15 +29,14 @@ in
           "default.clock.quantum" = baseQuantum;
           "default.clock.min-quantum" = minQuantum;
           "default.clock.max-quantum" = maxQuantum;
-        };
 
-        "default.clock.allowed-rates" = [
-          32000
-          44100
-          48000
-          96000
-          192000
-        ];
+          "mem.allow-mlock" = true;
+          "mem.warn-mlock" = false;
+
+          "default.clock.allowed-rates" = [
+            48000
+          ];
+        };
 
         "context.modules" = [
           {
@@ -47,8 +46,8 @@ in
               "nofail"
             ];
             args = {
-              "nice.level" = -20;
-              "rt.prio" = 99;
+              "nice.level" = -15;
+              "rt.prio" = 75;
               "rt.time.soft" = 200000;
               "rt.time.hard" = 200000;
             };
@@ -57,28 +56,46 @@ in
       };
 
       pipewire-pulse."99-pulse-lowlatency" = {
+        "context.modules" = [
+          {
+            name = "libpipewire-module-rt";
+            flags = [
+              "ifexists"
+              "nofail"
+            ];
+            args = {
+              "nice.level" = -15;
+              "rt.prio" = 75;
+              "rt.time.soft" = 200000;
+              "rt.time.hard" = 200000;
+              "rtkit.enabled" = false;
+              "rtportal.enabled" = false;
+            };
+          }
+        ];
         "pulse.properties" = {
           "server.address" = [ "unix:native" ];
-          "pulse.default.req" = baseQuantumRate;
-          "pulse.default.quantum" = baseQuantumRate;
-          "pulse.default.frag" = baseQuantumRate;
+
           "pulse.min.req" = minQuantumRate;
-          "pulse.min.quantum" = minQuantumRate;
+          "pulse.default.req" = baseQuantumRate;
+
           "pulse.min.frag" = minQuantumRate;
-          "pulse.max.req" = maxQuantumRate;
-          "pulse.max.quantum" = maxQuantumRate;
-          "pulse.max.frag" = maxQuantumRate;
+          "pulse.default.frag" = baseQuantumRate;
+
+          "pulse.default.tlength" = baseQuantumRate;
+
+          "pulse.min.quantum" = minQuantumRate;
         };
       };
 
       jack."99-jack-lowlatency" = {
-        "node.latency" = baseQuantumRate;
-        "node.quantum" = baseQuantumRate;
+        # "node.latency" = baseQuantumRate;
+        # "node.quantum" = baseQuantumRate;
       };
 
       client."99-client-lowlatency" = {
         "stream.properties" = {
-          "node.latency" = baseQuantumRate;
+          # "node.latency" = baseQuantumRate;
           "resample.quality" = 4;
         };
       };
@@ -86,19 +103,29 @@ in
 
     wireplumber.extraConfig = {
       "99-wireplumber-lowlatency" = {
-        "alsa_monitor.rules" = [
+        "monitor.alsa.rules" = [
           {
             matches = [
               {
-                "node.name" = "";
-                "apply_properties" = {
-                  "audio.format" = "S32LE";
-                  "audio.rate" = rate;
-                  "api.alsa.period_size" = 2;
-                  "api.alsa.disable-batch" = true;
-                };
+                "node.name" = "~alsa_output.*";
+              }
+              {
+                "node.name" = "~alsa_input.*";
               }
             ];
+            actions = {
+              "update-props" = {
+                "audio.format" = "S32LE";
+                "audio.rate" = rate;
+                "node.pause-on-idle" = false;
+
+                "api.alsa.period-size" = baseQuantum;
+                "api.alsa.period-num" = 2;
+                "api.alsa.headroom" = 0;
+                "api.alsa.disable-batch" = true;
+                "api.alsa.use-ucm" = false;
+              };
+            };
           }
         ];
       };
@@ -116,8 +143,13 @@ in
       domain = "@audio";
       item = "rtprio";
       type = "-";
-      value = "99";
+      value = "75";
+    }
+    {
+      domain = "@audio";
+      item = "nice";
+      type = "-";
+      value = "-15";
     }
   ];
-
 }
