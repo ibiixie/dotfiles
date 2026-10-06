@@ -20,8 +20,18 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # For games mainly :D
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+
+  # The SCX Flash scheduler seems to perform a lot better under load.
+  # Especially noticeable when using low-latency audio during high CPU stress.
+  services.scx = {
+    enable = true;
+    scheduler = "scx_flash";
+  };
+
+  # SCX flash fails on boot but succeeds later on. As a workaround
+  # I just introduce a delay to the startup of the service.
+  systemd.services.scx.serviceConfig.ExecStartPre = "${pkgs.coreutils}/bin/sleep 10";
 
   # QuickSync/VAAPI is mostly broken on Alchemist GPUs when using the
   # newer `xe` graphics driver due to lack of HuC support. This patch

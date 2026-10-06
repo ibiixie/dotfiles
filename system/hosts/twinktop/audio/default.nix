@@ -17,9 +17,10 @@
     let
       mkQuantumRate = quantum: rate: "${toString quantum}/${toString rate}";
 
-      minQuantum = 256;
-      baseQuantum = 256;
-      maxQuantum = 256;
+      # NOTE: These values are only stable with the SCX Flash scheduler.
+      minQuantum = 64;
+      baseQuantum = 64;
+      maxQuantum = 64;
       rate = 48000;
 
       baseQuantumRate = mkQuantumRate baseQuantum rate;
