@@ -111,6 +111,18 @@
             {
               matches = [
                 {
+                  "device.name" = "~alsa_card.*";
+                }
+              ];
+              actions = {
+                "update-props" = {
+                  "api.alsa.use-ucm" = false;
+                };
+              };
+            }
+            {
+              matches = [
+                {
                   "node.name" = "~alsa_output.*";
                 }
                 {
@@ -127,7 +139,6 @@
                   "api.alsa.period-num" = 2;
                   "api.alsa.headroom" = 0;
                   "api.alsa.disable-batch" = true;
-                  "api.alsa.use-ucm" = false;
                 };
               };
             }
