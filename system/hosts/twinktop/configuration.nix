@@ -24,14 +24,16 @@
 
   # The SCX Flash scheduler seems to perform a lot better under load.
   # Especially noticeable when using low-latency audio during high CPU stress.
+  # ADNDM:
+  # Flash causes massive lagspikes in some games, switching to bpfland instead.
   services.scx = {
     enable = true;
-    scheduler = "scx_flash";
+    scheduler = "scx_bpfland";
   };
 
   # SCX flash fails on boot but succeeds later on. As a workaround
   # I just introduce a delay to the startup of the service.
-  systemd.services.scx.serviceConfig.ExecStartPre = "${pkgs.coreutils}/bin/sleep 10";
+  # systemd.services.scx.serviceConfig.ExecStartPre = "${pkgs.coreutils}/bin/sleep 10";
 
   # QuickSync/VAAPI is mostly broken on Alchemist GPUs when using the
   # newer `xe` graphics driver due to lack of HuC support. This patch
