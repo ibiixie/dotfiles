@@ -17,12 +17,10 @@
     let
       mkQuantumRate = quantum: rate: "${toString quantum}/${toString rate}";
 
-      # NOTE: These values are only stable with the SCX Flash scheduler.
-      # NOTE: Measured round-trip latency is 6 ms @ 64 quant and 48kHz
-      #       including EasyEffects processing and default period size/headroom.
-      minQuantum = 64;
-      baseQuantum = 64;
-      maxQuantum = 64;
+      minQuantum = 256;
+      baseQuantum = 256;
+      maxQuantum = 256;
+
       rate = 48000;
 
       baseQuantumRate = mkQuantumRate baseQuantum rate;
@@ -135,18 +133,15 @@
                 "update-props" = {
                   "audio.format" = "S32LE";
                   "audio.rate" = rate;
+
                   "node.pause-on-idle" = false;
+                  "session.suspend-timeout-seconds" = 0;
 
                   "api.alsa.period-size" = baseQuantum;
-                  # NOTE
-                  # Clicking audio at low latency and period-num.
-                  # Fairly bad at 64 quantum and 2 period-num.
-                  # Better at 64 quantum and 4 period-num.
-                  # TODO: Try commenting out this and checking latency. (64 qaunt @ 48kHz = ~6.5 ms)
-                  # TODO: Try setting to 8 and checking for clicks + measure latency.
-                  # "api.alsa.period-num" = 4;
-                  # "api.alsa.headroom" = 0;
-                  # "api.alsa.disable-batch" = true;
+                  "api.alsa.period-num" = 4;
+                  "api.alsa.headroom" = 0;
+
+                  "api.alsa.disable-batch" = true;
                 };
               };
             }
