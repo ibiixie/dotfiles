@@ -90,7 +90,8 @@
       require_nolog = true;
 
       server_names = [
-        "quad9-doh-ip4-port443-nofilter-pri"
+        # "quad9-doh-ip4-port443-nofilter-pri"
+        "quad9-dnscrypt-ip4-nofilter-pri"
       ];
     };
   };
