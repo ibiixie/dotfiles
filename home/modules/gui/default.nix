@@ -14,6 +14,7 @@
     ./easyeffects.nix
     ./spicetify.nix
     ./davinci-resolve.nix
+    ./kdenlive.nix
     ./minecraft.nix
     ./unity.nix
     ./rider.nix
