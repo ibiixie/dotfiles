@@ -32,4 +32,16 @@
     home-manager.enable = true;
     btop.enable = true;
   };
+
+  services = {
+    swayidle = {
+      enable = true;
+      timeouts = [
+        {
+          timeout = 600;
+          command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
+        }
+      ];
+    };
+  };
 }
