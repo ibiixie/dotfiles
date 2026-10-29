@@ -22,6 +22,9 @@
   # For games mainly :D
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
 
+  # Gaming
+  boot.kernelModules = [ "ntsync" ];
+
   # The SCX Flash scheduler seems to perform a lot better under load.
   # Especially noticeable when using low-latency audio during high CPU stress.
   # ADNDM:
