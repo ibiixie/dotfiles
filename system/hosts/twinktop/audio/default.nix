@@ -184,17 +184,35 @@
         "stream.rules" = [
           {
             matches = [
-              { "application.name" = "spotify"; }
-              { "application.name" = "Firefox"; }
-              { "application.name" = "Helium"; }
-              { "application.name" = "Vivaldi"; }
+              {
+                "application.name" = "spotify";
+                "media.class" = "Stream/Output/Audio";
+              }
+              {
+                "application.name" = "Firefox";
+                "media.class" = "Stream/Output/Audio";
+              }
+              {
+                "application.name" = "Helium";
+                "media.class" = "Stream/Output/Audio";
+              }
+              {
+                "application.name" = "Vivaldi";
+                "media.class" = "Stream/Output/Audio";
+              }
             ];
             actions."update-props"."target.object" = "loopback.media";
           }
           {
             matches = [
-              { "application.name" = "vesktop"; }
-              { "application.name" = "Steam"; }
+              {
+                "application.name" = "vesktop";
+                "media.class" = "Stream/Output/Audio";
+              }
+              {
+                "application.name" = "Steam";
+                "media.class" = "Stream/Output/Audio";
+              }
             ];
             actions."update-props"."target.object" = "loopback.comms";
           }
