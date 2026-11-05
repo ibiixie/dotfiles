@@ -60,18 +60,34 @@
         ];
       };
 
-      # TODO: Change from loopback to combined sink so I can output to both
-      # 'easyeffects_sink' and speaker's hardware sink directly to avoid
-      # applying my headphone EQ to the speakers.
       extraConfig.pipewire."10-loopbacks" =
         let
           outputSink = "easyeffects_sink";
+
+          mkNull =
+            {
+              name,
+              desc,
+              extraArgs ? { },
+            }:
+            {
+              factory = "adapter";
+              args = {
+                "factory.name" = "support.null-audio-sink";
+                "node.name" = "null.${name}";
+                "node.description" = "${desc}";
+                "media.class" = "Audio/Sink";
+                "audio.position" = "FL,FR";
+              }
+              // extraArgs;
+            };
 
           mkLoopback =
             {
               name,
               desc,
               extraCaptureProps ? { },
+              extraPlaybackProps ? { },
             }:
             {
               name = "libpipewire-module-loopback";
@@ -90,60 +106,87 @@
                   "node.name" = "loopback.${name}.out";
                   # "target.object" = outputSink;
                   "node.dont-fallback" = true;
-                };
+                }
+                // extraPlaybackProps;
+              };
+            };
+
+          mkCombine =
+            {
+              name,
+              desc,
+              targets ? [ ],
+              extraCombineProps ? { },
+            }:
+            {
+              name = "libpipewire-module-combine-stream";
+              args = {
+                "combine.mode" = "sink";
+                "node.name" = "combine.${name}";
+                "node.description" = desc;
+                "combine.props" = {
+                  "audio.position" = [
+                    "FL"
+                    "FR"
+                  ];
+                }
+                // extraCombineProps;
+                "stream.rules" = map (target: {
+                  matches = [
+                    {
+                      "media.class" = "Audio/Sink";
+                      "node.name" = target;
+                    }
+                  ];
+                  actions.create-stream = {
+                    "node.name" = "combine.${name}-to-${target}.stream";
+                  };
+                }) targets;
               };
             };
         in
         {
           "context.modules" = [
-            (mkLoopback {
+            (mkCombine {
               name = "system";
-              desc = "System";
-              extraCaptureProps = {
+              desc = "System Mix";
+              targets = [
+                "easyeffects_sink"
+                "loopback.screenshare-mix"
+              ];
+              extraCombineProps = {
                 "priority.session" = 2000; # Set as default sink
               };
             })
-            (mkLoopback {
+            (mkCombine {
               name = "media";
-              desc = "Media";
+              desc = "Media Mix";
+              targets = [
+                "easyeffects_sink"
+                "loopback.screenshare-mix"
+              ];
+            })
+            (mkCombine {
+              name = "comms";
+              desc = "Communications Mix";
+              targets = [ "easyeffects_sink" ];
             })
             (mkLoopback {
-              name = "comms";
-              desc = "Communications";
+              name = "screenshare-mix";
+              desc = "Screenshare Mix";
+              extraPlaybackProps = {
+                "application.name" = "Screenshare Mix";
+                "application.process.binary" = "screenshare-mix";
+                "node.autoconnect" = false;
+              };
             })
           ];
 
-          "stream.rules" = [
-            {
-              matches = [
-                { "node.name" = "loopback.system.out"; }
-              ];
-              actions."update-props" = {
-                "target.object" = "easyeffects_sink";
-                "node.dont-fallback" = true;
-                "node.linger" = true;
-              };
-            }
-            {
-              matches = [
-                { "node.name" = "loopback.media.out"; }
-              ];
-              actions."update-props" = {
-                "target.object" = "easyeffects_sink";
-                "node.dont-fallback" = true;
-                "node.linger" = true;
-              };
-            }
-            {
-              matches = [
-                { "node.name" = "loopback.comms.out"; }
-              ];
-              actions."update-props" = {
-                "target.object" = "easyeffects_sink";
-                "node.dont-fallback" = true;
-                "node.linger" = true;
-              };
-            }
+          "context.objects" = [
+            # (mkNull {
+            #   name = "test";
+            #   desc = "Test";
+            # })
           ];
         };
 
@@ -201,7 +244,7 @@
                 "media.class" = "Stream/Output/Audio";
               }
             ];
-            actions."update-props"."target.object" = "loopback.media";
+            actions."update-props"."target.object" = "combine.media";
           }
           {
             matches = [
@@ -214,7 +257,7 @@
                 "media.class" = "Stream/Output/Audio";
               }
             ];
-            actions."update-props"."target.object" = "loopback.comms";
+            actions."update-props"."target.object" = "combine.comms";
           }
         ];
       };
