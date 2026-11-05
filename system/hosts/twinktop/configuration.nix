@@ -1,9 +1,22 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
 
+let
+  # TODO: i should move these into their own module along with the rest :v
+  gpuSysfs = "/sys/bus/pci/devices/0000:03:00.0/tile0/gt0/freq0";
+
+  pinArcGpuFreq = pkgs.writeShellScript "pin-arc-freq" ''
+    ${pkgs.coreutils}/bin/cat "${gpuSysfs}/max_freq" > "${gpuSysfs}/min_freq"
+  '';
+
+  unpinArcGpuFreq = pkgs.writeShellScript "unpin-arc-freq" ''
+    ${pkgs.coreutils}/bin/cat "${gpuSysfs}/rpe_freq" > "${gpuSysfs}/min_freq"
+  '';
+in
 {
   imports = [
     ./audio
@@ -102,6 +115,14 @@
   # TODO: Move this?
   programs.nix-ld.enable = true;
 
+  # Gamemode has no powerformance mode for Arc GPUs
+  # Pin the GPU frequency to max as a custom step.
+  # TODO: i should move this into its own module :v
+  programs.gamemode.settings.custom = lib.mkIf config.programs.gamemode.enable ({
+    start = "/run/wrappers/bin/sudo ${pinArcGpuFreq}";
+    end = "/run/wrappers/bin/sudo ${unpinArcGpuFreq}";
+  });
+
   hardware.graphics.extraPackages = [
     pkgs.intel-media-driver
     pkgs.vpl-gpu-rt
@@ -194,6 +215,27 @@
       };
     };
   };
+
+  # arc-unpun-freq and arc-pin-freq scripts will prompt for password and
+  # fail silently when gamemoded runs them, so we set NOPASSWD on them.
+  # TODO: i should move this into its own module :v
+  security.sudo.extraRules = lib.mkIf config.programs.gamemode.enable (
+    lib.mkAfter [
+      {
+        users = [ "biixie" ];
+        commands = [
+          {
+            command = "${pinArcGpuFreq}";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "${unpinArcGpuFreq}";
+            options = [ "NOPASSWD" ];
+          }
+        ];
+      }
+    ]
+  );
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
