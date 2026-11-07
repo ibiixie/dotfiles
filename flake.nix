@@ -159,7 +159,13 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.biixie = ./home/users/biixie/home.nix;
+
+              home-manager.users.biixie = {
+                imports = [
+                  ./home/users/biixie/home.nix
+                  ./home/hosts/twinktop/home.nix
+                ];
+              };
 
               home-manager.extraSpecialArgs = { inherit inputs outputs; };
             }
