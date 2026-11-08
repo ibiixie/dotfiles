@@ -148,9 +148,12 @@ in
     "xe.force_probe=56a0"
   ];
 
+  # See https://github.com/NixOS/nixpkgs/issues/534620
+  boot.supportedFilesystems.ntfs = lib.mkForce false;
+
   fileSystems."/Storage" = {
     device = "/dev/disk/by-uuid/B2783C05783BC6BF";
-    fsType = "ntfs-3g";
+    fsType = "ntfs";
     options = [
       "noatime"
       "nofail"
@@ -159,9 +162,10 @@ in
     ];
   };
 
+  # TODO: Switch to ntfs
   fileSystems."/Archive" = {
     device = "/dev/disk/by-uuid/94A4EB75A4EB57EE";
-    fsType = "ntfs-3g";
+    fsType = "ntfs";
     options = [
       "noatime"
       "nofail"
@@ -170,9 +174,10 @@ in
     ];
   };
 
+  # TODO: Switch to ntfs
   fileSystems."/Dying-Archive" = {
     device = "/dev/disk/by-uuid/509C44B39C4494FE";
-    fsType = "ntfs-3g";
+    fsType = "ntfs";
     options = [
       "noatime"
       "nofail"
