@@ -109,7 +109,7 @@
         BetterRoleDot.enabled = true;
         BetterGifPicker.enabled = true;
         AlwaysExpandRoles.enabled = true;
-        AlwaysAnimate.enabled = true;
+        # AlwaysAnimate.enabled = true;
         AccountPanelServerProfile.enabled = true;
       };
     };
