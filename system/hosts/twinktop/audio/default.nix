@@ -190,6 +190,22 @@
           ];
         };
 
+      extraConfig.client."11-routing" = {
+        "stream.rules" = [
+          {
+            matches = [
+              {
+                "node.name" = "ee_soe_output_level";
+              }
+            ];
+            actions."update-props" = {
+              "node.autoconnect" = false;
+              "node.dont-reconnect" = true;
+            };
+          }
+        ];
+      };
+
       extraConfig.pipewire-pulse."99-pulse-lowlatency" = {
         "context.modules" = [
           {
