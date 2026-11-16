@@ -9,6 +9,7 @@
 
     config = {
       vo = "gpu-next";
+      hwdec = "auto-safe";
       profile = "high-quality";
       volume = 70;
 
