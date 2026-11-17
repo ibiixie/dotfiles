@@ -40,7 +40,8 @@ in
     inputs.nix-cachyos-kernel.overlays.pinned
   ];
 
-  boot.kernelPackages = pkgs.cachyosKernels.linux-cachyos-latest-lto-x86_64-v3;
+  boot.kernelPackages =
+    inputs.nix-cachyos-kernel.legacyPackages.x86_64-linux.linuxPackages-cachyos-latest-lto-x86_64-v3;
 
   # Gaming
   boot.kernelModules = [ "ntsync" ];
