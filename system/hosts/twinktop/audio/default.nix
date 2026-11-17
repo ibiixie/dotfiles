@@ -331,7 +331,7 @@
                   "session.suspend-timeout-seconds" = 0;
 
                   "api.alsa.period-size" = baseQuantum;
-                  "api.alsa.period-num" = 4;
+                  "api.alsa.period-num" = 3;
                   "api.alsa.headroom" = 0;
 
                   "api.alsa.disable-batch" = true;
