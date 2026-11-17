@@ -23,6 +23,8 @@
   # repositioned in the middle of the boot sequence.
   boot.loader.systemd-boot.consoleMode = "0";
 
+  hardware.enableRedistributableFirmware = true;
+
   networking = {
     networkmanager.enable = true;
   };

@@ -27,6 +27,8 @@
     "fbcon=rotate:1"
   ];
 
+  hardware.cpu.intel.updateMicrocode = true;
+
   networking = {
     hostName = "twinkcentre";
 
@@ -186,7 +188,7 @@
   systemd.services.nixos-upgrade.onSuccess = [ "podman-auto-update.service" ];
 
   hardware.enableAllFirmware = true;
-  hardware.enableAllHardware = true;
+  # hardware.enableAllHardware = true;
 
   users.mutableUsers = false;
 

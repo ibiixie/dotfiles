@@ -17,6 +17,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  hardware.cpu.amd.updateMicrocode = true;
+
   users.users.biixie = {
     isNormalUser = true;
     description = "Biixie";
@@ -66,7 +68,7 @@
   networking.firewall.allowedTCPPorts = [ 21622 ];
 
   hardware.enableAllFirmware = true;
-  hardware.enableAllHardware = true;
+  # hardware.enableAllHardware = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

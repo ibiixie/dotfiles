@@ -33,6 +33,8 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  hardware.cpu.intel.updateMicrocode = true;
+
   # CachyOS kernel
   nixpkgs.overlays = [
     inputs.nix-cachyos-kernel.overlays.pinned
@@ -80,7 +82,7 @@ in
   powerManagement.cpuFreqGovernor = "performance";
 
   hardware.enableAllFirmware = true;
-  hardware.enableAllHardware = true;
+  # hardware.enableAllHardware = true;
 
   networking.hostName = "twinktop";
   networking.firewall.allowedTCPPorts = [
