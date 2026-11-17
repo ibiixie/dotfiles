@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -32,8 +33,12 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # For games mainly :D
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+  # CachyOS kernel
+  nixpkgs.overlays = [
+    inputs.nix-cachyos-kernel.overlays.pinned
+  ];
+
+  boot.kernelPackages = pkgs.cachyosKernels.linux-cachyos-latest-lto-x86_64-v3;
 
   # Gaming
   boot.kernelModules = [ "ntsync" ];
