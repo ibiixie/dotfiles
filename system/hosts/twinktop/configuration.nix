@@ -42,7 +42,7 @@ in
   # Especially noticeable when using low-latency audio during high CPU stress.
   # ADNDM:
   # Flash causes massive lagspikes in some games, switching to bpfland instead.
-  services.scx = {
+  services.scx-loader = {
     enable = true;
     config = {
       default_sched = "scx_bpfland";
