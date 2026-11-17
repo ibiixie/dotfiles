@@ -44,7 +44,15 @@ in
   # Flash causes massive lagspikes in some games, switching to bpfland instead.
   services.scx = {
     enable = true;
-    scheduler = "scx_bpfland";
+    config = {
+      default_sched = "scx_bpfland";
+      default_mode = "LowLatency";
+      scheds.scx_bpfland.lowlatency_mode = [
+        "-m"
+        "performance"
+        "-w"
+      ];
+    };
   };
 
   # SCX flash fails on boot but succeeds later on. As a workaround
